@@ -85,11 +85,11 @@ h2{font-size:24px;font-weight:800}
 .field{border:2px solid var(--line);border-radius:12px;padding:9px 11px;background:#fff;width:100%;min-width:0}
 .field:focus{outline:none;border-color:var(--sky)}
 textarea.field{resize:vertical;min-height:90px}
-.erow{display:grid;grid-template-columns:30px 1fr 1fr auto;gap:8px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.erow{display:grid;grid-template-columns:30px minmax(0,1fr) minmax(0,1fr) auto;gap:8px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
 .erow .num{font-family:var(--disp);font-weight:800;font-size:18px;color:#9aa0cf;padding-top:8px;text-align:center}
 .cell{display:flex;gap:6px;align-items:center;min-width:0}
 .cell .thumbimg{width:40px;height:40px;border-radius:9px;object-fit:cover;flex:none;box-shadow:0 0 0 2px var(--line)}
-.colhead{display:grid;grid-template-columns:30px 1fr 1fr auto;gap:8px;font-size:13px;font-weight:700;color:#6a70a3;padding:0 0 4px}
+.colhead{display:grid;grid-template-columns:30px minmax(0,1fr) minmax(0,1fr) 150px;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#6a70a3;padding:0 0 4px}
 .qblock{border:2px solid var(--line);border-radius:16px;padding:12px;margin-bottom:12px}
 .qans{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
 .ansline{display:flex;gap:6px;align-items:center}
@@ -358,6 +358,124 @@ footer.foot{text-align:center;color:#8a90bf;font-size:13px;padding:10px 0 30px}
   .stage{min-height:78vh;border-radius:18px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.banner{margin:0 14px;background:var(--sun);color:#3b2a00;border-radius:14px;padding:9px 14px;font-weight:700;display:flex;gap:10px;align-items:center;font-size:17px}
+.banner span{flex:1}.banner button{border:0;background:rgba(0,0,0,.08);border-radius:8px;width:30px;height:30px}
+.introico{width:110px;height:110px;margin:0 auto}
+.lb{margin-top:6px}.lb .field{max-width:200px}
+.lbt{font-weight:700;margin:12px 0 4px}
+.lb ol{text-align:left;max-width:340px;margin:0 auto;padding-left:28px;font-size:15px}
+.lb li{padding:3px 6px;border-radius:8px}.lb li b{margin-right:8px}.lb li span{color:#6a70a3}
+.lb li.me{background:#fff3cc}
+
+/* NOUVEAUX JEUX */
+.playfield{position:relative;width:100%;max-width:1100px;flex:none;height:clamp(320px,calc(100vh - 380px),560px);overflow:hidden;border-radius:20px;background:var(--soft);touch-action:none}
+.playfield.sky{background:linear-gradient(#7fd3ff,#bfeaff 70%,#e6f7ff)}
+.playfield.grass{background:linear-gradient(#8fdc7a,#5fbf56);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:14px}
+.playfield.mazef{display:grid;place-items:center;background:transparent}
+.qbar{background:var(--tile);color:var(--tileInk);border-radius:18px;padding:10px 16px;box-shadow:0 5px 0 var(--edge);text-align:center}
+.qbar .q{font-family:var(--disp);font-weight:800;font-size:clamp(19px,2.6vw,28px);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.qbar img{max-height:70px;border-radius:10px}
+.legend{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.legend span{color:#fff;border-radius:10px;padding:4px 10px;font-family:var(--disp);font-weight:700;font-size:17px}
+.legend b{margin-right:6px;opacity:.85}
+.bigin{font-family:var(--disp);font-weight:700;font-size:clamp(24px,3.4vw,36px);text-align:center;border:0;border-radius:16px;padding:12px 18px;width:min(560px,92%);background:var(--tile);color:var(--tileInk);box-shadow:0 5px 0 var(--edge)}
+.bigin:focus{outline:4px solid var(--sun)}
+.bigin.good{background:#22b07d;color:#fff}.bigin.bad{background:#ef4f5f;color:#fff;animation:shake .4s}
+.pcards{display:flex;align-items:center;gap:16px;width:100%;max-width:820px;justify-content:center}
+.pcard{flex:1;min-height:clamp(150px,28vh,230px);border-radius:22px;background:var(--tile);color:var(--tileInk);box-shadow:0 7px 0 var(--edge);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-family:var(--disp);font-weight:800;font-size:clamp(22px,3.4vw,38px);padding:14px;text-align:center}
+.pcard.alt{background:#ffe066;color:#3b2a00;box-shadow:0 7px 0 #cf9f00}
+.pcard img{max-height:110px;border-radius:12px}
+.pvs{font-family:var(--disp);font-weight:800;font-size:40px;color:var(--sun)}
+.rankbox{display:flex;gap:10px;width:100%;max-width:720px}
+.ranknums{display:flex;flex-direction:column;gap:10px}
+.ranknums div{height:58px;width:44px;display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:24px;background:var(--soft);border-radius:12px}
+.ranklist{flex:1;display:flex;flex-direction:column;gap:10px;touch-action:none}
+.rankrow{height:58px;justify-content:flex-start;cursor:grab;padding:6px 14px}
+.rankrow .grip{opacity:.6;font-size:22px}.rankrow .rt{display:flex;align-items:center;gap:8px}.rankrow img{max-height:44px}
+.rankrow.lifting{transform:scale(1.03);box-shadow:0 12px 20px rgba(0,0,0,.25)}
+.bets{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;font-family:var(--disp);font-weight:700;font-size:20px;min-height:58px}
+.bets .tile{width:54px;height:54px;padding:0;font-size:26px}
+.stakeon{background:var(--sun);color:#3b2a00;border-radius:999px;padding:6px 16px}
+.memshow{min-height:260px;display:grid;place-items:center;width:100%}
+.memitem{font-size:clamp(30px,5vw,56px);padding:26px 40px;min-width:260px;min-height:170px;animation:deal .45s cubic-bezier(.2,1.2,.4,1)}
+.memitem img{max-height:160px}
+.iqwrap{position:relative;display:inline-block;max-width:100%;border-radius:16px;overflow:hidden;box-shadow:0 6px 0 var(--edge)}
+.iqwrap img{display:block;max-height:46vh;max-width:100%}
+.iqcover{position:absolute;inset:0;display:grid}
+.iqcover div{background:var(--tile);border:2px solid rgba(255,255,255,.4);transition:opacity .4s,transform .4s}
+.iqcover div.gone{opacity:0;transform:scale(.6)}
+.buzz{font-size:24px;padding:14px 34px}
+.sbins{position:absolute;left:10px;right:10px;bottom:10px;display:grid;gap:10px}
+.sbin{border:0;border-radius:16px 16px 20px 20px;min-height:84px;background:var(--tile);color:var(--tileInk);box-shadow:0 6px 0 var(--edge);font-family:var(--disp);font-weight:800;font-size:clamp(16px,2vw,22px);position:relative;padding:8px}
+.sbin small{position:absolute;top:4px;left:8px;font-size:13px;opacity:.7}
+.sbin.good{--tile:#22b07d;--edge:#13744f;--tileInk:#fff}.sbin.bad{--tile:#ef4f5f;--edge:#a8283a;--tileInk:#fff;animation:shake .4s}
+.faller{position:absolute;top:0;transform:translateX(-50%);font-size:clamp(18px,2.4vw,26px);white-space:nowrap}
+.faller.bad{--tile:#ef4f5f;--tileInk:#fff}
+.mboard{position:relative;width:100%;max-width:960px;height:min(52vh,420px);border-radius:20px;background:#f7f8fc;box-shadow:0 0 0 10px #c9cde0 inset,0 6px 0 rgba(0,0,0,.15);touch-action:none}
+.mline{position:absolute;left:24px;right:24px;bottom:24px;height:74px;border-radius:14px;border:3px dashed #9aa0cf;background:rgba(82,199,250,.1)}
+.mline.shake{animation:shake .4s}
+.magnet{position:absolute;padding:8px 14px;border-radius:10px;background:var(--tile);color:var(--tileInk);font-family:var(--disp);font-weight:800;font-size:clamp(17px,2.2vw,24px);box-shadow:0 4px 0 var(--edge),0 6px 10px rgba(0,0,0,.18);cursor:grab;white-space:nowrap;transition:box-shadow .15s}
+.magnet.lift{box-shadow:0 10px 18px rgba(0,0,0,.3);z-index:5}
+.magnet.good{--tile:#22b07d;--edge:#13744f;--tileInk:#fff}.magnet.badm{outline:4px solid #ef4f5f}
+.mazecv{border-radius:16px;box-shadow:0 6px 0 rgba(0,0,0,.2);touch-action:none}
+.dpad{position:absolute;right:12px;bottom:12px;display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(3,48px);gap:4px;opacity:.9}
+.dpad .tile{padding:0;font-size:22px;border-radius:12px}
+.dpad .tile:nth-child(1){grid-column:2;grid-row:1}.dpad .tile:nth-child(2){grid-column:1;grid-row:2}.dpad .tile:nth-child(3){grid-column:3;grid-row:2}.dpad .tile:nth-child(4){grid-column:2;grid-row:3}
+@media (pointer:fine){.dpad{display:none}}
+.fruit{position:absolute;left:0;top:0;border:0;background:#fff;color:#151d65;border-radius:999px;padding:8px 16px 8px 8px;display:flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:800;font-size:clamp(17px,2.2vw,24px);box-shadow:0 5px 0 rgba(0,0,0,.18);white-space:nowrap}
+.fruit .fe{font-size:34px;line-height:1}
+.fruit.splat{background:#22b07d;color:#fff;transition:transform .5s,opacity .5s;opacity:0}
+.fruit.wrongf{background:#ef4f5f;color:#fff}
+.train{position:absolute;left:10px;right:10px;bottom:14px;display:flex;gap:8px;flex-wrap:nowrap;justify-content:center;align-items:flex-end}
+.car{position:relative;min-width:0;flex:1 1 0;max-width:190px;word-break:break-word;border-radius:12px 12px 6px 6px;background:var(--tile);color:var(--tileInk);box-shadow:0 5px 0 var(--edge);padding:30px 8px 18px;text-align:center;font-family:var(--disp);font-weight:700;font-size:clamp(14px,1.7vw,19px)}
+.car .cargo{position:absolute;left:8px;right:8px;top:4px;min-height:22px;font-size:14px;border-radius:6px;background:rgba(255,255,255,.35)}
+.car.loaded .cargo{background:#fff;color:#22b07d;font-weight:800}
+.car .cdef img{max-height:50px;border-radius:8px}
+.car .wheels{position:absolute;bottom:-10px;left:14px;right:14px;display:flex;justify-content:space-between}
+.car .wheels i{width:18px;height:18px;border-radius:50%;background:#1b1f4b;border:3px solid #fff}
+.car.shake{animation:shake .4s}
+.balloonx{position:absolute;left:0;top:6px;border:0;background:none;width:150px;display:flex;flex-direction:column;align-items:center;padding:0}
+.balloonx .env{width:84px;height:96px;border-radius:50% 50% 45% 45%/55% 55% 45% 45%;background:repeating-linear-gradient(90deg,#ff6f91 0 14px,#fff 14px 28px);box-shadow:0 0 0 4px #1b1f4b inset}
+.balloonx .ropes{width:46px;height:22px;border-left:2px solid #1b1f4b;border-right:2px solid #1b1f4b}
+.balloonx .crate{font-size:17px;padding:8px 12px;min-width:90px;white-space:nowrap;--tile:#c98a4b;--edge:#8a5a2b;--tileInk:#fff}
+.holes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,2vw,22px);width:100%;max-width:760px}
+.hole{position:relative;height:clamp(100px,17vh,150px);overflow:hidden}
+.hole .dirt{position:absolute;left:4%;right:4%;bottom:0;height:34%;border-radius:50%;background:#5b3a1e;box-shadow:0 -6px 0 #3e2712 inset}
+.mole{position:absolute;left:50%;bottom:-100%;width:min(150px,80%);transform:translateX(-50%);transition:bottom .22s cubic-bezier(.3,1.5,.5,1);display:flex;flex-direction:column;align-items:center;cursor:pointer;z-index:1}
+.hole.up .mole{bottom:6%}
+.mole .face{width:74%;height:62px;border-radius:50% 50% 20% 20%;background:#a0703f;color:#1b1f4b;display:grid;place-items:center;font-weight:800;box-shadow:0 0 0 3px #1b1f4b inset}
+.mole .sign{background:#fff;color:#151d65;font-family:var(--disp);font-weight:800;font-size:clamp(14px,1.8vw,19px);padding:4px 8px;border-radius:8px;border:3px solid #1b1f4b;margin-bottom:-4px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hole.bonk .sign{background:#22b07d;color:#fff}.hole.oops .sign{background:#ef4f5f;color:#fff}
+.hole.bonk .mole{transform:translateX(-50%) scaleY(.85)}
+.plane{position:absolute;left:0;top:0;width:clamp(90px,12vw,140px);height:clamp(54px,7vw,82px);transition:none}
+.cloud{position:absolute;left:0;top:0;background:#fff;color:#151d65;border-radius:999px;padding:12px 22px;font-family:var(--disp);font-weight:800;font-size:clamp(17px,2.2vw,24px);box-shadow:0 6px 0 rgba(21,29,101,.12);white-space:nowrap}
+.cloud::before,.cloud::after{content:'';position:absolute;background:#fff;border-radius:50%;z-index:-1}
+.cloud::before{width:44px;height:44px;top:-18px;left:18%}.cloud::after{width:30px;height:30px;top:-10px;right:20%}
+.cloud.gotc{background:#22b07d;color:#fff}.cloud.badc{background:#ef4f5f;color:#fff}
+
+.crumbs{display:flex;gap:6px;flex-wrap:wrap;font-size:14px;font-weight:700;color:#9aa0cf;margin-bottom:10px}
+.crumbs span{display:flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:999px}
+.crumbs span+span::before{content:'›';margin-right:6px;color:#c3c7e6}
+.crumbs b{width:22px;height:22px;border-radius:50%;background:#e2e5f7;color:#6a70a3;display:grid;place-items:center;font-size:12px}
+.crumbs .on{color:var(--ink)}.crumbs .on b{background:var(--pink);color:#fff}.crumbs .done b{background:var(--mint);color:#fff}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.chip2{border:0;border-radius:999px;padding:7px 14px;background:#fff;box-shadow:0 0 0 2px var(--line) inset;font-weight:700;font-size:14px}
+.chip2.on{background:var(--ink);color:#fff;box-shadow:none}
+.rtools{display:flex;gap:3px}
+.iconbtn.s{width:32px;height:32px;font-size:13px;border-radius:9px}
+.iconbtn[disabled]{opacity:.3}
+.chars{margin-bottom:10px}.chars summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--ink2)}
+.charbar{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.charbar button{width:34px;height:34px;border-radius:9px;border:0;background:var(--paper);font-size:17px;font-weight:700}
+.charbar button:hover{background:var(--sun)}
+@media (max-width:600px){.erow{grid-template-columns:24px minmax(0,1fr) auto}.erow .cell.d{grid-column:2/3}.erow .rtools{grid-column:3;grid-row:1/3;flex-direction:column}.colhead{grid-template-columns:24px 1fr}.colhead span:nth-child(n+3){display:none}}
+
+.stage.full .playfield{height:calc(100vh - 210px);max-width:none}
+.holes{flex:1;grid-template-rows:repeat(3,1fr);min-height:0}
+.hole{height:auto;min-height:0}
+.rankrow{height:48px}.ranknums div{height:48px}
+@media (max-width:600px){.playfield{height:clamp(300px,calc(100vh - 250px),560px)}.qbar{padding:8px 10px}.legend span{font-size:15px;padding:3px 8px}}
 /* ICÔNES VECTORIELLES ANIMÉES */
 .ico{display:inline-block;line-height:0;flex:none;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
 .ico svg{width:100%;height:100%;display:block;overflow:visible}
@@ -429,7 +547,7 @@ footer.foot{text-align:center;color:#8a90bf;font-size:13px;padding:10px 0 30px}
 <main class="wrap" id="view"></main>
 <footer class="foot">BROT2YOU Studio V5 · gratuit, sans compte · les activités restent sur cet appareil (pense à exporter)</footer>
 <div id="toast" role="status" aria-live="polite"></div>
-<script type="application/json" id="icons-data">{"wheel": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#d98c00\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#ffc93c\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><circle cx=\"50\" cy=\"52\" r=\"31\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-spin\"><path d=\"M50 52 L50.00 25.00 A27 27 0 0 1 73.38 38.50 Z\" fill=\"#ff6f91\"/><path d=\"M50 52 L73.38 38.50 A27 27 0 0 1 73.38 65.50 Z\" fill=\"#3fb4f0\"/><path d=\"M50 52 L73.38 65.50 A27 27 0 0 1 50.00 79.00 Z\" fill=\"#ffc23d\"/><path d=\"M50 52 L50.00 79.00 A27 27 0 0 1 26.62 65.50 Z\" fill=\"#3cc98a\"/><path d=\"M50 52 L26.62 65.50 A27 27 0 0 1 26.62 38.50 Z\" fill=\"#9b6bff\"/><path d=\"M50 52 L26.62 38.50 A27 27 0 0 1 50.00 25.00 Z\" fill=\"#ff8a4c\"/><circle cx=\"50\" cy=\"52\" r=\"27\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"50\" cy=\"52\" r=\"6\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><path d=\"M50 34 L43 18 h14 Z\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"50\" cy=\"22\" r=\"2.6\" fill=\"#ff6f91\"/><\/svg>", "cards": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c73c62\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#ff6f91\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g transform=\"rotate(-14 40 54)\"><rect x=\"22\" y=\"30\" width=\"34\" height=\"46\" rx=\"7\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><polygon points=\"39.0,45.0 41.1,50.2 46.6,50.5 42.3,54.1 43.7,59.5 39.0,56.5 34.3,59.5 35.7,54.1 31.4,50.5 36.9,50.2\" fill=\"#ff8a4c\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><\/g><g class=\"k-wig\"><rect x=\"42\" y=\"26\" width=\"36\" height=\"48\" rx=\"7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M50 40h20a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5h-11l-6 6v-6h-3a5 5 0 0 1-5-5v-8a5 5 0 0 1 5-5z\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"54\" cy=\"49\" r=\"2\" fill=\"#fff\"/><circle cx=\"60\" cy=\"49\" r=\"2\" fill=\"#fff\"/><circle cx=\"66\" cy=\"49\" r=\"2\" fill=\"#fff\"/><\/g><\/svg>", "boxes": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#1f7fb8\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#3fb4f0\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"26\" y=\"50\" width=\"48\" height=\"32\" rx=\"6\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"45\" y=\"50\" width=\"10\" height=\"32\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-lid\"><rect x=\"21\" y=\"39\" width=\"58\" height=\"14\" rx=\"5\" fill=\"#ff8fab\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"45\" y=\"39\" width=\"10\" height=\"14\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M50 39c-4-10-17-12-16-4 1 6 10 5 16 4z\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M50 39c4-10 17-12 16-4-1 6-10 5-16 4z\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><text x=\"36\" y=\"74\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"16\" fill=\"#1b1f4b\">?<\/text><\/svg>", "tiles": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#6a3ed6\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#9b6bff\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"22\" y=\"24\" width=\"25\" height=\"25\" rx=\"6\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"34.5\" y=\"43\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"18\" fill=\"#1b1f4b\">1<\/text><rect x=\"53\" y=\"24\" width=\"25\" height=\"25\" rx=\"6\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"65.5\" y=\"43\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"18\" fill=\"#1b1f4b\">2<\/text><rect x=\"22\" y=\"55\" width=\"25\" height=\"25\" rx=\"6\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"34.5\" y=\"74\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"18\" fill=\"#1b1f4b\">3<\/text><g class=\"k-flip\"><rect x=\"53\" y=\"55\" width=\"25\" height=\"25\" rx=\"6\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><polygon points=\"65.5,59.5 67.6,64.7 73.1,65.0 68.8,68.6 70.2,74.0 65.5,71.0 60.8,74.0 62.2,68.6 57.9,65.0 63.4,64.7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><\/g><\/svg>", "memory": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c95a1f\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#ff8a4c\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g transform=\"rotate(-8 36 54)\"><rect x=\"18\" y=\"30\" width=\"32\" height=\"44\" rx=\"7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><polygon points=\"34.0,42.0 36.5,48.5 43.5,48.9 38.1,53.3 39.9,60.1 34.0,56.3 28.1,60.1 29.9,53.3 24.5,48.9 31.5,48.5\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><\/g><g transform=\"rotate(8 68 50)\"><g class=\"k-flip\"><rect x=\"52\" y=\"28\" width=\"32\" height=\"44\" rx=\"7\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"57\" y=\"33\" width=\"22\" height=\"34\" rx=\"4\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2.4\" stroke-dasharray=\"3 3\"/><text x=\"68\" y=\"57\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"20\" fill=\"#fff\">?<\/text><\/g><\/g><\/svg>", "match": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#1f9061\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#3cc98a\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-l\" transform=\"translate(-3 0)\"><path d=\"M18 34h22a3 3 0 0 1 3 3v7c4-3 10-1 10 5s-6 8-10 5v8a3 3 0 0 1-3 3h-22a3 3 0 0 1-3-3v-25a3 3 0 0 1 3-3z\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><g class=\"k-r\" transform=\"translate(4 0)\"><path d=\"M58 34h22a3 3 0 0 1 3 3v25a3 3 0 0 1-3 3h-22a3 3 0 0 1-3-3v-8c4 3 10 1 10-5s-6-8-10-5v-7a3 3 0 0 1 3-3z\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><text x=\"26\" y=\"57\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"17\" fill=\"#1b1f4b\">A<\/text><text x=\"76\" y=\"57\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"19\" fill=\"#1b1f4b\">a<\/text><path d=\"M30 76c10 7 30 7 40 0\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-dasharray=\"1 6\"/><\/svg>", "find": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#cf7d00\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#ffb02e\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><circle cx=\"46\" cy=\"54\" r=\"26\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"46\" cy=\"54\" r=\"17\" fill=\"#ff5a5f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"46\" cy=\"54\" r=\"8\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"46\" cy=\"54\" r=\"2.5\" fill=\"#1b1f4b\"/><g class=\"k-dart\"><path d=\"M47 53 L76 24\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M70 22l9-4-4 9\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M72 30l7 2-4-8z\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><\/svg>", "quiz": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#3540c9\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#5b6cff\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"20\" y=\"26\" width=\"28\" height=\"22\" rx=\"6\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M34 31l6 11h-12z\" fill=\"#fff\"/><rect x=\"52\" y=\"26\" width=\"28\" height=\"22\" rx=\"6\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M66 30l6 7-6 7-6-7z\" fill=\"#fff\"/><rect x=\"20\" y=\"54\" width=\"28\" height=\"22\" rx=\"6\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><circle cx=\"34\" cy=\"65\" r=\"5.5\" fill=\"#fff\"/><rect x=\"52\" y=\"54\" width=\"28\" height=\"22\" rx=\"6\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"61\" y=\"60\" width=\"10\" height=\"10\" rx=\"1.5\" fill=\"#fff\"/><g class=\"k-pop\"><circle cx=\"77\" cy=\"75\" r=\"11\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M71.5 75l4 4 7-8\" fill=\"none\" stroke=\"#22b07d\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><\/g><\/svg>", "gameshow": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#a52a96\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#e64fd1\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><path d=\"M38 24l12 10 12-10\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><rect x=\"18\" y=\"32\" width=\"64\" height=\"46\" rx=\"10\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"26\" y=\"39\" width=\"48\" height=\"32\" rx=\"6\" fill=\"#2b2f8f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"50\" y=\"63\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"24\" fill=\"#fff\">?<\/text><circle class=\"k-blink b0\" cx=\"18\" cy=\"36\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b1\" cx=\"18\" cy=\"56\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b2\" cx=\"18\" cy=\"74\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b0\" cx=\"82\" cy=\"36\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b1\" cx=\"82\" cy=\"56\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b2\" cx=\"82\" cy=\"74\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b0\" cx=\"34\" cy=\"32\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b1\" cx=\"50\" cy=\"32\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b2\" cx=\"66\" cy=\"32\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><rect x=\"40\" y=\"78\" width=\"20\" height=\"8\" rx=\"3\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/svg>", "truefalse": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#1b8573\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#2fbfa5\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><circle cx=\"35\" cy=\"56\" r=\"17\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M27 56l6 6 11-12\" fill=\"none\" stroke=\"#fff\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"66\" cy=\"44\" r=\"17\" fill=\"#ff5a5f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M59 37l14 14M73 37l-14 14\" stroke=\"#fff\" stroke-width=\"5\" stroke-linecap=\"round\"/><g class=\"k-zap\"><path d=\"M56 60l-8 14h9l-5 13 15-19h-9l6-8z\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><\/svg>", "flash": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#1a8c82\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#2ec4b6\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"30\" y=\"22\" width=\"40\" height=\"52\" rx=\"8\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><g class=\"k-flip\"><rect x=\"24\" y=\"30\" width=\"40\" height=\"52\" rx=\"8\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"44\" y=\"63\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"22\" fill=\"#1b1f4b\">Aa<\/text><\/g><path d=\"M72 46a14 14 0 0 1 2 22\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M70 66l5 4 3-6\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/svg>", "anagram": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c4502d\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#ff7b54\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-hop h0\"><g transform=\"rotate(-8 31 59)\"><rect x=\"20\" y=\"48\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"31\" y=\"66\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"17\" fill=\"#fff\">C<\/text><\/g><\/g><g class=\"k-hop h1\"><g transform=\"rotate(4 51 51)\"><rect x=\"40\" y=\"40\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"51\" y=\"58\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"17\" fill=\"#1b1f4b\">A<\/text><\/g><\/g><g class=\"k-hop h2\"><g transform=\"rotate(-4 71 61)\"><rect x=\"60\" y=\"50\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"71\" y=\"68\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"17\" fill=\"#fff\">T<\/text><\/g><\/g><path d=\"M26 34c8-12 30-14 44-2\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M64 26l7 6-8 3\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/svg>", "hangman": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#2a88c7\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#58c4ff\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-bob b0\"><path d=\"M30 55 q2 12 -3 22\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><ellipse cx=\"30\" cy=\"42\" rx=\"11\" ry=\"13\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M30 55 l-3 5h6z\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><ellipse cx=\"26\" cy=\"38\" rx=\"3\" ry=\"4.5\" fill=\"#fff\" opacity=\".6\"/><\/g><g class=\"k-bob b2\"><path d=\"M70 53 q2 12 -3 22\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><ellipse cx=\"70\" cy=\"40\" rx=\"11\" ry=\"13\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M70 53 l-3 5h6z\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><ellipse cx=\"66\" cy=\"36\" rx=\"3\" ry=\"4.5\" fill=\"#fff\" opacity=\".6\"/><\/g><g class=\"k-bob b1\"><path d=\"M50 47 q2 12 -3 22\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><ellipse cx=\"50\" cy=\"34\" rx=\"11\" ry=\"13\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M50 47 l-3 5h6z\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><ellipse cx=\"46\" cy=\"30\" rx=\"3\" ry=\"4.5\" fill=\"#fff\" opacity=\".6\"/><\/g><text x=\"50\" y=\"40\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"15\" fill=\"#1b1f4b\">?<\/text><\/svg>", "wordsearch": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#22a356\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#4ade80\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"18\" y=\"22\" width=\"50\" height=\"50\" rx=\"8\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"25\" y=\"29\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"35.5\" y=\"29\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"46\" y=\"29\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"56.5\" y=\"29\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"25\" y=\"39.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"35.5\" y=\"39.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"46\" y=\"39.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"56.5\" y=\"39.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"25\" y=\"50\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"35.5\" y=\"50\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"46\" y=\"50\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"56.5\" y=\"50\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"25\" y=\"60.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"35.5\" y=\"60.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"46\" y=\"60.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"56.5\" y=\"60.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"21\" y=\"25\" width=\"15\" height=\"44\" rx=\"7.5\" transform=\"rotate(-45 43 47)\" fill=\"#ffc23d\" opacity=\".85\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-mag\"><circle cx=\"64\" cy=\"64\" r=\"12\" fill=\"#bfe9ff\" fill-opacity=\".7\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M73 73l10 10\" stroke=\"#1b1f4b\" stroke-width=\"6\" stroke-linecap=\"round\"/><\/g><\/svg>", "crossword": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#5b34c4\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#8b5cf6\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"20\" y=\"30\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"31\" y=\"30\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"42\" y=\"30\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"53\" y=\"30\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"42\" y=\"41\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"42\" y=\"52\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"42\" y=\"63\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"31\" y=\"63\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"20\" y=\"63\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><g class=\"k-pen\"><g transform=\"rotate(35 70 50)\"><rect x=\"64\" y=\"22\" width=\"12\" height=\"40\" rx=\"3\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><rect x=\"64\" y=\"22\" width=\"12\" height=\"8\" rx=\"3\" fill=\"#ffc8d5\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M64 62l6 12 6-12z\" fill=\"#ffe0b0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M68.5 70l1.5 4 1.5-4z\" fill=\"#1b1f4b\"/><\/g><\/g><\/svg>", "groups": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c48a05\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#fbbf24\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><path d=\"M16 54h30l-4 26h-22z\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M54 54h30l-4 26h-22z\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><rect x=\"14\" y=\"50\" width=\"34\" height=\"7\" rx=\"3\" fill=\"#ff8fab\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><rect x=\"52\" y=\"50\" width=\"34\" height=\"7\" rx=\"3\" fill=\"#7fcdf6\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-drop\"><circle cx=\"31\" cy=\"34\" r=\"7\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><g class=\"k-drop d2\"><rect x=\"62\" y=\"22\" width=\"14\" height=\"14\" rx=\"3\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><\/svg>", "unjumble": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c43c52\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#fb7185\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-sw1\"><rect x=\"18\" y=\"26\" width=\"38\" height=\"13\" rx=\"6.5\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"24\" y=\"30.5\" width=\"20\" height=\"4\" rx=\"2\" fill=\"#ff6f91\"/><\/g><g class=\"k-sw2\"><rect x=\"38\" y=\"45\" width=\"44\" height=\"13\" rx=\"6.5\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"44\" y=\"49.5\" width=\"26\" height=\"4\" rx=\"2\" fill=\"#3fb4f0\"/><\/g><rect x=\"22\" y=\"64\" width=\"30\" height=\"13\" rx=\"6.5\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"28\" y=\"68.5\" width=\"14\" height=\"4\" rx=\"2\" fill=\"#3cc98a\"/><path d=\"M64 66c8 0 12-4 12-10\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M71 59l5-5 5 5\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/svg>", "cloze": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#1d55c0\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#3b82f6\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"20\" y=\"20\" width=\"52\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"27\" y=\"32\" width=\"38\" height=\"4\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"27\" y=\"44\" width=\"10\" height=\"4\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"40\" y=\"40.5\" width=\"20\" height=\"11\" rx=\"3\" fill=\"#eef0ff\" stroke=\"#1b1f4b\" stroke-width=\"2\" stroke-dasharray=\"3 2.5\"/><rect x=\"27\" y=\"56\" width=\"38\" height=\"4\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"27\" y=\"68\" width=\"24\" height=\"4\" rx=\"2\" fill=\"#c8cdf0\"/><g class=\"k-slide\"><rect x=\"56\" y=\"36\" width=\"26\" height=\"15\" rx=\"5\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"62\" y=\"41.5\" width=\"14\" height=\"4\" rx=\"2\" fill=\"#1b1f4b\"/><\/g><\/svg>", "diagram": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#0e97ad\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#22d3ee\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"18\" y=\"24\" width=\"64\" height=\"50\" rx=\"7\" fill=\"#bfe9ff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M21 70l18-20 12 12 9-8 19 16z\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"66\" cy=\"38\" r=\"6\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-pin\"><path d=\"M38 30a8 8 0 0 1 16 0c0 7-8 15-8 15s-8-8-8-15z\" fill=\"#ff5a5f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"46\" cy=\"30\" r=\"3\" fill=\"#fff\"/><\/g><rect x=\"46\" y=\"76\" width=\"34\" height=\"11\" rx=\"5\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"51\" y=\"80\" width=\"18\" height=\"3.5\" rx=\"1.75\" fill=\"#c8cdf0\"/><\/svg>"}</script>
+<script type="application/json" id="icons-data">{"wheel": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#d98c00\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#ffc93c\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><circle cx=\"50\" cy=\"52\" r=\"31\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-spin\"><path d=\"M50 52 L50.00 25.00 A27 27 0 0 1 73.38 38.50 Z\" fill=\"#ff6f91\"/><path d=\"M50 52 L73.38 38.50 A27 27 0 0 1 73.38 65.50 Z\" fill=\"#3fb4f0\"/><path d=\"M50 52 L73.38 65.50 A27 27 0 0 1 50.00 79.00 Z\" fill=\"#ffc23d\"/><path d=\"M50 52 L50.00 79.00 A27 27 0 0 1 26.62 65.50 Z\" fill=\"#3cc98a\"/><path d=\"M50 52 L26.62 65.50 A27 27 0 0 1 26.62 38.50 Z\" fill=\"#9b6bff\"/><path d=\"M50 52 L26.62 38.50 A27 27 0 0 1 50.00 25.00 Z\" fill=\"#ff8a4c\"/><circle cx=\"50\" cy=\"52\" r=\"27\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"50\" cy=\"52\" r=\"6\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><path d=\"M50 34 L43 18 h14 Z\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"50\" cy=\"22\" r=\"2.6\" fill=\"#ff6f91\"/><\/svg>", "cards": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c73c62\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#ff6f91\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g transform=\"rotate(-14 40 54)\"><rect x=\"22\" y=\"30\" width=\"34\" height=\"46\" rx=\"7\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><polygon points=\"39.0,45.0 41.1,50.2 46.6,50.5 42.3,54.1 43.7,59.5 39.0,56.5 34.3,59.5 35.7,54.1 31.4,50.5 36.9,50.2\" fill=\"#ff8a4c\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><\/g><g class=\"k-wig\"><rect x=\"42\" y=\"26\" width=\"36\" height=\"48\" rx=\"7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M50 40h20a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5h-11l-6 6v-6h-3a5 5 0 0 1-5-5v-8a5 5 0 0 1 5-5z\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"54\" cy=\"49\" r=\"2\" fill=\"#fff\"/><circle cx=\"60\" cy=\"49\" r=\"2\" fill=\"#fff\"/><circle cx=\"66\" cy=\"49\" r=\"2\" fill=\"#fff\"/><\/g><\/svg>", "boxes": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#1f7fb8\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#3fb4f0\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"26\" y=\"50\" width=\"48\" height=\"32\" rx=\"6\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"45\" y=\"50\" width=\"10\" height=\"32\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-lid\"><rect x=\"21\" y=\"39\" width=\"58\" height=\"14\" rx=\"5\" fill=\"#ff8fab\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"45\" y=\"39\" width=\"10\" height=\"14\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M50 39c-4-10-17-12-16-4 1 6 10 5 16 4z\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M50 39c4-10 17-12 16-4-1 6-10 5-16 4z\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><text x=\"36\" y=\"74\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"16\" fill=\"#1b1f4b\">?<\/text><\/svg>", "tiles": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#6a3ed6\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#9b6bff\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"22\" y=\"24\" width=\"25\" height=\"25\" rx=\"6\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"34.5\" y=\"43\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"18\" fill=\"#1b1f4b\">1<\/text><rect x=\"53\" y=\"24\" width=\"25\" height=\"25\" rx=\"6\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"65.5\" y=\"43\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"18\" fill=\"#1b1f4b\">2<\/text><rect x=\"22\" y=\"55\" width=\"25\" height=\"25\" rx=\"6\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"34.5\" y=\"74\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"18\" fill=\"#1b1f4b\">3<\/text><g class=\"k-flip\"><rect x=\"53\" y=\"55\" width=\"25\" height=\"25\" rx=\"6\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><polygon points=\"65.5,59.5 67.6,64.7 73.1,65.0 68.8,68.6 70.2,74.0 65.5,71.0 60.8,74.0 62.2,68.6 57.9,65.0 63.4,64.7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><\/g><\/svg>", "memory": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c95a1f\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#ff8a4c\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g transform=\"rotate(-8 36 54)\"><rect x=\"18\" y=\"30\" width=\"32\" height=\"44\" rx=\"7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><polygon points=\"34.0,42.0 36.5,48.5 43.5,48.9 38.1,53.3 39.9,60.1 34.0,56.3 28.1,60.1 29.9,53.3 24.5,48.9 31.5,48.5\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><\/g><g transform=\"rotate(8 68 50)\"><g class=\"k-flip\"><rect x=\"52\" y=\"28\" width=\"32\" height=\"44\" rx=\"7\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"57\" y=\"33\" width=\"22\" height=\"34\" rx=\"4\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2.4\" stroke-dasharray=\"3 3\"/><text x=\"68\" y=\"57\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"20\" fill=\"#fff\">?<\/text><\/g><\/g><\/svg>", "match": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#1f9061\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#3cc98a\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-l\" transform=\"translate(-3 0)\"><path d=\"M18 34h22a3 3 0 0 1 3 3v7c4-3 10-1 10 5s-6 8-10 5v8a3 3 0 0 1-3 3h-22a3 3 0 0 1-3-3v-25a3 3 0 0 1 3-3z\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><g class=\"k-r\" transform=\"translate(4 0)\"><path d=\"M58 34h22a3 3 0 0 1 3 3v25a3 3 0 0 1-3 3h-22a3 3 0 0 1-3-3v-8c4 3 10 1 10-5s-6-8-10-5v-7a3 3 0 0 1 3-3z\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><text x=\"26\" y=\"57\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"17\" fill=\"#1b1f4b\">A<\/text><text x=\"76\" y=\"57\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"19\" fill=\"#1b1f4b\">a<\/text><path d=\"M30 76c10 7 30 7 40 0\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-dasharray=\"1 6\"/><\/svg>", "find": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#cf7d00\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#ffb02e\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><circle cx=\"46\" cy=\"54\" r=\"26\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"46\" cy=\"54\" r=\"17\" fill=\"#ff5a5f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"46\" cy=\"54\" r=\"8\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"46\" cy=\"54\" r=\"2.5\" fill=\"#1b1f4b\"/><g class=\"k-dart\"><path d=\"M47 53 L76 24\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" fill=\"none\"/><path d=\"M70 22l9-4-4 9\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M72 30l7 2-4-8z\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><\/svg>", "quiz": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#3540c9\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#5b6cff\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"20\" y=\"26\" width=\"28\" height=\"22\" rx=\"6\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M34 31l6 11h-12z\" fill=\"#fff\"/><rect x=\"52\" y=\"26\" width=\"28\" height=\"22\" rx=\"6\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M66 30l6 7-6 7-6-7z\" fill=\"#fff\"/><rect x=\"20\" y=\"54\" width=\"28\" height=\"22\" rx=\"6\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><circle cx=\"34\" cy=\"65\" r=\"5.5\" fill=\"#fff\"/><rect x=\"52\" y=\"54\" width=\"28\" height=\"22\" rx=\"6\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"61\" y=\"60\" width=\"10\" height=\"10\" rx=\"1.5\" fill=\"#fff\"/><g class=\"k-pop\"><circle cx=\"77\" cy=\"75\" r=\"11\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M71.5 75l4 4 7-8\" fill=\"none\" stroke=\"#22b07d\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><\/g><\/svg>", "gameshow": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#a52a96\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#e64fd1\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><path d=\"M38 24l12 10 12-10\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><rect x=\"18\" y=\"32\" width=\"64\" height=\"46\" rx=\"10\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"26\" y=\"39\" width=\"48\" height=\"32\" rx=\"6\" fill=\"#2b2f8f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"50\" y=\"63\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"24\" fill=\"#fff\">?<\/text><circle class=\"k-blink b0\" cx=\"18\" cy=\"36\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b1\" cx=\"18\" cy=\"56\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b2\" cx=\"18\" cy=\"74\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b0\" cx=\"82\" cy=\"36\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b1\" cx=\"82\" cy=\"56\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b2\" cx=\"82\" cy=\"74\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b0\" cx=\"34\" cy=\"32\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b1\" cx=\"50\" cy=\"32\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><circle class=\"k-blink b2\" cx=\"66\" cy=\"32\" r=\"3.4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><rect x=\"40\" y=\"78\" width=\"20\" height=\"8\" rx=\"3\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/svg>", "truefalse": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#1b8573\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#2fbfa5\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><circle cx=\"35\" cy=\"56\" r=\"17\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M27 56l6 6 11-12\" fill=\"none\" stroke=\"#fff\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"66\" cy=\"44\" r=\"17\" fill=\"#ff5a5f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M59 37l14 14M73 37l-14 14\" stroke=\"#fff\" stroke-width=\"5\" stroke-linecap=\"round\"/><g class=\"k-zap\"><path d=\"M56 60l-8 14h9l-5 13 15-19h-9l6-8z\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><\/svg>", "flash": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#1a8c82\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#2ec4b6\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"30\" y=\"22\" width=\"40\" height=\"52\" rx=\"8\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><g class=\"k-flip\"><rect x=\"24\" y=\"30\" width=\"40\" height=\"52\" rx=\"8\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"44\" y=\"63\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"22\" fill=\"#1b1f4b\">Aa<\/text><\/g><path d=\"M72 46a14 14 0 0 1 2 22\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M70 66l5 4 3-6\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/svg>", "anagram": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c4502d\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#ff7b54\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-hop h0\"><g transform=\"rotate(-8 31 59)\"><rect x=\"20\" y=\"48\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"31\" y=\"66\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"17\" fill=\"#fff\">C<\/text><\/g><\/g><g class=\"k-hop h1\"><g transform=\"rotate(4 51 51)\"><rect x=\"40\" y=\"40\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"51\" y=\"58\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"17\" fill=\"#1b1f4b\">A<\/text><\/g><\/g><g class=\"k-hop h2\"><g transform=\"rotate(-4 71 61)\"><rect x=\"60\" y=\"50\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"71\" y=\"68\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"17\" fill=\"#fff\">T<\/text><\/g><\/g><path d=\"M26 34c8-12 30-14 44-2\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M64 26l7 6-8 3\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/svg>", "hangman": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#2a88c7\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#58c4ff\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-bob b0\"><path d=\"M30 55 q2 12 -3 22\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><ellipse cx=\"30\" cy=\"42\" rx=\"11\" ry=\"13\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M30 55 l-3 5h6z\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><ellipse cx=\"26\" cy=\"38\" rx=\"3\" ry=\"4.5\" fill=\"#fff\" opacity=\".6\"/><\/g><g class=\"k-bob b2\"><path d=\"M70 53 q2 12 -3 22\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><ellipse cx=\"70\" cy=\"40\" rx=\"11\" ry=\"13\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M70 53 l-3 5h6z\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><ellipse cx=\"66\" cy=\"36\" rx=\"3\" ry=\"4.5\" fill=\"#fff\" opacity=\".6\"/><\/g><g class=\"k-bob b1\"><path d=\"M50 47 q2 12 -3 22\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><ellipse cx=\"50\" cy=\"34\" rx=\"11\" ry=\"13\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M50 47 l-3 5h6z\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><ellipse cx=\"46\" cy=\"30\" rx=\"3\" ry=\"4.5\" fill=\"#fff\" opacity=\".6\"/><\/g><text x=\"50\" y=\"40\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"15\" fill=\"#1b1f4b\">?<\/text><\/svg>", "wordsearch": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#22a356\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#4ade80\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"18\" y=\"22\" width=\"50\" height=\"50\" rx=\"8\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"25\" y=\"29\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"35.5\" y=\"29\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"46\" y=\"29\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"56.5\" y=\"29\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"25\" y=\"39.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"35.5\" y=\"39.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"46\" y=\"39.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"56.5\" y=\"39.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"25\" y=\"50\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"35.5\" y=\"50\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"46\" y=\"50\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"56.5\" y=\"50\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"25\" y=\"60.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"35.5\" y=\"60.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"46\" y=\"60.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"56.5\" y=\"60.5\" width=\"7\" height=\"7\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"21\" y=\"25\" width=\"15\" height=\"44\" rx=\"7.5\" transform=\"rotate(-45 43 47)\" fill=\"#ffc23d\" opacity=\".85\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-mag\"><circle cx=\"64\" cy=\"64\" r=\"12\" fill=\"#bfe9ff\" fill-opacity=\".7\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M73 73l10 10\" stroke=\"#1b1f4b\" stroke-width=\"6\" stroke-linecap=\"round\"/><\/g><\/svg>", "crossword": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#5b34c4\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#8b5cf6\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"20\" y=\"30\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"31\" y=\"30\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"42\" y=\"30\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"53\" y=\"30\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"42\" y=\"41\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"42\" y=\"52\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"42\" y=\"63\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"31\" y=\"63\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"20\" y=\"63\" width=\"11\" height=\"11\" rx=\"2\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><g class=\"k-pen\"><g transform=\"rotate(35 70 50)\"><rect x=\"64\" y=\"22\" width=\"12\" height=\"40\" rx=\"3\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><rect x=\"64\" y=\"22\" width=\"12\" height=\"8\" rx=\"3\" fill=\"#ffc8d5\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M64 62l6 12 6-12z\" fill=\"#ffe0b0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M68.5 70l1.5 4 1.5-4z\" fill=\"#1b1f4b\"/><\/g><\/g><\/svg>", "groups": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c48a05\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#fbbf24\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><path d=\"M16 54h30l-4 26h-22z\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M54 54h30l-4 26h-22z\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><rect x=\"14\" y=\"50\" width=\"34\" height=\"7\" rx=\"3\" fill=\"#ff8fab\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><rect x=\"52\" y=\"50\" width=\"34\" height=\"7\" rx=\"3\" fill=\"#7fcdf6\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-drop\"><circle cx=\"31\" cy=\"34\" r=\"7\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><g class=\"k-drop d2\"><rect x=\"62\" y=\"22\" width=\"14\" height=\"14\" rx=\"3\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><\/svg>", "unjumble": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c43c52\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#fb7185\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-sw1\"><rect x=\"18\" y=\"26\" width=\"38\" height=\"13\" rx=\"6.5\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"24\" y=\"30.5\" width=\"20\" height=\"4\" rx=\"2\" fill=\"#ff6f91\"/><\/g><g class=\"k-sw2\"><rect x=\"38\" y=\"45\" width=\"44\" height=\"13\" rx=\"6.5\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"44\" y=\"49.5\" width=\"26\" height=\"4\" rx=\"2\" fill=\"#3fb4f0\"/><\/g><rect x=\"22\" y=\"64\" width=\"30\" height=\"13\" rx=\"6.5\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"28\" y=\"68.5\" width=\"14\" height=\"4\" rx=\"2\" fill=\"#3cc98a\"/><path d=\"M64 66c8 0 12-4 12-10\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M71 59l5-5 5 5\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/svg>", "cloze": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#1d55c0\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#3b82f6\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"20\" y=\"20\" width=\"52\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"27\" y=\"32\" width=\"38\" height=\"4\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"27\" y=\"44\" width=\"10\" height=\"4\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"40\" y=\"40.5\" width=\"20\" height=\"11\" rx=\"3\" fill=\"#eef0ff\" stroke=\"#1b1f4b\" stroke-width=\"2\" stroke-dasharray=\"3 2.5\"/><rect x=\"27\" y=\"56\" width=\"38\" height=\"4\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"27\" y=\"68\" width=\"24\" height=\"4\" rx=\"2\" fill=\"#c8cdf0\"/><g class=\"k-slide\"><rect x=\"56\" y=\"36\" width=\"26\" height=\"15\" rx=\"5\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"62\" y=\"41.5\" width=\"14\" height=\"4\" rx=\"2\" fill=\"#1b1f4b\"/><\/g><\/svg>", "diagram": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#0e97ad\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#22d3ee\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"18\" y=\"24\" width=\"64\" height=\"50\" rx=\"7\" fill=\"#bfe9ff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M21 70l18-20 12 12 9-8 19 16z\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"66\" cy=\"38\" r=\"6\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-pin\"><path d=\"M38 30a8 8 0 0 1 16 0c0 7-8 15-8 15s-8-8-8-15z\" fill=\"#ff5a5f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"46\" cy=\"30\" r=\"3\" fill=\"#fff\"/><\/g><rect x=\"46\" y=\"76\" width=\"34\" height=\"11\" rx=\"5\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"51\" y=\"80\" width=\"18\" height=\"3.5\" rx=\"1.75\" fill=\"#c8cdf0\"/><\/svg>", "typein": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#3f42c4\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#6366f1\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"18\" y=\"26\" width=\"64\" height=\"26\" rx=\"7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"25\" y=\"34\" width=\"22\" height=\"4\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"25\" y=\"42\" width=\"34\" height=\"4\" rx=\"2\" fill=\"#c8cdf0\"/><rect x=\"18\" y=\"58\" width=\"64\" height=\"18\" rx=\"7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><g class=\"k-blink\"><rect x=\"30\" y=\"61\" width=\"3.5\" height=\"12\" rx=\"1.5\" fill=\"#1b1f4b\"/><\/g><g class=\"k-pop\"><rect x=\"60\" y=\"66\" width=\"24\" height=\"18\" rx=\"5\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M66 75h12\" stroke=\"#1b1f4b\" stroke-width=\"3\" stroke-linecap=\"round\"/><\/g><\/svg>", "spell": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#0874a6\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#0ea5e9\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"16\" y=\"46\" width=\"20\" height=\"24\" rx=\"5\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"26\" y=\"64\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"17\" fill=\"#1b1f4b\">W<\/text><rect x=\"38\" y=\"46\" width=\"20\" height=\"24\" rx=\"5\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"48\" y=\"64\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"17\" fill=\"#1b1f4b\">O<\/text><rect x=\"60\" y=\"46\" width=\"20\" height=\"24\" rx=\"5\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"65\" y=\"64\" width=\"10\" height=\"3\" rx=\"1.5\" fill=\"#1b1f4b\"/><g class=\"k-wig\"><path d=\"M30 22h8l10-8v28l-10-8h-8z\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M54 22c4 3 4 9 0 12M59 18c7 6 7 14 0 20\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><path d=\"M70 82l12-4\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\" opacity=\".7\"/><\/svg>", "pairnopair": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c03f86\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#f472b6\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-l\"><rect x=\"16\" y=\"24\" width=\"30\" height=\"40\" rx=\"7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M31 34l9 16h-18z\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><g class=\"k-r\"><rect x=\"54\" y=\"24\" width=\"30\" height=\"40\" rx=\"7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><polygon points=\"69.0,34.0 71.5,40.5 78.5,40.9 73.1,45.3 74.9,52.1 69.0,48.3 63.1,52.1 64.9,45.3 59.5,40.9 66.5,40.5\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><\/g><circle cx=\"36\" cy=\"76\" r=\"9\" fill=\"#ff5a5f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M32 72l8 8M40 72l-8 8\" stroke=\"#fff\" stroke-width=\"3.4\" stroke-linecap=\"round\"/><circle cx=\"64\" cy=\"76\" r=\"9\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M59.5 76l3 3 6-6\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><\/svg>", "maze": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#0d877a\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#14b8a6\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"16\" y=\"20\" width=\"68\" height=\"60\" rx=\"8\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M28 20v20h14M56 20v12M16 52h16v16M44 52h12v-12h16M70 52v16M44 80v-14\" fill=\"none\" stroke=\"#2b3287\" stroke-width=\"4\" stroke-linecap=\"round\"/><rect x=\"72\" y=\"66\" width=\"10\" height=\"12\" rx=\"2\" fill=\"#3cc98a\"/><g class=\"k-hop\"><circle cx=\"36\" cy=\"44\" r=\"6\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><g class=\"k-wig\"><path d=\"M58 64a7 7 0 0 1 14 0v8l-3.5-2-3.5 2-3.5-2-3.5 2z\" fill=\"#9b6bff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"62.5\" cy=\"64\" r=\"1.6\" fill=\"#fff\"/><circle cx=\"67.5\" cy=\"64\" r=\"1.6\" fill=\"#fff\"/><\/g><\/svg>", "flying": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#0b84bd\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#38bdf8\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-mag\"><path d=\"M14 40h14M18 48h10\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\" opacity=\".8\"/><path d=\"M30 52a18 18 0 0 0 36 0z\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M34 52a14 14 0 0 0 28 0z\" fill=\"#ff5a5f\"/><circle cx=\"42\" cy=\"56\" r=\"1.6\" fill=\"#1b1f4b\"/><circle cx=\"50\" cy=\"58\" r=\"1.6\" fill=\"#1b1f4b\"/><circle cx=\"56\" cy=\"55\" r=\"1.6\" fill=\"#1b1f4b\"/><\/g><g class=\"k-bob b1\"><circle cx=\"70\" cy=\"30\" r=\"10\" fill=\"#ff8a4c\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M70 20c2-4 6-5 8-4\" fill=\"none\" stroke=\"#1f9061\" stroke-width=\"3\" stroke-linecap=\"round\"/><\/g><g class=\"k-bob b2\"><circle cx=\"28\" cy=\"74\" r=\"8\" fill=\"#ffe066\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><\/svg>", "balloon": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#7155d8\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#a78bfa\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-bob\"><ellipse cx=\"50\" cy=\"32\" rx=\"18\" ry=\"20\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M41 15c-6 12-6 22 0 33M59 15c6 12 6 22 0 33\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3\"/><path d=\"M42 50l4 8M58 50l-4 8\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><rect x=\"43\" y=\"56\" width=\"14\" height=\"10\" rx=\"2\" fill=\"#c98a4b\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><rect x=\"18\" y=\"72\" width=\"30\" height=\"12\" rx=\"3\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"52\" y=\"72\" width=\"30\" height=\"12\" rx=\"3\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><circle cx=\"25\" cy=\"87\" r=\"3.5\" fill=\"#1b1f4b\"/><circle cx=\"41\" cy=\"87\" r=\"3.5\" fill=\"#1b1f4b\"/><circle cx=\"59\" cy=\"87\" r=\"3.5\" fill=\"#1b1f4b\"/><circle cx=\"75\" cy=\"87\" r=\"3.5\" fill=\"#1b1f4b\"/><\/svg>", "whack": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#5a9208\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#84cc16\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><ellipse cx=\"44\" cy=\"76\" rx=\"26\" ry=\"8\" fill=\"#5b3a1e\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-hop\"><path d=\"M28 76v-16a16 16 0 0 1 32 0v16z\" fill=\"#a0703f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"38\" cy=\"58\" r=\"2.2\" fill=\"#1b1f4b\"/><circle cx=\"50\" cy=\"58\" r=\"2.2\" fill=\"#1b1f4b\"/><ellipse cx=\"44\" cy=\"65\" rx=\"4\" ry=\"3\" fill=\"#ff8fab\"/><\/g><g class=\"k-pen\"><rect x=\"62\" y=\"20\" width=\"22\" height=\"13\" rx=\"4\" fill=\"#ff5a5f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><rect x=\"70\" y=\"32\" width=\"6\" height=\"30\" rx=\"3\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><\/svg>", "airplane": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#2f6fd1\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#60a5fa\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-bob b1\"><path d=\"M58 30a9 9 0 0 1 17-3 8 8 0 0 1 9 8 7 7 0 0 1-7 7h-19a6 6 0 0 1 0-12z\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><g class=\"k-mag\"><path d=\"M14 58l12-3 22-3 22-1q10 1 10 5t-10 5h-22l-22-1z\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M40 53l12-18h7l-6 18zM40 60l12 18h7l-6-18z\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M14 58l-4-10h8l6 8z\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><\/svg>", "imagequiz": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c07400\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#f59e0b\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"18\" y=\"22\" width=\"64\" height=\"52\" rx=\"7\" fill=\"#bfe9ff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M21 70l16-18 11 11 8-7 23 14z\" fill=\"#3cc98a\"/><circle cx=\"64\" cy=\"36\" r=\"6\" fill=\"#ffc23d\"/><rect class=\"\" x=\"18\" y=\"22\" width=\"21\" height=\"17\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><rect class=\"k-flip\" x=\"39\" y=\"22\" width=\"21\" height=\"17\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><rect class=\"\" x=\"18\" y=\"39\" width=\"21\" height=\"17\" fill=\"#9b6bff\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><rect class=\"k-flip\" x=\"60\" y=\"39\" width=\"21\" height=\"17\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><rect class=\"\" x=\"39\" y=\"56\" width=\"21\" height=\"17\" fill=\"#ff8a4c\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><rect class=\"\" x=\"60\" y=\"56\" width=\"21\" height=\"17\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"2\"/><rect x=\"18\" y=\"22\" width=\"64\" height=\"52\" rx=\"7\" fill=\"none\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><g class=\"k-pop\"><circle cx=\"78\" cy=\"78\" r=\"10\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M74 80a4 4 0 0 1 8 0z\" fill=\"#1b1f4b\"/><circle cx=\"78\" cy=\"74\" r=\"1.6\" fill=\"#1b1f4b\"/><\/g><\/svg>", "winlose": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c49a00\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#facc15\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-hop\"><path d=\"M32 48l14-20 14 20h-8v20h-12v-20z\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><g class=\"k-hop h1\"><path d=\"M50 56l14 20 14-20h-8v-18h-12v18z\" fill=\"#ff5a5f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><rect x=\"14\" y=\"58\" width=\"24\" height=\"24\" rx=\"6\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><circle cx=\"21\" cy=\"65\" r=\"2.5\" fill=\"#1b1f4b\"/><circle cx=\"31\" cy=\"75\" r=\"2.5\" fill=\"#1b1f4b\"/><circle cx=\"26\" cy=\"70\" r=\"2.5\" fill=\"#1b1f4b\"/><\/svg>", "rank": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#178a41\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#22c55e\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-sw2\"><rect x=\"32\" y=\"24\" width=\"58\" height=\"14\" rx=\"7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"38\" y=\"29\" width=\"44\" height=\"4\" rx=\"2\" fill=\"#ffc23d\"/><\/g><circle cx=\"22\" cy=\"31\" r=\"7.5\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><text x=\"22\" y=\"36\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"12\" fill=\"#1b1f4b\">1<\/text><g class=\"\"><rect x=\"32\" y=\"44\" width=\"50\" height=\"14\" rx=\"7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"38\" y=\"49\" width=\"36\" height=\"4\" rx=\"2\" fill=\"#3fb4f0\"/><\/g><circle cx=\"22\" cy=\"51\" r=\"7.5\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><text x=\"22\" y=\"56\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"12\" fill=\"#fff\">2<\/text><g class=\"k-sw1\"><rect x=\"32\" y=\"64\" width=\"42\" height=\"14\" rx=\"7\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"38\" y=\"69\" width=\"28\" height=\"4\" rx=\"2\" fill=\"#ff6f91\"/><\/g><circle cx=\"22\" cy=\"71\" r=\"7.5\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><text x=\"22\" y=\"76\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"12\" fill=\"#fff\">3<\/text><\/svg>", "speedsort": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#b42222\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#ef4444\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><path d=\"M16 62h30l-4 22h-22z\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><path d=\"M54 62h30l-4 22h-22z\" fill=\"#9b6bff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><g class=\"k-drop\"><rect x=\"58\" y=\"16\" width=\"18\" height=\"18\" rx=\"4\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><path d=\"M67 40v10M62 46l5 5 5-5\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M24 30h14M20 38h14M28 46h10\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\" opacity=\".7\"/><\/svg>", "memorize": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#05849b\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#06b6d4\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-wig\"><path d=\"M14 46c10-16 26-22 36-22s26 6 36 22c-10 16-26 22-36 22s-26-6-36-22z\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"50\" cy=\"46\" r=\"12\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><circle cx=\"50\" cy=\"46\" r=\"5\" fill=\"#1b1f4b\"/><circle cx=\"54\" cy=\"42\" r=\"2.2\" fill=\"#fff\"/><\/g><rect x=\"22\" y=\"72\" width=\"14\" height=\"14\" rx=\"3\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"43\" y=\"72\" width=\"14\" height=\"14\" rx=\"3\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"64\" y=\"72\" width=\"14\" height=\"14\" rx=\"3\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><\/svg>", "magnets": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#5b34c4\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#8b5cf6\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><g class=\"k-wig\"><path d=\"M30 20h10v22a10 10 0 0 0 20 0v-22h10v22a20 20 0 0 1-40 0z\" fill=\"#ff5a5f\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><rect x=\"30\" y=\"20\" width=\"10\" height=\"8\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><rect x=\"60\" y=\"20\" width=\"10\" height=\"8\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><\/g><rect x=\"14\" y=\"70\" width=\"30\" height=\"13\" rx=\"4\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"50\" y=\"72\" width=\"36\" height=\"13\" rx=\"4\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><path d=\"M26 60l-3-4M50 64v-5M74 60l3-4\" stroke=\"#fff\" stroke-width=\"3\" stroke-linecap=\"round\"/><\/svg>", "maths": "<svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#c4621a\"/><rect x=\"6\" y=\"4\" width=\"88\" height=\"86\" rx=\"25\" fill=\"#fb923c\"/><rect x=\"13\" y=\"9\" width=\"74\" height=\"22\" rx=\"11\" fill=\"#fff\" opacity=\".2\"/><rect x=\"22\" y=\"18\" width=\"56\" height=\"66\" rx=\"9\" fill=\"#fff\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><rect x=\"28\" y=\"24\" width=\"44\" height=\"14\" rx=\"4\" fill=\"#c4f1dc\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"62\" y=\"35\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"12\" fill=\"#1b1f4b\">42<\/text><g class=\"k-hop h0\"><rect x=\"28\" y=\"44\" width=\"20\" height=\"15\" rx=\"4\" fill=\"#ff6f91\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"38\" y=\"56.5\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"15\" fill=\"#fff\">+<\/text><\/g><g class=\"k-hop h1\"><rect x=\"52\" y=\"44\" width=\"20\" height=\"15\" rx=\"4\" fill=\"#3fb4f0\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"62\" y=\"56.5\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"15\" fill=\"#fff\">−<\/text><\/g><g class=\"k-hop h2\"><rect x=\"28\" y=\"62\" width=\"20\" height=\"15\" rx=\"4\" fill=\"#ffc23d\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"38\" y=\"74.5\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"15\" fill=\"#1b1f4b\">×<\/text><\/g><g class=\"k-hop h0\"><rect x=\"52\" y=\"62\" width=\"20\" height=\"15\" rx=\"4\" fill=\"#3cc98a\" stroke=\"#1b1f4b\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\" /><text x=\"62\" y=\"74.5\" text-anchor=\"middle\" font-family=\"'Baloo 2','Arial Rounded MT Bold','Arial Black',sans-serif\" font-weight=\"800\" font-size=\"15\" fill=\"#fff\">÷<\/text><\/g><\/svg>"}</script>
 <script>
 'use strict';
 /* ===== UTILITAIRES ===== */
@@ -537,27 +655,43 @@ function confetti(host){
 
 /* ===== MODÈLES ===== */
 var TPL=[
- {id:'wheel',name:'Roue',ico:'roue-interactive',emo:'🎡',desc:'Fais tourner la roue, tire un élément au hasard.',type:'pairs'},
- {id:'cards',name:'Cartes au hasard',ico:'cartes-parole',emo:'🃏',desc:'Pioche une carte et retourne-la devant la classe.',type:'pairs'},
- {id:'boxes',name:'Boîtes mystères',ico:'boites-mysteres',emo:'🎁',desc:'Ouvre une boîte numérotée : surprise !',type:'pairs'},
- {id:'tiles',name:'Tuiles surprises',ico:'tuiles-surprises',emo:'🔲',desc:'Retourne une tuile : question, puis réponse.',type:'pairs'},
- {id:'memory',name:'Memory',ico:'memory',emo:'🧠',desc:'Retrouve les paires en retournant les cartes.',type:'pairs'},
- {id:'match',name:'Associations',ico:'associations',emo:'🔗',desc:'Glisse chaque réponse en face du bon mot.',type:'pairs'},
- {id:'find',name:'Trouve la paire',ico:'correspondance',emo:'🎯',desc:'Touche vite la bonne réponse parmi toutes.',type:'pairs'},
- {id:'quiz',name:'Quiz',ico:'quiz-interactif',emo:'❓',desc:'Questions à choix multiples, avec correction.',type:'questions'},
- {id:'gameshow',name:'Quiz télévisé',ico:'quiz-televise',emo:'📺',desc:'Chrono, vies, joker 50/50 et bonus de série.',type:'questions'},
- {id:'truefalse',name:'Vrai ou faux',ico:'',emo:'⚡',desc:'Course contre la montre : vrai ou faux ?',type:'questions'},
- {id:'flash',name:'Flashcards',ico:'flashcards',emo:'📇',desc:'Retourne, mémorise, trie ce que tu sais.',type:'pairs'},
- {id:'anagram',name:'Anagrammes',ico:'anagrammes',emo:'🔤',desc:'Remets les lettres dans le bon ordre.',type:'pairs'},
- {id:'hangman',name:'Mot mystère',ico:'mot-mystere',emo:'🎈',desc:'Devine le mot avant que les ballons éclatent.',type:'pairs'},
- {id:'wordsearch',name:'Mots mêlés',ico:'mots-meles',emo:'🔍',desc:'Trouve les mots cachés dans la grille.',type:'pairs'},
- {id:'crossword',name:'Mots croisés',ico:'mots-croises',emo:'✏️',desc:'Complète la grille grâce aux définitions.',type:'pairs'},
- {id:'groups',name:'Tri par catégories',ico:'tri-categories',emo:'🗂️',desc:'Range chaque élément dans la bonne catégorie.',type:'groups'},
- {id:'unjumble',name:'Phrases mélangées',ico:'phrases-melangees',emo:'🧩',desc:'Remets les mots de la phrase dans l’ordre.',type:'sentences'},
- {id:'cloze',name:'Texte à trous',ico:'textes-trous',emo:'📝',desc:'Glisse les mots manquants dans le texte.',type:'cloze'},
- {id:'diagram',name:'Image à légender',ico:'image-legender',emo:'🖼️',desc:'Place les étiquettes sur l’image.',type:'diagram'}
+ {id:'wheel',name:'Roue',emo:'🎡',desc:'Fais tourner la roue, tire un élément au hasard.',type:'pairs'},
+ {id:'boxes',name:'Boîtes mystères',emo:'🎁',desc:'Ouvre une boîte numérotée : surprise !',type:'pairs'},
+ {id:'cards',name:'Cartes au hasard',emo:'🃏',desc:'Pioche une carte et retourne-la devant la classe.',type:'pairs'},
+ {id:'tiles',name:'Tuiles surprises',emo:'🔲',desc:'Retourne une tuile : question, puis réponse.',type:'pairs'},
+ {id:'memory',name:'Memory',emo:'🧠',desc:'Retrouve les paires en retournant les cartes.',type:'pairs'},
+ {id:'match',name:'Associations',emo:'🔗',desc:'Glisse chaque réponse en face du bon mot.',type:'pairs'},
+ {id:'find',name:'Trouve la paire',emo:'🎯',desc:'Touche vite la bonne réponse parmi toutes.',type:'pairs'},
+ {id:'quiz',name:'Quiz',emo:'❓',desc:'Questions à choix multiples, avec correction.',type:'questions'},
+ {id:'gameshow',name:'Quiz télévisé',emo:'📺',desc:'Chrono, vies, joker 50/50 et bonus de série.',type:'questions'},
+ {id:'flash',name:'Flashcards',emo:'📇',desc:'Retourne, mémorise, trie ce que tu sais.',type:'pairs'},
+ {id:'anagram',name:'Anagrammes',emo:'🔤',desc:'Remets les lettres dans le bon ordre.',type:'pairs'},
+ {id:'hangman',name:'Mot mystère',emo:'🎈',desc:'Devine le mot avant que les ballons éclatent.',type:'pairs'},
+ {id:'wordsearch',name:'Mots mêlés',emo:'🔍',desc:'Trouve les mots cachés dans la grille.',type:'pairs'},
+ {id:'crossword',name:'Mots croisés',emo:'✏️',desc:'Complète la grille grâce aux définitions.',type:'pairs'},
+ {id:'groups',name:'Tri par catégories',emo:'🗂️',desc:'Range chaque élément dans la bonne catégorie.',type:'groups'},
+ {id:'unjumble',name:'Phrases mélangées',emo:'🧩',desc:'Remets les mots de la phrase dans l’ordre.',type:'sentences'},
+ {id:'cloze',name:'Texte à trous',emo:'📝',desc:'Glisse les mots manquants dans le texte.',type:'cloze'},
+ {id:'diagram',name:'Image à légender',emo:'🖼️',desc:'Place les étiquettes sur l’image.',type:'diagram'},
+ {id:'typein',name:'Réponse à taper',emo:'⌨️',desc:'Écris la bonne réponse au clavier.',type:'pairs'},
+ {id:'spell',name:'Dictée de mots',emo:'🔡',desc:'Écoute ou lis l’indice, épelle le mot.',type:'pairs'},
+ {id:'truefalse',name:'Vrai ou faux',emo:'⚡',desc:'Course contre la montre : vrai ou faux ?',type:'questions'},
+ {id:'pairnopair',name:'Paire ou pas paire',emo:'🃏',desc:'Ces deux cartes vont-elles ensemble ?',type:'pairs'},
+ {id:'maze',name:'Labyrinthe',emo:'👾',desc:'Fonce vers la bonne réponse, évite les monstres.',type:'questions'},
+ {id:'flying',name:'Fruits volants',emo:'🍉',desc:'Les réponses traversent l’écran : attrape la bonne.',type:'questions'},
+ {id:'balloon',name:'Ballon largueur',emo:'🎈',desc:'Largue chaque mot sur le bon wagon.',type:'pairs'},
+ {id:'whack',name:'Tape-taupe',emo:'🔨',desc:'Les taupes sortent : tape seulement les bonnes.',type:'questions'},
+ {id:'airplane',name:'Avion',emo:'✈️',desc:'Pilote l’avion vers la bonne réponse.',type:'questions'},
+ {id:'imagequiz',name:'Image mystère',emo:'🧱',desc:'L’image se dévoile : buzze dès que tu sais.',type:'questions'},
+ {id:'winlose',name:'Mise ou perds',emo:'🎲',desc:'Mise tes points avant chaque question.',type:'questions'},
+ {id:'rank',name:'Remets dans l’ordre',emo:'🔢',desc:'Classe les éléments dans le bon ordre.',type:'pairs'},
+ {id:'speedsort',name:'Tri express',emo:'⏬',desc:'Les éléments tombent : vite, dans la bonne boîte !',type:'groups'},
+ {id:'memorize',name:'Regarde et retiens',emo:'👀',desc:'Observe la série, puis retrouve ce que tu as vu.',type:'pairs'},
+ {id:'magnets',name:'Aimants à mots',emo:'🧲',desc:'Déplace les aimants pour former la phrase.',type:'sentences'},
+ {id:'maths',name:'Générateur de calculs',emo:'🧮',desc:'Choisis les opérations, les calculs se créent seuls.',type:'maths'}
 ];
-var TYPELABEL={pairs:'Liste de mots / paires',questions:'Questions à choix',groups:'Catégories',sentences:'Phrases',cloze:'Texte à trous',diagram:'Image + étiquettes'};
+var INTRO={truefalse:1,gameshow:1,maze:1,flying:1,balloon:1,pairnopair:1,whack:1,airplane:1,imagequiz:1,speedsort:1,winlose:1,memorize:1};
+var TYPELABEL={pairs:'Liste de mots / paires',questions:'Questions à choix',groups:'Catégories',sentences:'Phrases',cloze:'Texte à trous',diagram:'Image + étiquettes',maths:'Générateur de calculs'};
 function tpl(id){for(var i=0;i<TPL.length;i++)if(TPL[i].id===id)return TPL[i];return TPL[0];}
 var ICONS={};
 try{ICONS=JSON.parse(document.getElementById('icons-data').textContent);}catch(e){}
@@ -572,11 +706,12 @@ var LANGS=[['en-GB','Anglais (UK)'],['en-US','Anglais (US)'],['fr-FR','Français
 function newAct(tid){
   var t=tpl(tid);
   var a={id:uid(),v:5,title:'',template:tid,type:t.type,theme:'arcade',lang:'en-GB',lang2:'fr-FR',opts:{},createdAt:Date.now(),updatedAt:Date.now(),
-    items:[],questions:[],groups:[],sentences:[],text:'',image:'',labels:[]};
+    items:[],questions:[],groups:[],sentences:[],text:'',image:'',labels:[],instruction:''};
   if(a.type==='pairs')a.items=[{t:'',d:''},{t:'',d:''},{t:'',d:''},{t:'',d:''}];
   if(a.type==='questions')a.questions=[{q:'',img:'',a:['','','',''],ok:0},{q:'',img:'',a:['','','',''],ok:0}];
   if(a.type==='groups')a.groups=[{name:'',items:''},{name:'',items:''}];
   if(a.type==='sentences')a.sentences=[''];
+  if(a.type==='maths'){a.maths={ops:['+','-'],range:'20',n:10,tables:''};a.title='';}
   return a;
 }
 function cleanQuestions(a){
@@ -591,6 +726,26 @@ function groupList(a){
   return (a.groups||[]).map(function(g){return {name:txt(g.name),items:String(g.items||'').split(/\n/).map(txt).filter(Boolean)};}).filter(function(g){return g.name&&g.items.length;});
 }
 function clozeWords(a){var r=[];String(a.text||'').replace(/\[\[([^\]]+)\]\]/g,function(m,w){r.push(txt(w));return m;});return r;}
+/* Générateur de calculs */
+function rnd(a,b){return a+Math.floor(Math.random()*(b-a+1));}
+function mathGen(a){
+  var m=a.maths||{};var ops=(m.ops&&m.ops.length)?m.ops:['+'];var R=+m.range||20;var n=clamp(+m.n||10,1,50);
+  var tabs=String(m.tables||'').split(/[^0-9]+/).map(Number).filter(function(x){return x>0&&x<=20;});
+  var out=[],seen={},guard=0;
+  while(out.length<n&&guard++<500){
+    var op=ops[rnd(0,ops.length-1)],x,y,r,q;
+    if(op==='+'){x=rnd(0,R);y=rnd(0,R-x);r=x+y;q=x+' + '+y;}
+    else if(op==='-'){x=rnd(0,R);y=rnd(0,x);r=x-y;q=x+' − '+y;}
+    else if(op==='x'){x=tabs.length?tabs[rnd(0,tabs.length-1)]:rnd(2,R<=20?Math.min(R,10):12);y=rnd(R<=10?1:2,10);if(Math.random()<.5){var t=x;x=y;y=t;}r=x*y;q=x+' × '+y;}
+    else{y=tabs.length?tabs[rnd(0,tabs.length-1)]:rnd(2,R<=20?Math.min(R,10):12);r=rnd(1,10);x=y*r;q=x+' ÷ '+y;}
+    if(seen[q])continue;seen[q]=1;out.push({q:q+' = ?',t:q,r:r});
+  }
+  return out;
+}
+function mathWrong(r){
+  var c=[r+1,r-1,r+2,r-2,r+10,r-10,r*2,Math.round(r/2)];var s=String(r);if(s.length===2)c.push(+(s[1]+s[0]));
+  var o=[];shuffle(c).forEach(function(v){if(v>=0&&v!==r&&o.indexOf(v)<0)o.push(v);});return o.slice(0,3).map(String);
+}
 /* Convertit n'importe quel contenu en paires {t,d,ti,di} */
 function asPairs(a){
   if(a.type==='pairs')return (a.items||[]).filter(function(p){return txt(p.t)||p.ti;}).map(function(p){return {t:txt(p.t),d:txt(p.d),ti:p.ti||'',di:p.di||''};});
@@ -599,10 +754,12 @@ function asPairs(a){
   if(a.type==='sentences')return (a.sentences||[]).map(txt).filter(Boolean).map(function(s){return {t:s,d:'',ti:'',di:''};});
   if(a.type==='diagram')return (a.labels||[]).filter(function(l){return txt(l.t);}).map(function(l){return {t:txt(l.t),d:'',ti:'',di:''};});
   if(a.type==='cloze')return clozeWords(a).map(function(w){return {t:w,d:'',ti:'',di:''};});
+  if(a.type==='maths')return mathGen(a).map(function(m){return {t:m.t,d:String(m.r),ti:'',di:''};});
   return [];
 }
 /* Questions à choix (natives ou générées à partir des paires/catégories) */
 function asQuestions(a){
+  if(a.type==='maths')return mathGen(a).map(function(m){return {q:m.q,img:'',ok:String(m.r),wrong:mathWrong(m.r)};});
   if(a.type==='questions')return cleanQuestions(a).filter(function(q){return q.wrong.length>0;});
   if(a.type==='groups'){var gl=groupList(a);if(gl.length<2)return [];var names=gl.map(function(g){return g.name;});
     var r=[];gl.forEach(function(g){g.items.forEach(function(it){r.push({q:it,img:'',ok:g.name,wrong:pick(names.filter(function(n){return n!==g.name;}),3)});});});return r;}
@@ -621,25 +778,32 @@ function asWords(a){
 }
 function compat(tid,a){
   var t=tpl(tid);
-  if(t.type==='groups'||t.type==='sentences'||t.type==='cloze'||t.type==='diagram'){
+  if(t.type==='groups'||t.type==='cloze'||t.type==='diagram'||t.type==='maths'||(t.type==='sentences'&&tid!=='rank')){
     if(a.type!==t.type)return 'Ce modèle demande un contenu de type « '+TYPELABEL[t.type]+' ».';
     if(t.type==='groups'&&groupList(a).length<2)return 'Il faut au moins 2 catégories remplies.';
     if(t.type==='sentences'&&!(a.sentences||[]).filter(function(s){return txt(s).split(' ').length>1;}).length)return 'Il faut au moins une phrase de 2 mots.';
     if(t.type==='cloze'&&!clozeWords(a).length)return 'Entoure au moins un mot avec [[ ]].';
     if(t.type==='diagram'&&(!a.image||!(a.labels||[]).length))return 'Ajoute une image et au moins une étiquette.';
+    if(t.type==='maths'&&!(a.maths&&a.maths.ops&&a.maths.ops.length))return 'Choisis au moins une opération.';
     return '';
   }
-  var ps=asPairs(a),withD=ps.filter(function(p){return p.d||p.di;});
+  var ps=asPairs(a),withD=ps.filter(function(p){return p.d||p.di;}),pairy=a.type==='pairs'||a.type==='questions'||a.type==='maths';
+  var nq=asQuestions(a).length;var QMSG='Il faut des réponses (au moins 2 différentes) pour fabriquer des questions.';
   switch(tid){
     case 'wheel':case 'cards':case 'boxes':case 'tiles':return ps.length>=2?'':'Il faut au moins 2 éléments.';
-    case 'memory':return (a.type==='pairs'||a.type==='questions')&&withD.length>=2?'':'Il faut au moins 2 paires (mot + réponse ou image).';
-    case 'match':return (a.type==='pairs'||a.type==='questions')&&ps.filter(function(p){return p.d;}).length>=2?'':'Il faut au moins 2 paires mot + réponse.';
-    case 'find':return (a.type==='pairs'||a.type==='questions')&&uniq(ps.map(function(p){return p.d;})).length>=3?'':'Il faut au moins 3 paires avec des réponses différentes.';
-    case 'quiz':case 'gameshow':case 'truefalse':return asQuestions(a).length>=1?'':'Il faut des réponses (au moins 2 différentes) pour fabriquer des questions.';
+    case 'memory':return pairy&&withD.length>=2?'':'Il faut au moins 2 paires (mot + réponse ou image).';
+    case 'match':case 'balloon':return pairy&&ps.filter(function(p){return p.d;}).length>=2?'':'Il faut au moins 2 paires mot + réponse.';
+    case 'find':return pairy&&uniq(ps.map(function(p){return p.d;})).length>=3?'':'Il faut au moins 3 paires avec des réponses différentes.';
+    case 'pairnopair':return pairy&&uniq(ps.map(function(p){return p.d;})).length>=2?'':'Il faut au moins 2 paires avec des réponses différentes.';
+    case 'quiz':case 'gameshow':case 'truefalse':case 'maze':case 'flying':case 'whack':case 'airplane':case 'winlose':return nq>=1?'':QMSG;
+    case 'imagequiz':return asQuestions(a).filter(function(q){return q.img;}).length>=1?'':'Il faut des questions (ou des mots) avec une image.';
     case 'flash':return withD.length>=1?'':'Il faut au moins une carte avec un verso.';
-    case 'anagram':case 'hangman':return asWords(a).length>=1?'':'Il faut des mots de 2 à 16 lettres.';
+    case 'typein':return ps.filter(function(p){return p.d;}).length>=1&&a.type!=='groups'?'':'Il faut des éléments avec une réponse à taper.';
+    case 'anagram':case 'hangman':case 'spell':return asWords(a).length>=1?'':'Il faut des mots de 2 à 16 lettres.';
     case 'wordsearch':return asWords(a).length>=2?'':'Il faut au moins 2 mots de 2 à 16 lettres.';
     case 'crossword':return asWords(a).filter(function(w){return w.clue;}).length>=2?'':'Il faut au moins 2 mots avec une définition.';
+    case 'rank':return (a.type==='pairs'||a.type==='sentences')&&ps.length>=3?'':'Il faut une liste d’au moins 3 éléments, dans le bon ordre.';
+    case 'memorize':return ps.length>=4&&a.type!=='cloze'?'':'Il faut au moins 4 éléments.';
   }
   return '';
 }
@@ -781,10 +945,23 @@ Stage.prototype.finish=function(res){
   var line=[];if(res.total)line.push(res.correct+' / '+res.total+' bonnes réponses');if(res.points!=null)line.push(res.points+' points');if(res.time!=null)line.push('en '+fmtTime(res.time));if(res.extra)line.push(res.extra);
   nodes.push(h('p',{class:'muted',style:'font-size:18px;margin:0'},line.join(' · ')));
   var best=this.saveBest(res);if(best)nodes.push(h('p',{style:'margin:6px 0 0;font-weight:700;color:#22b07d'},best));
+  if(!this.student&&(res.points!=null||res.total))nodes.push(this.board(res));
   if(res.review&&res.review.length){var rv=h('div',{class:'review'});res.review.forEach(function(r){rv.appendChild(h('div',null,[r.ok?'✅ ':'❌ ',h('b',null,r.q),' → ',r.a]));});nodes.push(rv);}
   var btns=[{label:'↻ Rejouer',main:true,fn:function(){self.start();}}];
   if(res.again)btns.push({label:res.again.label,fn:res.again.fn});
   this.popup(nodes,btns);
+};
+Stage.prototype.board=function(res){
+  var key='b2y_lb_'+this.act.id+'_'+this.act.template;var list=[];try{list=JSON.parse(localStorage.getItem(key)||'[]');}catch(e){}
+  var val=res.points!=null?res.points:res.correct,time=res.time||0;
+  var wrap=h('div',{class:'lb'});var name=h('input',{class:'field',placeholder:'Prénom',maxlength:'18','aria-label':'Prénom'});
+  function draw(hl){wrap.innerHTML='';
+    if(hl==null)add(wrap,h('div',{class:'row',style:'justify-content:center;margin-top:10px;flex-wrap:nowrap'},[name,h('button',{class:'btn small dark',onclick:save},'Inscrire au tableau')]));
+    if(list.length){var ol=h('ol');list.slice(0,10).forEach(function(e,i){ol.appendChild(h('li',{class:i===hl?'me':''},[h('b',null,e.n),h('span',null,e.v+(res.points!=null?' pts':' ✓')+(e.t?' · '+fmtTime(e.t):''))]));});add(wrap,[h('div',{class:'lbt'},'🏆 Tableau des scores (cet appareil)'),ol]);}}
+  function save(){var n=txt(name.value);if(!n){name.focus();return;}var e={n:n,v:val,t:time,d:Date.now()};list.push(e);
+    list.sort(function(x,y){return y.v-x.v||(x.t-y.t);});list=list.slice(0,10);try{localStorage.setItem(key,JSON.stringify(list));}catch(er){}SFX.good();draw(list.indexOf(e));}
+  name.addEventListener('keydown',function(e){if(e.key==='Enter')save();});
+  draw();return wrap;
 };
 Stage.prototype.saveBest=function(res){
   if(res.points==null&&!res.total)return '';
@@ -795,13 +972,22 @@ Stage.prototype.saveBest=function(res){
 };
 Stage.prototype.start=function(){
   this.clear();this.arena.innerHTML='';this.score('');this.info('');this.progress(0,1);this.pTime.textContent='';
-  var oldPops=$$('.pop',this.el);oldPops.forEach(function(p){p.parentNode.removeChild(p);});this.popOpen=false;
+  $$('.banner',this.el).forEach(function(b){b.parentNode.removeChild(b);});var oldPops=$$('.pop',this.el);oldPops.forEach(function(p){p.parentNode.removeChild(p);});this.popOpen=false;
   this.el.className='stage t-'+(this.act.theme||'arcade')+(this.el.classList.contains('full')?' full':'');
   var why=compat(this.act.template,this.act);
   if(why){this.arena.appendChild(h('div',{class:'gtitle'},[h('div',{style:'font-size:56px'},'🧩'),why]));return;}
-  var fn=GAMES[this.act.template];
-  try{fn(this,this.act);}catch(e){console.error(e);this.arena.innerHTML='';this.arena.appendChild(h('div',{class:'gtitle'},'Oups, ce jeu n’a pas pu démarrer : '+e.message));}
+  var fn=GAMES[this.act.template],self=this,t=tpl(this.act.template),ins=txt(this.act.instruction);
+  function run(){try{fn(self,self.act);}catch(e){console.error(e);self.arena.innerHTML='';self.arena.appendChild(h('div',{class:'gtitle'},'Oups, ce jeu n’a pas pu démarrer : '+e.message));}}
+  if(INTRO[this.act.template]){
+    var icon=tplIcon(t,'introico');
+    this.popup([icon,h('div',{class:'big'},t.name),h('p',{style:'font-size:19px;margin:0'},ins||t.desc),
+      h('p',{class:'muted',style:'font-size:14px;margin:8px 0 0'},KEYHELP[this.act.template]||'')],[{label:'▶ Commencer',main:true,fn:function(){SFX.init();SFX.whoosh();if(window.innerWidth<700&&self.el.scrollIntoView)try{self.el.scrollIntoView({block:'start',behavior:'smooth'});}catch(e){self.el.scrollIntoView(true);}run();}}]);
+    return;
+  }
+  if(ins){var ban=h('div',{class:'banner'},[h('span',null,ins),h('button',{'aria-label':'Masquer la consigne',onclick:function(){ban.parentNode.removeChild(ban);}},'✕')]);this.el.insertBefore(ban,this.arena);}
+  run();
 };
+var KEYHELP={maze:'Flèches du clavier, ou fais glisser ton doigt dans la direction voulue.',airplane:'Flèches haut/bas, ou touche au-dessus/en dessous de l’avion.',truefalse:'Clavier : ← faux, → vrai.',pairnopair:'Clavier : ← pas paire, → paire.',balloon:'Touche le ballon (ou Espace) pour larguer le mot.',speedsort:'Touche une boîte, ou les touches 1, 2, 3…',imagequiz:'Touche « Buzz ! » ou Espace dès que tu as trouvé.',whack:'Tape uniquement les taupes qui portent la bonne réponse.',flying:'Touche la bonne réponse quand elle passe.',memorize:'Regarde bien : les éléments ne passent qu’une fois.'};
 Stage.prototype.opt=function(k,def){var o=this.act.opts||{};return o[k]==null?def:o[k];};
 
 /* ===== MÉDIA DANS UNE TUILE ===== */
@@ -1411,6 +1597,365 @@ GAMES.diagram=function(S,a){
     if(ok===zones.length){SFX.good();S.later(function(){S.finish({correct:firstOk,total:zones.length,time:S.stopClock()});},600);}else SFX.bad();}
   S.score('0 / '+zones.length);S.info('Glisse chaque étiquette sur le bon numéro');
 };
+/* ===== MODÈLES SUPPLÉMENTAIRES ===== */
+function playfield(S,cls){var f=h('div',{class:'playfield '+(cls||'')});S.arena.appendChild(f);return f;}
+function hearts(n){return rep('❤️',Math.max(0,n))+rep('🤍',Math.max(0,3-n));}
+function okAnswer(given,expected){
+  var g=txt(given).replace(/[.!?;,]+$/,'');
+  return String(expected).split('/').some(function(x){return sameAnswer(g,txt(x).replace(/[.!?;,]+$/,''));});
+}
+
+/* ---------- RÉPONSE À TAPER ---------- */
+GAMES.typein=function(S,a){
+  var ps=asPairs(a).filter(function(p){return p.d;});if(S.opt('shuffle',true))ps=shuffle(ps);
+  var i=0,good=0,review=[];var box=h('div',{style:'display:contents'});S.arena.appendChild(box);S.clock('up');
+  function show(){
+    box.innerHTML='';var p=ps[i],done=false;
+    var inp=h('input',{class:'bigin',autocomplete:'off',autocapitalize:'off',spellcheck:'false',placeholder:'Ta réponse…','aria-label':'Ta réponse'});
+    var fb=h('div',{class:'streak',style:'min-height:34px'});
+    var bOk=h('button',{class:'btn main',onclick:check},'Valider');var bPass=h('button',{class:'btn small',onclick:function(){inp.value='';check(true);}},'Je ne sais pas');
+    add(box,[h('div',{class:'qcard'},[p.ti?h('img',{src:p.ti,alt:''}):null,h('div',{class:'q'},p.t),spkBtn(p.t,langT(a))]),inp,fb,h('div',{class:'row',style:'justify-content:center'},[bPass,bOk])]);
+    S.info((i+1)+' / '+ps.length);S.progress(i,ps.length);
+    S.later(function(){try{inp.focus();}catch(e){}},60);
+    inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();if(done)next();else check();}});
+    function check(skip){
+      if(done)return next();var ok=!skip&&okAnswer(inp.value,p.d);done=true;review.push({q:p.t,a:p.d,ok:ok});
+      if(ok){good++;inp.classList.add('good');SFX.good();fb.textContent='Bravo !';fb.style.color='#3cc98a';S.score(good+' ✓');S.later(next,800);}
+      else{inp.classList.add('bad');SFX.bad();fb.innerHTML='';add(fb,['Réponse : ',h('span',{style:'color:#3cc98a'},p.d)]);bOk.textContent='Suivant';bPass.style.display='none';}
+    }
+  }
+  function next(){i++;if(i>=ps.length){S.progress(1,1);S.finish({correct:good,total:ps.length,time:S.stopClock(),review:review});}else show();}
+  S.score('0 ✓');show();
+};
+
+/* ---------- DICTÉE DE MOTS ---------- */
+GAMES.spell=function(S,a){
+  var ws=asWords(a);if(S.opt('shuffle',true))ws=shuffle(ws);var i=0,good=0,review=[];
+  var box=h('div',{style:'display:contents'});S.arena.appendChild(box);S.clock('up');
+  function show(){
+    box.innerHTML='';var w=ws[i],word=w.w.toUpperCase(),chars=word.split(''),slots=[],tries=0;
+    var sRow=h('div',{class:'slots'});
+    chars.forEach(function(ch){var L=lettersOnly(ch);var s={ch:ch,L:L,el:h('div',{class:'lslot'+(L?'':' sp')},L?'':(ch===' '?'':ch))};if(L)s.el.addEventListener('click',function(){clearFrom(slots.indexOf(s));});slots.push(s);sRow.appendChild(s.el);});
+    var pool=chars.map(lettersOnly).filter(Boolean);var AL='ABCDEFGHIJKLMNOPRSTUVWY';for(var k=0;k<Math.min(4,Math.max(2,pool.length/2|0));k++)pool.push(AL[Math.floor(Math.random()*AL.length)]);
+    var lRow=h('div',{class:'letters'});shuffle(pool).forEach(function(L,k){var t=h('button',{class:'tile c'+(k%6)},L);t._L=L;t.addEventListener('click',function(){put(L,t);});lRow.appendChild(t);});
+    var say=h('button',{class:'btn main',onclick:function(){speak(w.w,langT(a));}},'🔊 Écouter le mot');
+    add(box,[h('div',{class:'qcard'},[w.img?h('img',{src:w.img,alt:''}):null,h('div',{class:'q'},w.clue||'Écoute et épelle le mot'),w.clue?spkBtn(w.clue,w.cl==='t'?langT(a):langD(a)):null]),
+      sRow,lRow,h('div',{class:'row',style:'justify-content:center'},[h('button',{class:'btn small',onclick:function(){clearFrom(0);}},'Effacer'),say,h('button',{class:'btn small',onclick:function(){review.push({q:w.clue||w.w,a:w.w,ok:false});nextW();}},'Passer')])]);
+    if(S.opt('autosay',true))S.later(function(){speak(w.w,langT(a));},400);
+    function put(L,t){for(var k=0;k<slots.length;k++){var s=slots[k];if(s.L&&!s.got){s.got=L;s.tile=t;s.el.textContent=L;s.el.classList.add('f');if(t)t.style.visibility='hidden';SFX.tick();break;}}check();}
+    function clearFrom(ix){for(var k=ix;k<slots.length;k++){var s=slots[k];if(s.got){if(s.tile)s.tile.style.visibility='';s.got=null;s.tile=null;s.el.textContent='';s.el.className='lslot';}}}
+    function check(){if(slots.some(function(s){return s.L&&!s.got;}))return;
+      var ok=slots.every(function(s){return !s.L||s.got===s.L;});
+      if(ok){slots.forEach(function(s){if(s.L)s.el.className='lslot good';});SFX.good();if(!tries)good++;review.push({q:w.clue||w.w,a:w.w,ok:!tries});S.score(good+' ✓');S.later(nextW,900);}
+      else{tries++;SFX.bad();sRow.classList.add('shake');var first=-1;slots.forEach(function(s,k){if(s.L&&s.got!==s.L&&first<0)first=k;});S.later(function(){sRow.classList.remove('shake');clearFrom(first);},500);}}
+    S.keys=function(e){if(e.key==='Backspace'){for(var j=slots.length-1;j>=0;j--)if(slots[j].got){clearFrom(j);break;}return;}var k=lettersOnly(e.key);if(k.length===1){var t=$$('.tile',lRow).filter(function(x){return x._L===k&&x.style.visibility!=='hidden';})[0];put(k,t||null);}};
+    S.info((i+1)+' / '+ws.length);S.progress(i,ws.length);
+  }
+  function nextW(){i++;if(i>=ws.length){S.progress(1,1);S.finish({correct:good,total:ws.length,time:S.stopClock(),review:review});}else show();}
+  S.score('0 ✓');show();
+};
+
+/* ---------- PAIRE OU PAS PAIRE ---------- */
+GAMES.pairnopair=function(S,a){
+  var ps=asPairs(a).filter(function(p){return p.d||p.di;});var dur=+S.opt('time',60),pts=0,good=0,n=0,streak=0,cur=null,lock=false,pool=[],review=[];
+  var L=h('div',{class:'pcard'}),R=h('div',{class:'pcard alt'});var st=h('div',{class:'streak'});
+  var bN=h('button',{class:'tile c0'},'✖ Pas paire'),bY=h('button',{class:'tile c3'},'✔ Paire');
+  add(S.arena,[st,h('div',{class:'pcards'},[L,h('div',{class:'pvs'},'?'),R]),h('div',{class:'tfbtns'},[bN,bY])]);
+  function next(){if(!pool.length)pool=shuffle(ps);var p=pool.pop();var truth=Math.random()<.5;var other=p;
+    if(!truth){var o=ps.filter(function(x){return x.d!==p.d;});other=o[Math.floor(Math.random()*o.length)]||p;truth=other===p;}
+    cur={p:p,o:other,truth:truth};L.innerHTML='';R.innerHTML='';
+    add(L,media(p.t,p.ti));add(R,media(other.d,other.di));L.style.animation=R.style.animation='none';void L.offsetWidth;L.style.animation='deal .4s';R.style.animation='deal .4s .05s both';}
+  function answer(v){if(lock||!cur)return;n++;var ok=v===cur.truth;review.push({q:cur.p.t+' + '+cur.o.d,a:cur.truth?'paire':'pas paire',ok:ok});
+    if(ok){good++;streak++;pts+=10*(streak>=5?3:streak>=3?2:1);SFX.good();(v?bY:bN).classList.add('good');}else{streak=0;SFX.bad();(v?bY:bN).classList.add('bad');}
+    st.textContent=streak>=3?'Série de '+streak+' 🔥':'';S.score(pts+' pts');lock=true;
+    S.later(function(){bY.classList.remove('good','bad');bN.classList.remove('good','bad');lock=false;next();},ok?350:700);}
+  bY.addEventListener('click',function(){answer(true);});bN.addEventListener('click',function(){answer(false);});
+  S.keys=function(e){if(e.key==='ArrowRight')answer(true);if(e.key==='ArrowLeft')answer(false);};
+  S.score('0 pts');next();var t0=Date.now();S.every(function(){S.progress((Date.now()-t0)/1000,dur);},200);
+  S.clock('down',dur,function(){lock=true;S.finish({correct:good,total:n||1,points:pts,review:review.slice(-30)});});
+};
+
+/* ---------- REMETS DANS L'ORDRE ---------- */
+GAMES.rank=function(S,a){
+  var items=asPairs(a).slice(0,8).map(function(p,i){return {t:p.t,ti:p.ti,k:i};});var tries=0,first=null;
+  var order=shuffle(items);var tr=0;while(items.length>2&&order.every(function(x,i){return x.k===i;})&&tr++<20)order=shuffle(items);
+  var list=h('div',{class:'ranklist'});
+  order.forEach(function(it){var row=h('div',{class:'rankrow tile c'+(it.k%6)},[h('span',{class:'grip'},'⠿'),h('span',{class:'rt'},media(it.t,it.ti))]);row._k=it.k;list.appendChild(row);});
+  var nums=h('div',{class:'ranknums'});items.forEach(function(x,i){nums.appendChild(h('div',null,String(i+1)));});
+  var bCheck=h('button',{class:'btn main',onclick:check},'Vérifier');
+  add(S.arena,[h('div',{class:'gtitle',style:'font-size:20px'},txt(a.instruction)?'':'Glisse les éléments pour les classer dans le bon ordre'),h('div',{class:'rankbox'},[nums,list]),bCheck]);S.clock('up');
+  var drag=null,sel=null;
+  list.addEventListener('pointerdown',function(e){var r=e.target.closest('.rankrow');if(!r||r.classList.contains('locked'))return;drag=r;drag._moved=false;drag._y=e.clientY;try{list.setPointerCapture(e.pointerId);}catch(er){}});
+  list.addEventListener('pointermove',function(e){if(!drag)return;if(Math.abs(e.clientY-drag._y)>6){drag._moved=true;drag.classList.add('lifting');}
+    if(!drag._moved)return;e.preventDefault();var rows=$$('.rankrow',list);
+    for(var k=0;k<rows.length;k++){var r=rows[k];if(r===drag)continue;var b=r.getBoundingClientRect();if(e.clientY>b.top&&e.clientY<b.bottom){if(e.clientY<b.top+b.height/2)list.insertBefore(drag,r);else list.insertBefore(drag,r.nextSibling);SFX.tick();break;}}});
+  list.addEventListener('pointerup',function(e){if(!drag)return;var r=drag;drag=null;r.classList.remove('lifting');
+    if(!r._moved){if(sel&&sel!==r){var a1=sel,b1=r,mark=h('div');list.insertBefore(mark,a1);list.insertBefore(a1,b1);list.insertBefore(b1,mark);list.removeChild(mark);sel.classList.remove('sel');sel=null;SFX.flip();}
+      else if(sel===r){r.classList.remove('sel');sel=null;}else{sel=r;r.classList.add('sel');SFX.tick();}}});
+  function check(){tries++;var rows=$$('.rankrow',list),ok=0;rows.forEach(function(r,i){r.classList.remove('good','bad');if(r._k===i){ok++;r.classList.add('good');}else r.classList.add('bad');});
+    if(first===null)first=ok;S.score(ok+' / '+rows.length);S.progress(ok,rows.length);
+    if(ok===rows.length){SFX.win();S.later(function(){S.finish({correct:first,total:rows.length,time:S.stopClock(),extra:tries+' vérification'+(tries>1?'s':'')});},700);}
+    else{SFX.bad();S.later(function(){rows.forEach(function(r){r.classList.remove('bad');});},700);}}
+};
+
+/* ---------- MISE OU PERDS ---------- */
+GAMES.winlose=function(S,a){
+  var qs=asQuestions(a);if(S.opt('shuffle',true))qs=shuffle(qs);qs=qs.slice(0,+S.opt('max',20));var i=0,pts=0,good=0,review=[];
+  var box=h('div',{style:'display:contents'});S.arena.appendChild(box);S.clock('up');
+  function show(){
+    box.innerHTML='';var q=qs[i],stake=0,answers=shuffle([q.ok].concat(q.wrong.slice(0,3)));
+    var grid=h('div',{class:'answers'});var btns=[];
+    answers.forEach(function(ans,k){var b=h('button',{class:'tile c'+(k%6)+' dim',disabled:true},[h('span',{class:'shape'},SHAPES[k]),h('span',null,ans)]);b._v=ans;btns.push(b);b.addEventListener('click',function(){choose(b);});grid.appendChild(b);});
+    var bets=h('div',{class:'bets'},[h('span',null,'Combien mises-tu ?')]);
+    [1,2,3,4,5].forEach(function(v){bets.appendChild(h('button',{class:'tile c2',onclick:function(){stake=v;SFX.pop();bets.innerHTML='';bets.appendChild(h('span',{class:'stakeon'},'Mise : '+v+' point'+(v>1?'s':'')));btns.forEach(function(b){b.disabled=false;b.classList.remove('dim');});}},String(v)));});
+    add(box,[h('div',{class:'qcard'},[q.img?h('img',{src:q.img,alt:''}):null,h('div',{class:'q'},q.q),spkBtn(q.q,langT(a))]),bets,grid]);
+    S.info('Question '+(i+1)+' / '+qs.length);S.progress(i,qs.length);
+    function choose(b){if(!stake)return;btns.forEach(function(x){x.disabled=true;if(x._v===q.ok)x.classList.add('good');else if(x!==b)x.classList.add('dim');});
+      var ok=b._v===q.ok;review.push({q:q.q,a:q.ok+' ('+(ok?'+':'−')+stake+')',ok:ok});
+      if(ok){pts+=stake;good++;SFX.good();}else{pts-=stake;b.classList.add('bad');SFX.bad();}
+      S.score(pts+' pts');S.later(function(){i++;if(i>=qs.length){S.progress(1,1);S.finish({correct:good,total:qs.length,points:pts,time:S.stopClock(),review:review});}else show();},1300);}
+  }
+  S.score('0 pts');show();
+};
+
+/* ---------- REGARDE ET RETIENS ---------- */
+GAMES.memorize=function(S,a){
+  var all=shuffle(asPairs(a).filter(function(p){return p.t||p.ti;}));var n=clamp(Math.floor(all.length/2),2,8);
+  var seen=all.slice(0,n),others=all.slice(n,n*2);var k=0;
+  var stage=h('div',{class:'memshow'});var cnt=h('div',{class:'streak'});add(S.arena,[cnt,stage]);
+  function one(){if(k>=seen.length){S.later(phase2,500);return;}var p=seen[k];stage.innerHTML='';
+    var c=h('div',{class:'tile c'+(k%6)+' memitem'},media(p.t,p.ti));stage.appendChild(c);cnt.textContent=(k+1)+' / '+seen.length;S.progress(k+1,seen.length);SFX.flip();k++;S.later(one,+S.opt('speed',1800));}
+  function phase2(){S.arena.innerHTML='';var mix=shuffle(seen.concat(others));var picked=[];
+    var g=h('div',{class:'bgrid',style:'grid-template-columns:repeat('+gridCols(mix.length,4)+',1fr);max-width:900px'});
+    mix.forEach(function(p,i){var t=h('button',{class:'tile',style:'min-height:70px'},media(p.t,p.ti));t._p=p;t.addEventListener('click',function(){var ix=picked.indexOf(t);if(ix>=0){picked.splice(ix,1);t.classList.remove('sel');}else{picked.push(t);t.classList.add('sel');}SFX.tick();info();});g.appendChild(t);});
+    function info(){S.info(picked.length+' / '+seen.length+' choisis');}
+    var bOk=h('button',{class:'btn main',onclick:function(){var right=0,wrong=0;$$('.tile',g).forEach(function(t){var was=seen.indexOf(t._p)>=0,sel=picked.indexOf(t)>=0;t.classList.remove('sel');
+        if(was&&sel){right++;t.classList.add('good');}else if(!was&&sel){wrong++;t.classList.add('bad');}else if(was){t.style.outline='4px dashed #ffc23d';}t.disabled=true;});
+      S.later(function(){S.finish({correct:Math.max(0,right-wrong),total:seen.length,time:S.stopClock(),extra:wrong?wrong+' intrus choisi'+(wrong>1?'s':''):null});},1400);}},'Valider');
+    add(S.arena,[h('div',{class:'gtitle'},'Touche les '+seen.length+' éléments que tu as vus'),g,bOk]);info();S.clock('up');}
+  S.info('Mémorise bien !');S.later(one,500);
+};
+
+/* ---------- IMAGE MYSTÈRE ---------- */
+GAMES.imagequiz=function(S,a){
+  var qs=shuffle(asQuestions(a).filter(function(q){return q.img;}));var i=0,pts=0,good=0,review=[];
+  var box=h('div',{style:'display:contents'});S.arena.appendChild(box);S.clock('up');
+  function show(){
+    box.innerHTML='';var q=qs[i],COLS=6,ROWS=4,tiles=[],buzzed=false,reveal=null;
+    var wrap=h('div',{class:'iqwrap'});var img=h('img',{src:q.img,alt:'',draggable:'false'});wrap.appendChild(img);
+    var cover=h('div',{class:'iqcover',style:'grid-template-columns:repeat('+COLS+',1fr)'});for(var k=0;k<COLS*ROWS;k++){var t=h('div',{class:'c'+(k%6)});tiles.push(t);cover.appendChild(t);}wrap.appendChild(cover);
+    var bz=h('button',{class:'btn main buzz',onclick:buzz},'🔔 Buzz !');var ansBox=h('div',{class:'answers',style:'display:none'});
+    var qtxt=a.type==='questions'?q.q:'Qu’est-ce que c’est ?';
+    add(box,[h('div',{class:'gtitle'},qtxt),wrap,bz,ansBox]);var left=shuffle(tiles.slice());
+    reveal=S.every(function(){var t=left.pop();if(t)t.classList.add('gone');S.info(left.length+' tuiles restantes');if(!left.length){clearInterval(reveal);if(!buzzed)buzz();}},+S.opt('speed',700));
+    S.keys=function(e){if(e.key===' '){e.preventDefault();buzz();}};
+    function buzz(){if(buzzed)return;buzzed=true;clearInterval(reveal);SFX.pop();bz.style.display='none';ansBox.style.display='';var remain=left.length;
+      shuffle([q.ok].concat(q.wrong.slice(0,3))).forEach(function(v,k){var b=h('button',{class:'tile c'+k},[h('span',{class:'shape'},SHAPES[k]),h('span',null,v)]);b._v=v;b.addEventListener('click',function(){
+        $$('.tile',ansBox).forEach(function(x){x.disabled=true;if(x._v===q.ok)x.classList.add('good');});var ok=v===q.ok;
+        if(ok){var gain=10+remain*10;pts+=gain;good++;SFX.good();}else{b.classList.add('bad');SFX.bad();}
+        left.forEach(function(t){t.classList.add('gone');});review.push({q:qtxt,a:q.ok,ok:ok});S.score(pts+' pts');
+        S.later(function(){i++;if(i>=qs.length){S.progress(1,1);S.finish({correct:good,total:qs.length,points:pts,time:S.stopClock(),review:review});}else show();},1600);});ansBox.appendChild(b);});
+      S.keys=function(e){var n=parseInt(e.key,10);var bs=$$('.tile',ansBox);if(n>=1&&n<=bs.length)bs[n-1].click();};}
+    S.progress(i,qs.length);
+  }
+  S.score('0 pts');show();
+};
+
+/* ---------- TRI EXPRESS ---------- */
+GAMES.speedsort=function(S,a){
+  var gl=groupList(a).slice(0,6);var items=[];gl.forEach(function(g,gi){g.items.forEach(function(t){items.push({t:t,g:gi});});});items=shuffle(items);
+  var f=playfield(S,'sky');var i=0,good=0,err=0,cur=null,el=null,y=0,dur=6000,t0=0,raf=null;
+  var bins=h('div',{class:'sbins',style:'grid-template-columns:repeat('+gl.length+',1fr)'});
+  gl.forEach(function(g,gi){var b=h('button',{class:'sbin c'+(gi%6)},[h('small',null,String(gi+1)),g.name]);b.addEventListener('click',function(){drop(gi);});bins.appendChild(b);});
+  f.appendChild(bins);
+  function spawn(){if(i>=items.length){S.progress(1,1);S.finish({correct:good,total:items.length,time:S.stopClock(),extra:err+' erreur'+(err>1?'s':'')});return;}
+    cur=items[i];el=h('div',{class:'tile faller'},cur.t);f.appendChild(el);el.style.left=(20+Math.random()*60)+'%';t0=performance.now();dur=Math.max(2600,6000-i*180);
+    (function fall(now){var p=(now-t0)/dur;var H=f.clientHeight-bins.offsetHeight-el.offsetHeight-14;el.style.top=(p*H)+'px';if(p>=1){miss();return;}raf=S._raf=requestAnimationFrame(fall);})(t0);
+    S.info((i+1)+' / '+items.length);S.progress(i,items.length);}
+  function drop(gi){if(!cur)return;cancelAnimationFrame(raf);var b=bins.children[gi],ok=gi===cur.g;
+    if(ok){good++;SFX.good();b.classList.add('good');}else{err++;SFX.bad();b.classList.add('bad');bins.children[cur.g].classList.add('good');}
+    var e=el;e.style.transition='all .3s';var br=b.getBoundingClientRect(),fr=f.getBoundingClientRect();e.style.left=(br.left-fr.left+br.width/2-e.offsetWidth/2)+'px';e.style.top=(br.top-fr.top)+'px';e.style.opacity='0';e.style.transform='scale(.5)';
+    S.score(good+' ✓');cur=null;S.later(function(){if(e.parentNode)e.parentNode.removeChild(e);$$('.sbin',bins).forEach(function(x){x.classList.remove('good','bad');});i++;spawn();},ok?350:800);}
+  function miss(){err++;SFX.bad();bins.children[cur.g].classList.add('good');var e=el;cur=null;e.classList.add('bad');S.later(function(){if(e.parentNode)e.parentNode.removeChild(e);$$('.sbin',bins).forEach(function(x){x.classList.remove('good');});i++;spawn();},800);}
+  S.keys=function(e){var n=parseInt(e.key,10);if(n>=1&&n<=gl.length)drop(n-1);};
+  S.score('0 ✓');S.clock('up');S.later(spawn,300);
+};
+
+/* ---------- AIMANTS À MOTS ---------- */
+GAMES.magnets=function(S,a){
+  var ss=(a.sentences||[]).map(txt).filter(function(s){return s.split(' ').length>1;});if(S.opt('shuffle',true))ss=shuffle(ss);
+  var i=0,good=0,first=true;var box=h('div',{style:'display:contents'});S.arena.appendChild(box);S.clock('up');
+  function show(){
+    box.innerHTML='';first=true;var words=ss[i].split(' ');
+    var board=h('div',{class:'mboard'});var line=h('div',{class:'mline'});board.appendChild(line);
+    var mags=words.map(function(w,k){var m=h('div',{class:'magnet c'+(k%6)},w);m._w=w;board.appendChild(m);return m;});
+    var bCheck=h('button',{class:'btn main',onclick:check},'Vérifier');
+    add(box,[h('div',{class:'gtitle',style:'font-size:20px'},'Fais glisser les aimants sur la ligne, dans le bon ordre'),board,h('div',{class:'row',style:'justify-content:center'},[h('button',{class:'btn small',onclick:function(){first=false;nextS();}},'Passer'),bCheck,spkBtn(ss[i],langT(a))])]);
+    S.later(function(){var W=board.clientWidth,H=board.clientHeight-line.offsetHeight-20;
+      var placed=[];shuffle(mags).forEach(function(m){var w=m.offsetWidth+12,hh=m.offsetHeight+12,x=0,y=0;
+        for(var t=0;t<60;t++){x=5+Math.random()*Math.max(1,W-w-10);y=8+Math.random()*Math.max(1,H-hh-8);var hit=placed.some(function(p){return x<p[0]+p[2]&&x+w>p[0]&&y<p[1]+p[3]&&y+hh>p[1];});if(!hit)break;}
+        placed.push([x,y,w,hh]);m.style.left=x+'px';m.style.top=y+'px';m.style.transform='rotate('+(Math.random()*8-4)+'deg)';});},30);
+    var drag=null,ox=0,oy=0,moved=false;
+    board.addEventListener('pointerdown',function(e){var m=e.target.closest('.magnet');if(!m)return;drag=m;moved=false;var r=m.getBoundingClientRect();ox=e.clientX-r.left;oy=e.clientY-r.top;m.classList.add('lift');board.appendChild(m);try{board.setPointerCapture(e.pointerId);}catch(er){}});
+    board.addEventListener('pointermove',function(e){if(!drag)return;e.preventDefault();moved=true;var b=board.getBoundingClientRect();drag.style.left=clamp(e.clientX-b.left-ox,0,b.width-drag.offsetWidth)+'px';drag.style.top=clamp(e.clientY-b.top-oy,0,b.height-drag.offsetHeight)+'px';drag.style.transform='rotate(0deg)';});
+    board.addEventListener('pointerup',function(){if(!drag)return;var m=drag;drag=null;m.classList.remove('lift');
+      if(!moved){var onLine=$$('.magnet',board).filter(function(x){return x!==m&&inLine(x);});var x=onLine.reduce(function(mx,o){return Math.max(mx,o.offsetLeft+o.offsetWidth);},6)+8;
+        if(inLine(m)){m.style.top=(10+Math.random()*40)+'px';}else{m.style.left=Math.min(x,board.clientWidth-m.offsetWidth-4)+'px';snap(m);}}
+      else if(inLine(m))snap(m);SFX.tick();});
+    function inLine(m){var c=m.offsetTop+m.offsetHeight/2;return c>=line.offsetTop-8;}
+    function snap(m){m.style.top=(line.offsetTop+(line.offsetHeight-m.offsetHeight)/2)+'px';m.style.transform='rotate(0deg)';}
+    function check(){var on=mags.filter(inLine).sort(function(x,y){return x.offsetLeft-y.offsetLeft;});var got=on.map(function(m){return m._w;}).join(' ');
+      if(on.length===words.length&&sameAnswer(got,words.join(' '))){on.forEach(function(m){m.classList.add('good');});SFX.good();if(first)good++;S.score(good+' ✓');S.later(nextS,1000);}
+      else{first=false;SFX.bad();line.classList.add('shake');S.later(function(){line.classList.remove('shake');},450);on.forEach(function(m,k){if(!sameAnswer(m._w,words[k]||'')){m.classList.add('badm');(function(m){S.later(function(){m.classList.remove('badm');},900);})(m);}});}}
+    S.info((i+1)+' / '+ss.length);S.progress(i,ss.length);
+  }
+  function nextS(){i++;if(i>=ss.length){S.progress(1,1);S.finish({correct:good,total:ss.length,time:S.stopClock()});}else show();}
+  S.score('0 ✓');show();
+};
+
+/* ---------- GÉNÉRATEUR DE CALCULS ---------- */
+GAMES.maths=function(S,a){quizEngine(S,a,false);};
+/* ===== JEUX D'ARCADE ===== */
+var ZCOL=['#ff6f91','#3fb4f0','#ffc23d','#3cc98a'];
+function qBar(S,q,answers,lang){
+  var bar=h('div',{class:'qbar'},[h('div',{class:'q'},[q.img?h('img',{src:q.img,alt:''}):null,h('span',null,q.q),spkBtn(q.q,lang)])]);
+  if(answers){var leg=h('div',{class:'legend'});answers.forEach(function(v,k){leg.appendChild(h('span',{style:'background:'+ZCOL[k]+(k===2?';color:#3b2a00':'')},[h('b',null,String(k+1)),v]));});bar.appendChild(leg);}
+  return bar;
+}
+function endArcade(S,good,total,lives,review){S.progress(1,1);S.finish({correct:good,total:total,time:S.stopClock(),review:review,extra:lives<=0?'Plus de vies !':null});}
+
+/* ---------- LABYRINTHE ---------- */
+GAMES.maze=function(S,a){
+  var qs=shuffle(asQuestions(a)).slice(0,20);var qi=0,good=0,lives=3,review=[];
+  var top=h('div',{style:'width:100%;max-width:980px'});var cv=h('canvas',{class:'mazecv'});var f=playfield(S,'mazef');
+  S.arena.insertBefore(top,f);f.appendChild(cv);
+  var C=13,R=9;if(f.clientHeight>f.clientWidth*1.1){C=9;R=13;}
+  var walls=[],ctx=cv.getContext('2d'),cell=40,ox=0,oy=0;
+  function gen(){walls=[];for(var y=0;y<R;y++){walls.push([]);for(var x=0;x<C;x++)walls[y].push(15);}
+    var vis={},st=[[0,0]];vis['0,0']=1;var D=[[0,-1,1,4],[1,0,2,8],[0,1,4,1],[-1,0,8,2]];
+    while(st.length){var c=st[st.length-1];var nb=shuffle(D).filter(function(d){var nx=c[0]+d[0],ny=c[1]+d[1];return nx>=0&&ny>=0&&nx<C&&ny<R&&!vis[nx+','+ny];});
+      if(!nb.length){st.pop();continue;}var d=nb[0],nx=c[0]+d[0],ny=c[1]+d[1];walls[c[1]][c[0]]&=~d[2];walls[ny][nx]&=~d[3];vis[nx+','+ny]=1;st.push([nx,ny]);}
+    for(var k=0;k<C*R*0.22;k++){var x=rnd(1,C-2),y2=rnd(1,R-2),d2=D[rnd(0,3)];var tx=x+d2[0],ty=y2+d2[1];walls[y2][x]&=~d2[2];walls[ty][tx]&=~d2[3];}
+    var mx=C>>1,my=R>>1;walls[my][mx]=0;[[0,-1,1,4],[1,0,2,8],[0,1,4,1],[-1,0,8,2]].forEach(function(d){walls[my+d[1]][mx+d[0]]&=~d[3];});}
+  var zones=[[0,0],[C-1,0],[0,R-1],[C-1,R-1]];
+  var P={x:C>>1,y:R>>1,px:C>>1,py:R>>1},dir=[0,0],want=[0,0],enemies=[],cur=null,answers=[],last=0,lastE=0,flash=null,inv=0,raf;
+  function can(x,y,dx,dy){var w=walls[y][x];if(dx===1)return !(w&2);if(dx===-1)return !(w&8);if(dy===1)return !(w&4);if(dy===-1)return !(w&1);return false;}
+  function layout(){var W=f.clientWidth-16,H=f.clientHeight-16;cell=Math.floor(Math.min(W/C,H/R));var dpr=window.devicePixelRatio||1;cv.width=C*cell*dpr;cv.height=R*cell*dpr;cv.style.width=C*cell+'px';cv.style.height=R*cell+'px';ctx.setTransform(dpr,0,0,dpr,0,0);}
+  function newQ(){cur=qs[qi];answers=shuffle([cur.ok].concat(cur.wrong.slice(0,3)));top.innerHTML='';top.appendChild(qBar(S,cur,answers,langT(a)));
+    P.x=P.px=C>>1;P.y=P.py=R>>1;dir=[0,0];want=[0,0];inv=performance.now()+1200;
+    enemies=[{x:2,y:R>>1},{x:C-3,y:R>>1}].concat(qi>3?[{x:C>>1,y:1}]:[]).map(function(e){return {x:e.x,y:e.y,px:e.x,py:e.y,d:[0,0]};});
+    S.info('Question '+(qi+1)+' / '+qs.length);S.progress(qi,qs.length);S.score(hearts(lives)+'  '+good+' ✓');}
+  function step(now){
+    var sp=170;if(now-last>sp){last=now;P.px=P.x;P.py=P.y;
+      if((want[0]||want[1])&&can(P.x,P.y,want[0],want[1]))dir=want.slice();
+      if((dir[0]||dir[1])&&can(P.x,P.y,dir[0],dir[1])){P.x+=dir[0];P.y+=dir[1];}else dir=[0,0];
+      for(var z=0;z<4;z++)if(P.x===zones[z][0]&&P.y===zones[z][1]){hitZone(z);return;}}
+    if(now-lastE>300){lastE=now;enemies.forEach(function(e){e.px=e.x;e.py=e.y;var opts=[[1,0],[-1,0],[0,1],[0,-1]].filter(function(d){return can(e.x,e.y,d[0],d[1])&&!(d[0]===-e.d[0]&&d[1]===-e.d[1]);});
+      if(!opts.length)opts=[[-e.d[0],-e.d[1]]];var best=opts[0];if(Math.random()<.55){opts.sort(function(p,q){return (Math.abs(e.x+p[0]-P.x)+Math.abs(e.y+p[1]-P.y))-(Math.abs(e.x+q[0]-P.x)+Math.abs(e.y+q[1]-P.y));});best=opts[0];}else best=opts[rnd(0,opts.length-1)];
+      e.d=best;e.x+=best[0];e.y+=best[1];zones.forEach(function(zz){if(e.x===zz[0]&&e.y===zz[1]){e.x=e.px;e.y=e.py;e.d=[-best[0],-best[1]];}});});}
+    if(now>inv&&enemies.some(function(e){return e.x===P.x&&e.y===P.y;})){lives--;SFX.bad();inv=now+1500;P.x=P.px=C>>1;P.y=P.py=R>>1;dir=[0,0];S.score(hearts(lives)+'  '+good+' ✓');if(lives<=0){review.push({q:cur.q,a:cur.ok,ok:false});return endArcade(S,good,qs.length,lives,review);}}
+    draw(now);raf=S._raf=requestAnimationFrame(step);
+  }
+  function hitZone(z){var ok=answers[z]===cur.ok;review.push({q:cur.q,a:cur.ok,ok:ok});
+    if(ok){good++;SFX.good();flash={z:z,c:'#22b07d',t:performance.now()};}else{lives--;SFX.bad();flash={z:z,c:'#ef4f5f',t:performance.now()};}
+    draw(performance.now());qi++;
+    if(lives<=0||qi>=qs.length){S.later(function(){endArcade(S,good,qs.length,lives,review);},500);return;}
+    S.later(function(){newQ();raf=S._raf=requestAnimationFrame(step);},600);}
+  function lerp(o,now,sp){var t=clamp((now-(o===P?last:lastE))/sp,0,1);return [(o.px+(o.x-o.px)*t+.5)*cell,(o.py+(o.y-o.py)*t+.5)*cell];}
+  function draw(now){var W=C*cell,H=R*cell;ctx.clearRect(0,0,W,H);ctx.fillStyle='rgba(255,255,255,.96)';ctx.fillRect(0,0,W,H);
+    zones.forEach(function(zz,k){ctx.fillStyle=flash&&flash.z===k&&now-flash.t<600?flash.c:ZCOL[k];ctx.fillRect(zz[0]*cell+2,zz[1]*cell+2,cell-4,cell-4);ctx.fillStyle=k===2?'#3b2a00':'#fff';ctx.font='800 '+(cell*.55)+'px "Baloo 2",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(String(k+1),(zz[0]+.5)*cell,(zz[1]+.55)*cell);});
+    ctx.strokeStyle='#2b3287';ctx.lineWidth=Math.max(3,cell*.11);ctx.lineCap='round';ctx.beginPath();
+    for(var y=0;y<R;y++)for(var x=0;x<C;x++){var w=walls[y][x],X=x*cell,Y=y*cell;if(w&1){ctx.moveTo(X,Y);ctx.lineTo(X+cell,Y);}if(w&8){ctx.moveTo(X,Y);ctx.lineTo(X,Y+cell);}if(x===C-1&&w&2){ctx.moveTo(X+cell,Y);ctx.lineTo(X+cell,Y+cell);}if(y===R-1&&w&4){ctx.moveTo(X,Y+cell);ctx.lineTo(X+cell,Y+cell);}}
+    ctx.stroke();
+    enemies.forEach(function(e){var p=lerp(e,now,300);ctx.fillStyle='#9b6bff';ctx.beginPath();ctx.arc(p[0],p[1]-cell*.05,cell*.32,Math.PI,0);ctx.lineTo(p[0]+cell*.32,p[1]+cell*.3);for(var k=0;k<4;k++){ctx.lineTo(p[0]+cell*.32-cell*.16*(k+.5),p[1]+cell*(k%2?.3:.18));}ctx.lineTo(p[0]-cell*.32,p[1]+cell*.3);ctx.fill();
+      ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p[0]-cell*.11,p[1]-cell*.06,cell*.08,0,7);ctx.arc(p[0]+cell*.11,p[1]-cell*.06,cell*.08,0,7);ctx.fill();});
+    var pp=lerp(P,now,170);var blink=now<inv&&Math.floor(now/120)%2;if(!blink){ctx.fillStyle='#ffc23d';ctx.strokeStyle='#1b1f4b';ctx.lineWidth=3;ctx.beginPath();ctx.arc(pp[0],pp[1],cell*.33,0,7);ctx.fill();ctx.stroke();ctx.fillStyle='#1b1f4b';ctx.beginPath();ctx.arc(pp[0]-cell*.1,pp[1]-cell*.06,cell*.045,0,7);ctx.arc(pp[0]+cell*.1,pp[1]-cell*.06,cell*.045,0,7);ctx.fill();}}
+  S.keys=function(e){var m={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0],z:[0,-1],q:[-1,0]}[e.key];if(m){e.preventDefault();want=m;}};
+  var tx=0,ty=0,down=false;f.addEventListener('pointerdown',function(e){down=true;tx=e.clientX;ty=e.clientY;});f.addEventListener('pointerup',function(){down=false;});
+  f.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-tx,dy=e.clientY-ty;if(Math.abs(dx)+Math.abs(dy)>22){want=Math.abs(dx)>Math.abs(dy)?[dx>0?1:-1,0]:[0,dy>0?1:-1];tx=e.clientX;ty=e.clientY;}});
+  S.debug={walls:function(){return walls;},zones:zones,P:P,ans:function(){return answers;},cur:function(){return cur;},C:C,R:R};
+  gen();layout();S.onResize=layout;newQ();S.clock('up');raf=S._raf=requestAnimationFrame(step);
+};
+
+/* ---------- FRUITS VOLANTS ---------- */
+GAMES.flying=function(S,a){
+  var qs=shuffle(asQuestions(a)).slice(0,20);var qi=0,good=0,lives=3,review=[],cur=null,objs=[],raf,lastSpawn=0,lock=false;
+  var top=h('div',{style:'width:100%;max-width:980px'});var f=playfield(S,'sky');S.arena.insertBefore(top,f);
+  var FR=['🍉','🍊','🍋','🍇','🍓','🍍','🥝','🍑'];
+  function newQ(){cur=qs[qi];top.innerHTML='';top.appendChild(qBar(S,cur,null,langT(a)));objs.forEach(function(o){o.el.remove();});objs=[];lock=false;S.info('Question '+(qi+1)+' / '+qs.length);S.progress(qi,qs.length);S.score(hearts(lives)+'  '+good+' ✓');}
+  function spawn(){var opts=[cur.ok].concat(cur.wrong);var hasOk=objs.some(function(o){return o.v===cur.ok;});var v=!hasOk&&Math.random()<.5?cur.ok:opts[rnd(0,opts.length-1)];
+    var el=h('button',{class:'fruit'},[h('span',{class:'fe'},FR[rnd(0,FR.length-1)]),h('span',{class:'ft'},v)]);f.appendChild(el);
+    var W=f.clientWidth,H=f.clientHeight,left=Math.random()<.5;var o={el:el,v:v,x:left?-180:W+20,y:40+Math.random()*(H-140),vx:(left?1:-1)*(1.4+Math.random()*1.4+qi*0.08),ph:Math.random()*6};
+    el.addEventListener('pointerdown',function(e){e.preventDefault();hit(o);});objs.push(o);}
+  function hit(o){if(lock)return;if(o.v===cur.ok){lock=true;good++;SFX.good();o.el.classList.add('splat');review.push({q:cur.q,a:cur.ok,ok:true});qi++;
+      S.later(function(){if(qi>=qs.length)return endArcade(S,good,qs.length,lives,review);newQ();},700);}
+    else{lives--;SFX.bad();o.el.classList.add('wrongf');S.score(hearts(lives)+'  '+good+' ✓');S.later(function(){o.el.remove();},300);objs.splice(objs.indexOf(o),1);
+      if(lives<=0){lock=true;review.push({q:cur.q,a:cur.ok,ok:false});S.later(function(){endArcade(S,good,qs.length,lives,review);},400);}}}
+  function loop(now){if(!lock&&now-lastSpawn>1100-Math.min(500,qi*25)&&objs.length<6){lastSpawn=now;spawn();}
+    var W=f.clientWidth;objs.slice().forEach(function(o){if(o.el.classList.contains('splat'))return;o.x+=o.vx;o.ph+=.05;var yy=o.y+Math.sin(o.ph)*18;o.el.style.transform='translate('+o.x+'px,'+yy+'px)';
+      if(o.x<-220||o.x>W+220){o.el.remove();objs.splice(objs.indexOf(o),1);}});raf=S._raf=requestAnimationFrame(loop);}
+  newQ();S.clock('up');raf=S._raf=requestAnimationFrame(loop);
+};
+
+/* ---------- BALLON LARGUEUR ---------- */
+GAMES.balloon=function(S,a){
+  var f=playfield(S,'sky');var fit=Math.max(3,Math.floor((f.clientWidth-20)/105));
+  var ps=pick(asPairs(a).filter(function(p){return p.d;}),Math.min(+S.opt('max',8),fit));var queue=shuffle(ps),done=0,err=0,cur=null,dropping=false,raf,t0=performance.now();var train=h('div',{class:'train'});var cars=shuffle(ps).map(function(p,i){var c=h('div',{class:'car c'+(i%6)},[h('div',{class:'cargo'}),h('div',{class:'cdef'},media(p.d,p.di)),h('div',{class:'wheels'},[h('i'),h('i')])]);c._p=p;train.appendChild(c);return c;});
+  f.appendChild(train);var bal=h('button',{class:'balloonx','aria-label':'Larguer'},[h('div',{class:'env'}),h('div',{class:'ropes'}),h('div',{class:'crate tile'},'')]);f.appendChild(bal);
+  var bx=0,dirx=1;
+  function next(){if(!queue.length){S.progress(1,1);S.finish({correct:Math.max(0,ps.length-err),total:ps.length,time:S.stopClock(),extra:err+' erreur'+(err>1?'s':'')});return;}
+    cur=queue.shift();$('.crate',bal).textContent=cur.t;$('.crate',bal).style.cssText='';dropping=false;S.info((done+1)+' / '+ps.length);}
+  function drop(){if(dropping||!cur)return;dropping=true;SFX.whoosh();var crate=$('.crate',bal);var cr=crate.getBoundingClientRect(),fr=f.getBoundingClientRect();
+    var cx=cr.left+cr.width/2;var target=null;cars.forEach(function(c){var r=c.getBoundingClientRect();if(cx>=r.left&&cx<=r.right&&(!target||r.top<target.getBoundingClientRect().top))target=c;});
+    var fall=target?target.getBoundingClientRect().top-cr.bottom+16:fr.bottom-cr.bottom-6;crate.style.transition='transform .55s cubic-bezier(.5,0,1,1)';crate.style.transform='translateY('+fall+'px)';
+    S.later(function(){if(target&&target._p===cur){SFX.good();done++;target.classList.add('loaded');$('.cargo',target).textContent=cur.t;S.score(done+' ✓');S.progress(done,ps.length);next();}
+      else{err++;SFX.bad();crate.style.transition='opacity .3s';crate.style.opacity='0';if(target){target.classList.add('shake');S.later(function(){target.classList.remove('shake');},400);}queue.push(cur);S.score(done+' ✓   ✖ '+err);S.later(next,500);}},580);}
+  bal.addEventListener('click',drop);S.keys=function(e){if(e.key===' '||e.key==='ArrowDown'){e.preventDefault();drop();}};
+  function loop(now){var W=f.clientWidth-bal.offsetWidth;if(!dropping){bx+=dirx*(3.4+done*0.25)*(f.clientWidth/900);if(bx>W){bx=W;dirx=-1;}if(bx<0){bx=0;dirx=1;}}
+    bal.style.transform='translate('+bx+'px,'+(Math.sin((now-t0)/500)*8)+'px)';raf=S._raf=requestAnimationFrame(loop);}
+  S.score('0 ✓');S.clock('up');next();raf=S._raf=requestAnimationFrame(loop);
+};
+
+/* ---------- TAPE-TAUPE ---------- */
+GAMES.whack=function(S,a){
+  var qs=shuffle(asQuestions(a)).slice(0,15);var qi=0,pts=0,good=0,review=[],cur=null,roundEnd=0,need=0,got=0;
+  var top=h('div',{style:'width:100%;max-width:980px'});var f=playfield(S,'grass');S.arena.insertBefore(top,f);
+  var grid=h('div',{class:'holes'});var holes=[];for(var k=0;k<9;k++){var hl=h('div',{class:'hole'},[h('div',{class:'mole'},[h('div',{class:'sign'}),h('div',{class:'face'},'• ᴥ •')]),h('div',{class:'dirt'})]);holes.push({el:hl,busy:false});grid.appendChild(hl);}
+  f.appendChild(grid);var bar=h('div',{class:'timebar',style:'max-width:none'},h('i'));f.appendChild(bar);
+  holes.forEach(function(H){$('.mole',H.el).addEventListener('pointerdown',function(e){e.preventDefault();if(!H.busy||H.hit)return;H.hit=true;var ok=H.v===cur.ok;
+    H.el.classList.add(ok?'bonk':'oops');if(ok){pts+=10;got++;SFX.good();}else{pts=Math.max(0,pts-5);SFX.bad();}S.score(pts+' pts');
+    S.later(function(){down(H);},350);if(got>=need)endRound(true);});});
+  function up(){if(!cur)return;var free=holes.filter(function(H){return !H.busy;});if(!free.length)return;var H=free[rnd(0,free.length-1)];
+    var v=Math.random()<.42?cur.ok:cur.wrong[rnd(0,cur.wrong.length-1)];H.v=v;H.busy=true;H.hit=false;$('.sign',H.el).textContent=v;H.el.classList.remove('bonk','oops');H.el.classList.add('up');
+    H.t=S.later(function(){down(H);},1500-Math.min(600,qi*40));}
+  function down(H){H.el.classList.remove('up');S.later(function(){H.busy=false;H.el.classList.remove('bonk','oops');},250);}
+  function newQ(){cur=qs[qi];top.innerHTML='';top.appendChild(qBar(S,cur,null,langT(a)));need=2;got=0;roundEnd=Date.now()+12000;S.info('Question '+(qi+1)+' / '+qs.length);S.progress(qi,qs.length);}
+  function endRound(ok){if(!cur)return;review.push({q:cur.q,a:cur.ok,ok:ok});if(ok)good++;cur=null;holes.forEach(function(H){down(H);});qi++;
+    S.later(function(){if(qi>=qs.length){S.progress(1,1);S.finish({correct:good,total:qs.length,points:pts,time:S.stopClock(),review:review});}else newQ();},900);}
+  S.every(function(){if(!cur)return;up();var left=roundEnd-Date.now();$('i',bar).style.width=clamp(left/12000,0,1)*100+'%';if(left<=0)endRound(false);},650);
+  S.score('0 pts');S.clock('up');newQ();
+};
+
+/* ---------- AVION ---------- */
+GAMES.airplane=function(S,a){
+  var qs=shuffle(asQuestions(a)).slice(0,20);var qi=0,good=0,lives=3,review=[],cur=null,clouds=[],raf,py=.5,target=.5,lock=false,lanes=[.2,.5,.8];
+  var top=h('div',{style:'width:100%;max-width:980px'});var f=playfield(S,'sky');S.arena.insertBefore(top,f);
+  var plane=h('div',{class:'plane',html:'<svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M10 38 L28 34 L60 30 L96 28 Q112 30 112 36 Q112 42 96 44 L60 44 L28 42 Z" fill="#fff" stroke="#1b1f4b" stroke-width="4" stroke-linejoin="round"/><path d="M52 32 L70 6 L80 6 L72 32 Z M52 44 L70 66 L80 66 L72 44 Z" fill="#ff6f91" stroke="#1b1f4b" stroke-width="4" stroke-linejoin="round"/><path d="M10 38 L4 22 L16 22 L26 34 Z" fill="#ffc23d" stroke="#1b1f4b" stroke-width="4" stroke-linejoin="round"/><circle cx="98" cy="35" r="5" fill="#52c7fa" stroke="#1b1f4b" stroke-width="3"/></svg>'});f.appendChild(plane);
+  function newQ(){cur=qs[qi];top.innerHTML='';top.appendChild(qBar(S,cur,null,langT(a)));lock=false;wave();S.info('Question '+(qi+1)+' / '+qs.length);S.progress(qi,qs.length);S.score(hearts(lives)+'  '+good+' ✓');}
+  function wave(){clouds.forEach(function(c){c.el.remove();});clouds=[];var vals=shuffle([cur.ok].concat(shuffle(cur.wrong).slice(0,2)));
+    vals.forEach(function(v,k){var el=h('div',{class:'cloud'},v);f.appendChild(el);clouds.push({el:el,v:v,lane:k,x:f.clientWidth+60+k*30});});}
+  function loop(){var W=f.clientWidth,H=f.clientHeight;py+=(target-py)*.12;var ph=plane.offsetHeight;var pY=clamp(py*H-ph/2,0,H-ph);plane.style.transform='translate('+(W*.06)+'px,'+pY+'px) rotate('+((target-py)*40)+'deg)';
+    var speed=2.2+qi*.12;var pbox={x1:W*.06+10,x2:W*.06+plane.offsetWidth-10,y1:pY+8,y2:pY+ph-8};
+    clouds.slice().forEach(function(c){c.x-=speed;var ch=c.el.offsetHeight,cw=c.el.offsetWidth;var cy=lanes[c.lane]*H-ch/2;c.el.style.transform='translate('+c.x+'px,'+cy+'px)';
+      if(!lock&&c.x<pbox.x2&&c.x+cw>pbox.x1&&cy<pbox.y2&&cy+ch>pbox.y1){if(c.v===cur.ok){lock=true;good++;SFX.good();c.el.classList.add('gotc');review.push({q:cur.q,a:cur.ok,ok:true});qi++;S.later(function(){if(qi>=qs.length)return endArcade(S,good,qs.length,lives,review);newQ();},500);}
+        else{lives--;SFX.bad();c.el.classList.add('badc');clouds.splice(clouds.indexOf(c),1);(function(e){S.later(function(){e.remove();},300);})(c.el);S.score(hearts(lives)+'  '+good+' ✓');if(lives<=0){lock=true;review.push({q:cur.q,a:cur.ok,ok:false});S.later(function(){endArcade(S,good,qs.length,lives,review);},400);}}}});
+    if(!lock&&clouds.length&&clouds.every(function(c){return c.x<-c.el.offsetWidth;}))wave();
+    raf=S._raf=requestAnimationFrame(loop);}
+  function move(d){var i=lanes.indexOf(target);if(i<0)i=1;target=lanes[clamp(i+d,0,2)];}
+  S.keys=function(e){if(e.key==='ArrowUp'){e.preventDefault();move(-1);}if(e.key==='ArrowDown'){e.preventDefault();move(1);}};
+  f.addEventListener('pointerdown',function(e){var r=f.getBoundingClientRect();var y=(e.clientY-r.top)/r.height;target=lanes.reduce(function(b,l){return Math.abs(l-y)<Math.abs(b-y)?l:b;},lanes[0]);});
+  newQ();S.clock('up');raf=S._raf=requestAnimationFrame(loop);
+};
 /* ===== FENÊTRES MODALES ===== */
 function modal(title,body,buttons){
   var box=h('div',{class:'box'},[h('h2',null,title),body]);var ov=h('div',{class:'modal'},box);
@@ -1477,7 +2022,7 @@ function viewHome(){
   var shelf=h('div',{class:'shelf'},shelfIds.map(function(id){var t=tpl(id);var i=tplIcon(t);i.title=t.name;return i;}));
   var imp=h('input',{type:'file',accept:'.json,application/json',style:'display:none',onchange:function(){importFile(imp.files[0]);}});
   add(VIEW,h('section',{class:'hero'},[
-    h('div',null,[h('h1',null,'Tape ta liste une fois, joue-la de 19 façons.'),
+    h('div',null,[h('h1',null,'Tape ta liste une fois, joue-la de '+TPL.length+' façons.'),
       h('p',null,'Choisis un modèle, écris ton vocabulaire ou tes questions, et lance le jeu au tableau ou sur les téléphones des élèves. Tu changes de jeu en un clic, sans rien retaper.'),
       h('div',{class:'row'},[h('a',{class:'btn main',href:'#/creer'},'+ Créer une activité'),h('button',{class:'btn',onclick:function(){imp.click();}},'Importer un fichier'),imp])]),
     shelf]));
@@ -1489,8 +2034,8 @@ function viewHome(){
     var list=LIB.filter(function(a){return !q||noAccent((a.title+' '+tpl(a.template).name).toLowerCase()).indexOf(q)>=0;});
     if(!LIB.length){lib.appendChild(h('div',{class:'empty',style:'grid-column:1/-1'},[h('p',{style:'font-size:18px;margin:0 0 12px'},'Ta bibliothèque est vide.'),h('a',{class:'btn main',href:'#/creer'},'+ Créer ma première activité')]));return;}
     if(!list.length){lib.appendChild(h('p',{class:'muted'},'Aucune activité ne correspond.'));return;}
-    list.forEach(function(a){var t=tpl(a.template);var n=a.type==='questions'?cleanQuestions(a).length:a.type==='groups'?groupList(a).length:a.type==='sentences'?(a.sentences||[]).filter(txt).length:a.type==='cloze'?clozeWords(a).length:a.type==='diagram'?(a.labels||[]).length:asPairs(a).length;
-      var unit={pairs:'élément',questions:'question',groups:'catégorie',sentences:'phrase',cloze:'trou',diagram:'étiquette'}[a.type];
+    list.forEach(function(a){var t=tpl(a.template);var n=a.type==='maths'?(+(a.maths&&a.maths.n)||10):a.type==='questions'?cleanQuestions(a).length:a.type==='groups'?groupList(a).length:a.type==='sentences'?(a.sentences||[]).filter(txt).length:a.type==='cloze'?clozeWords(a).length:a.type==='diagram'?(a.labels||[]).length:asPairs(a).length;
+      var unit={pairs:'élément',questions:'question',groups:'catégorie',sentences:'phrase',cloze:'trou',diagram:'étiquette',maths:'calcul'}[a.type];
       lib.appendChild(h('div',{class:'act'},[
         h('div',{class:'thumb',onclick:function(){location.hash='#/jouer/'+a.id;}},[tplIcon(t),h('div',null,[h('h3',null,a.title||'Sans titre'),h('div',{class:'meta'},t.name+', '+n+' '+unit+(n>1?'s':''))])]),
         h('div',{class:'acts'},[h('a',{class:'btn small main',href:'#/jouer/'+a.id},'▶ Jouer'),h('a',{class:'btn small',href:'#/modifier/'+a.id},'Modifier'),
@@ -1518,11 +2063,29 @@ function importFile(f){
 }
 
 /* ---- CHOIX DU MODÈLE ---- */
+function crumbs(step){var names=['Choisir un modèle','Saisir le contenu','Jouer'];return h('div',{class:'crumbs'},names.map(function(n,i){return h('span',{class:i+1===step?'on':i+1<step?'done':''},[h('b',null,String(i+1)),n]);}));}
+var CHOOSEF='all';
 function viewChoose(){
   setNav('create');VIEW.innerHTML='';
-  add(VIEW,[h('h1',null,'Choisis un modèle'),h('p',{class:'muted',style:'margin:6px 0 0'},'Pas d’inquiétude : une fois ton contenu saisi, tu pourras passer d’un jeu à l’autre sans rien retaper.'),
-    h('div',{class:'tgrid'},TPL.map(function(t){return h('button',{class:'tcard',onclick:function(){DRAFT=newAct(t.id);location.hash='#/nouveau';}},[tplIcon(t),h('b',null,t.name),h('span',null,t.desc),h('span',{class:'typ'},TYPELABEL[t.type])]);}))]);
+  var grid=h('div',{class:'tgrid'});var chips=h('div',{class:'chips'});
+  var filters=[['all','Tous les modèles']].concat(['pairs','questions','groups','sentences','cloze','diagram','maths'].map(function(k){return [k,TYPELABEL[k]];}));
+  function draw(){chips.innerHTML='';grid.innerHTML='';
+    filters.forEach(function(fl){chips.appendChild(h('button',{class:'chip2'+(CHOOSEF===fl[0]?' on':''),onclick:function(){CHOOSEF=fl[0];draw();}},fl[1]));});
+    TPL.filter(function(t){if(CHOOSEF==='all')return true;var probe=newAct(t.id);probe.type=CHOOSEF;return t.type===CHOOSEF||FITS[CHOOSEF].indexOf(t.id)>=0;}).forEach(function(t){
+      grid.appendChild(h('button',{class:'tcard',onclick:function(){DRAFT=newAct(CHOOSEF!=='all'&&t.type!==CHOOSEF?t.id:t.id);if(CHOOSEF!=='all'&&t.type!==CHOOSEF){DRAFT=retype(DRAFT,CHOOSEF);}location.hash='#/nouveau';}},[tplIcon(t),h('b',null,t.name),h('span',null,t.desc),h('span',{class:'typ'},TYPELABEL[t.type])]));});}
+  add(VIEW,[crumbs(1),h('h1',null,'Choisis un modèle'),h('p',{class:'muted',style:'margin:6px 0 12px'},'Une fois ton contenu saisi, tu passes d’un jeu à l’autre sans rien retaper. Filtre par type de contenu pour voir tous les jeux qu’il permet.'),chips,grid]);
+  draw();
 }
+var FITS={
+  pairs:['wheel','boxes','cards','tiles','memory','match','find','quiz','gameshow','flash','anagram','hangman','wordsearch','crossword','typein','spell','truefalse','pairnopair','maze','flying','balloon','whack','airplane','imagequiz','winlose','rank','memorize'],
+  questions:['wheel','boxes','cards','tiles','memory','match','find','quiz','gameshow','flash','anagram','hangman','wordsearch','crossword','typein','spell','truefalse','pairnopair','maze','flying','balloon','whack','airplane','imagequiz','winlose','memorize'],
+  groups:['groups','speedsort','wheel','boxes','cards','tiles','quiz','gameshow','flash','anagram','hangman','wordsearch','crossword','spell','truefalse','maze','flying','whack','airplane','winlose','memorize'],
+  sentences:['unjumble','magnets','rank','wheel','boxes','cards','tiles','memorize'],
+  cloze:['cloze','wheel','boxes','cards','tiles'],
+  diagram:['diagram','wheel','boxes','cards','tiles','memorize'],
+  maths:['maths','quiz','gameshow','truefalse','typein','maze','flying','whack','airplane','winlose','memory','match','find','flash','balloon','pairnopair','wheel','boxes','cards','tiles']
+};
+function retype(a,type){var b=newAct(TPL.filter(function(t){return t.type===type;})[0].id);b.template=a.template;return b;}
 
 /* ---- ÉDITEUR ---- */
 var DRAFT=null;
@@ -1531,8 +2094,11 @@ function viewEditor(a,isNew){
   var title=h('input',{class:'titlein',placeholder:'Titre de l’activité','aria-label':'Titre',value:a.title||''});
   title.addEventListener('input',function(){a.title=title.value;});
   var body=h('div',{style:'margin-top:18px'});
-  var eds={pairs:edPairs,questions:edQuestions,groups:edGroups,sentences:edSentences,cloze:edCloze,diagram:edDiagram};
+  var eds={pairs:edPairs,questions:edQuestions,groups:edGroups,sentences:edSentences,cloze:edCloze,diagram:edDiagram,maths:edMaths};
   eds[a.type](a,body);
+  var insIn=h('input',{class:'field',value:a.instruction||'',placeholder:'Ex. : Associe chaque mot à sa traduction.'});insIn.addEventListener('input',function(){a.instruction=insIn.value;});
+  var insBox=h('div',{style:a.instruction?'margin-top:10px':'display:none;margin-top:10px'},[h('label',{style:'font-weight:700;font-size:14px;display:block;margin-bottom:4px'},'Consigne affichée aux élèves'),insIn]);
+  var insBtn=h('button',{class:'btn small ghost',style:a.instruction?'display:none':'',onclick:function(){insBox.style.display='';insBtn.style.display='none';insIn.focus();}},'+ Ajouter une consigne');
   var voiceBox=voiceSelects(a,function(){},true);
   function done(){
     a.title=txt(a.title)||'Sans titre';var why=compat(a.template,a);
@@ -1540,19 +2106,21 @@ function viewEditor(a,isNew){
     if(putAct(a)){DRAFT=null;location.hash='#/jouer/'+a.id;}
   }
   var tips={
-    pairs:'Une ligne par élément. La colonne de droite est facultative pour la roue ou les cartes, mais elle débloque le Memory, les Associations, les Quiz générés automatiquement et les Flashcards. Astuce : touche Entrée pour passer à la ligne suivante.',
+    pairs:'Une ligne par élément. La colonne de droite est facultative pour la roue ou les cartes, mais elle débloque le Memory, les Associations, les Quiz générés automatiquement et les Flashcards. Pour « Remets dans l’ordre », saisis les éléments dans le bon ordre. Plusieurs réponses acceptées ? Sépare-les par / (colour/color).',
     questions:'Coche la bonne réponse (✓). Deux réponses suffisent, six au maximum. Ce contenu marche aussi pour la roue, les boîtes, le Vrai ou faux et les Flashcards.',
     groups:'Un élément par ligne dans chaque catégorie. Ce contenu peut aussi devenir un Quiz (« dans quelle catégorie ? ») ou des Flashcards.',
     sentences:'Une phrase par ligne. Les mots seront mélangés ; la ponctuation reste collée au mot.',
     cloze:'Entoure les mots à masquer avec des doubles crochets : I [[like]] English. Ou sélectionne un mot et touche le bouton « Masquer ».',
-    diagram:'Importe une image, puis touche l’image pour placer chaque étiquette. Tu peux déplacer un repère en le faisant glisser.'};
+    diagram:'Importe une image, puis touche l’image pour placer chaque étiquette. Tu peux déplacer un repère en le faisant glisser.',
+    maths:'Coche les opérations et la taille des nombres : de nouveaux calculs sont tirés à chaque partie. Ce contenu marche avec le Quiz, le Labyrinthe, l’Avion, le Memory, les Flashcards…'};
   add(VIEW,[
-    h('div',{class:'row'},[h('a',{class:'btn ghost small',href:isNew?'#/creer':'#/jouer/'+a.id},'← Retour'),h('div',{class:'spacer'})]),
+    h('div',{class:'row'},[h('a',{class:'btn ghost small',href:isNew?'#/creer':'#/jouer/'+a.id},'← Retour'),h('div',{class:'spacer'}),isNew?crumbs(2):null]),
     h('div',{class:'ed'},[
-      h('div',{class:'panel'},[title,body,h('div',{class:'row',style:'margin-top:20px;justify-content:flex-end'},[h('a',{class:'btn',href:isNew?'#/':'#/jouer/'+a.id},'Annuler'),h('button',{class:'btn main',onclick:done},'Terminé, on joue ▸')])]),
+      h('div',{class:'panel'},[title,insBtn,insBox,body,h('div',{class:'row',style:'margin-top:20px;justify-content:flex-end'},[h('a',{class:'btn',href:isNew?'#/':'#/jouer/'+a.id},'Annuler'),h('button',{class:'btn main',onclick:done},'Terminé, on joue ▸')])]),
       h('div',{class:'side'},[h('div',{class:'panel'},[
         h('div',{class:'row',style:'margin-bottom:10px'},[tplIcon(t,'') ,h('div',null,[h('h3',{style:'margin:0'},t.name),h('div',{class:'muted',style:'font-size:13px'},TYPELABEL[a.type])])]),
         h('p',{class:'tip'},tips[a.type]),
+        AIPROMPT[a.type]?h('button',{class:'btn',style:'width:100%;margin-top:4px',onclick:function(){aiModal(a,function(){body.innerHTML='';eds[a.type](a,body);});}},'✨ Remplir avec une IA'):null,
         voiceBox])])])]);
   if(!a.title)title.focus();
 }
@@ -1570,6 +2138,17 @@ function voiceSelects(a,onChange,editor){
   return box;
 }
 function rowsHeader(a,b){return h('div',{class:'colhead'},[h('span'),h('span',null,a),h('span',null,b),h('span')]);}
+var SPECIAL=['é','è','ê','à','â','ç','ù','û','ô','î','ï','œ','’','«','»','ñ','á','í','ó','ú','¿','¡','ü','ö','ä','ß'];
+var LASTFIELD=null;
+document.addEventListener('focusin',function(e){if(e.target.matches&&e.target.matches('.ed input.field,.ed textarea.field'))LASTFIELD=e.target;});
+function charBar(){var bar=h('div',{class:'charbar'});SPECIAL.forEach(function(c){bar.appendChild(h('button',{type:'button',onmousedown:function(e){e.preventDefault();},onclick:function(){var f=LASTFIELD;if(!f){toast('Clique d’abord dans une case.');return;}
+  var s=f.selectionStart||f.value.length,en=f.selectionEnd||s;f.value=f.value.slice(0,s)+c+f.value.slice(en);f.setSelectionRange(s+1,s+1);f.dispatchEvent(new Event('input'));f.focus();}},c));});
+  var wrap=h('details',{class:'chars'},[h('summary',null,'Caractères spéciaux (é, ñ, ¿…)'),bar]);return wrap;}
+function rowTools(arr,i,redraw,mk){return h('div',{class:'rtools'},[
+  h('button',{class:'iconbtn s',type:'button',title:'Monter','aria-label':'Monter',disabled:i===0?true:null,onclick:function(){var x=arr[i];arr[i]=arr[i-1];arr[i-1]=x;redraw();}},'▲'),
+  h('button',{class:'iconbtn s',type:'button',title:'Descendre','aria-label':'Descendre',disabled:i===arr.length-1?true:null,onclick:function(){var x=arr[i];arr[i]=arr[i+1];arr[i+1]=x;redraw();}},'▼'),
+  h('button',{class:'iconbtn s',type:'button',title:'Dupliquer','aria-label':'Dupliquer',onclick:function(){arr.splice(i+1,0,clone(arr[i]));redraw();}},'⧉'),
+  h('button',{class:'iconbtn s',type:'button',title:'Supprimer','aria-label':'Supprimer',onclick:function(){arr.splice(i,1);if(!arr.length)arr.push(mk());redraw();}},'✕')]);}
 function edPairs(a,root){
   var list=h('div');
   function draw(focusLast){list.innerHTML='';
@@ -1583,17 +2162,19 @@ function edPairs(a,root){
       list.appendChild(h('div',{class:'erow'},[h('div',{class:'num'},String(i+1)),
         h('div',{class:'cell'},[ti,imgSlot(function(){return it.ti;},function(v){it.ti=v;})]),
         h('div',{class:'cell d'},[di,imgSlot(function(){return it.di;},function(v){it.di=v;})]),
-        h('button',{class:'iconbtn',type:'button',title:'Supprimer la ligne','aria-label':'Supprimer la ligne',onclick:function(){a.items.splice(i,1);if(!a.items.length)a.items.push({t:'',d:''});draw();}},'✕')]));});
+        rowTools(a.items,i,draw,function(){return {t:'',d:''};})]));});
     if(focusLast){var r=$$('.erow',list);r[r.length-1].querySelector('input').focus();}
   }
-  add(root,[rowsHeader('Mot, élément ou question','Réponse, traduction ou définition (facultatif)'),list,
+  var head=h('div',{class:'colhead'},[h('span'),h('span',null,'Mot, élément ou question'),h('span',null,['Réponse, traduction ou définition (facultatif) ',h('button',{class:'btn small ghost',style:'padding:2px 8px',type:'button',title:'Inverser les deux colonnes',onclick:function(){a.items.forEach(function(it){var t=it.t;it.t=it.d;it.d=t;var x=it.ti;it.ti=it.di;it.di=x;});var l=a.lang;a.lang=a.lang2||'fr-FR';a.lang2=l;draw();toast('Colonnes inversées');}},'⇄ Inverser')]),h('span')]);
+  add(root,[charBar(),head,list,
     h('div',{class:'row',style:'margin-top:12px'},[h('button',{class:'btn',onclick:function(){a.items.push({t:'',d:''});draw(true);}},'+ Ajouter un élément'),
-      h('button',{class:'btn',onclick:function(){pasteModal('Coller une liste','Une ligne par élément. Sépare le mot et la réponse par une tabulation (copier-coller depuis un tableur), un point-virgule, un signe = ou un tiret entouré d’espaces.\n\ncat ; chat\ndog = chien\nhorse - cheval',function(s){bulkPairs(a,s,null);draw();});}},'📋 Coller une liste')])]);
+      h('button',{class:'btn',onclick:function(){pasteModal('Coller une liste','Une ligne par élément. Sépare le mot et la réponse par une tabulation (copier-coller depuis un tableur), un point-virgule, un signe = ou un tiret entouré d’espaces.\n\ncat ; chat\ndog = chien\nhorse - cheval',function(s){bulkPairs(a,s,null);draw();});}},'📋 Coller une liste'),
+      h('span',{class:'muted',style:'font-size:13px'},'max. conseillé : 30')])]);
   draw();
 }
 function splitLine(l){var m=l.split(/\t| ; |;| = |=| - | – | : /);return [txt(m[0]),txt(m.slice(1).join(' '))];}
 function bulkPairs(a,s,at){
-  var rows=s.split(/\r?\n/).map(function(l){return l.replace(/^\s+|\s+$/g,'');}).filter(Boolean).map(function(l){var p=splitLine(l);return {t:p[0],d:p[1]};});
+  var rows=s.split(/\r?\n/).map(function(l){return l.replace(/^\s+|\s+$/g,'').replace(/^(\d+[.)]|[-•*])\s+/,'');}).filter(Boolean).map(function(l){var p=splitLine(l);return {t:p[0],d:p[1]};});
   a.items=a.items.filter(function(x){return txt(x.t)||txt(x.d)||x.ti||x.di;});
   if(at!=null&&at<a.items.length)a.items.splice.apply(a.items,[at,1].concat(rows));else a.items=a.items.concat(rows);
   toast(rows.length+' ligne'+(rows.length>1?'s ajoutées':' ajoutée'));
@@ -1612,10 +2193,10 @@ function edQuestions(a,root){
         var ok=h('button',{class:'okbtn'+(k===q.ok?' on':''),type:'button',title:'Bonne réponse','aria-label':'Marquer comme bonne réponse',onclick:function(){q.ok=k;draw();}},'✓');
         ans.appendChild(h('div',{class:'ansline'},[ok,inp,q.a.length>2?h('button',{class:'iconbtn',title:'Retirer','aria-label':'Retirer la réponse',onclick:function(){q.a.splice(k,1);if(q.ok>=q.a.length)q.ok=0;else if(k<q.ok)q.ok--;draw();}},'−'):null]));});
       list.appendChild(h('div',{class:'qblock'},[h('div',{class:'row',style:'flex-wrap:nowrap'},[h('b',{style:'font-family:var(--disp);font-size:20px;color:#9aa0cf'},String(i+1)),qi,imgSlot(function(){return q.img;},function(v){q.img=v;}),
-        h('button',{class:'iconbtn',title:'Supprimer la question','aria-label':'Supprimer la question',onclick:function(){a.questions.splice(i,1);if(!a.questions.length)a.questions.push({q:'',img:'',a:['','','',''],ok:0});draw();}},'✕')]),ans,
+        rowTools(a.questions,i,draw,function(){return {q:'',img:'',a:['','','',''],ok:0};})]),ans,
         q.a.length<6?h('button',{class:'btn small ghost',style:'margin-top:6px',onclick:function(){q.a.push('');draw();}},'+ réponse'):null]));});
   }
-  add(root,[list,h('div',{class:'row'},[h('button',{class:'btn',onclick:function(){a.questions.push({q:'',img:'',a:['','','',''],ok:0});draw();var b=$$('.qblock input',list);}},'+ Ajouter une question'),
+  add(root,[charBar(),list,h('div',{class:'row'},[h('button',{class:'btn',onclick:function(){a.questions.push({q:'',img:'',a:['','','',''],ok:0});draw();var b=$$('.qblock input',list);}},'+ Ajouter une question'),
     h('button',{class:'btn',onclick:function(){pasteModal('Coller des questions','Une question par ligne : la question, puis la bonne réponse, puis les mauvaises, séparées par | ou une tabulation.\n\nWhat colour is the sky? | blue | green | red',function(s){
       var n=0;a.questions=a.questions.filter(function(q){return txt(q.q);});
       s.split(/\r?\n/).forEach(function(l){var p=l.split(/\t|\|/).map(txt).filter(Boolean);if(p.length>=2){a.questions.push({q:p[0],img:'',a:p.slice(1,7),ok:0});n++;}});
@@ -1631,8 +2212,11 @@ function edGroups(a,root){
       grid.appendChild(h('div',{class:'gcol'},[h('div',{class:'row',style:'flex-wrap:nowrap'},[n,h('button',{class:'iconbtn',title:'Supprimer','aria-label':'Supprimer la catégorie',style:'margin-bottom:8px',onclick:function(){a.groups.splice(i,1);draw();}},'✕')]),ta]));});
     if(a.groups.length<6)grid.appendChild(h('button',{class:'btn',style:'min-height:120px',onclick:function(){a.groups.push({name:'',items:''});draw();}},'+ Ajouter une catégorie'));
   }
-  root.appendChild(grid);draw();
+  add(root,[charBar(),grid,h('div',{class:'row',style:'margin-top:12px'},[h('button',{class:'btn',onclick:function(){pasteModal('Coller des catégories','Une catégorie par ligne : le nom, deux-points, puis les éléments séparés par des virgules.\n\nFruit : apple, pear, banana',function(s){bulkGroups(a,s);draw();});}},'📋 Coller des catégories')])]);draw();
 }
+function bulkGroups(a,s){var n=0;a.groups=a.groups.filter(function(g){return txt(g.name)||txt(g.items);});
+  s.split(/\r?\n/).forEach(function(l){var m=l.split(/:|\t/);if(m.length<2)return;var items=m.slice(1).join(',').split(/[,;]/).map(txt).filter(Boolean);if(txt(m[0])&&items.length){a.groups.push({name:txt(m[0]),items:items.join('\n')});n++;}});
+  a.groups=a.groups.slice(0,6);toast(n+' catégorie'+(n>1?'s ajoutées':' ajoutée'));}
 function edSentences(a,root){
   var ta=h('textarea',{class:'field',style:'min-height:260px;font-size:18px;line-height:1.6',placeholder:'I get up at seven o’clock.\nThen I have breakfast.'});
   ta.value=(a.sentences||[]).join('\n');ta.addEventListener('input',function(){a.sentences=ta.value.split(/\r?\n/);});
@@ -1667,6 +2251,44 @@ function edDiagram(a,root){
   add(root,[holder,list]);draw();
 }
 
+function edMaths(a,root){
+  var m=a.maths=a.maths||{ops:['+','-'],range:'20',n:10,tables:''};
+  var ops=[['+','Additions'],['-','Soustractions'],['x','Multiplications'],['/','Divisions']];
+  var opBox=h('div',{class:'row'});ops.forEach(function(o){var on=m.ops.indexOf(o[0])>=0;opBox.appendChild(h('button',{class:'btn'+(on?' dark':''),type:'button',onclick:function(){var ix=m.ops.indexOf(o[0]);if(ix>=0)m.ops.splice(ix,1);else m.ops.push(o[0]);root.innerHTML='';edMaths(a,root);upd();}},(on?'✓ ':'')+o[1]));});
+  var range=h('select',{class:'field',style:'max-width:220px',onchange:function(){m.range=range.value;upd();}},[['10','Jusqu’à 10'],['20','Jusqu’à 20'],['100','Jusqu’à 100'],['1000','Jusqu’à 1 000']].map(function(r){return h('option',{value:r[0],selected:r[0]===String(m.range)?'selected':null},r[1]);}));
+  var n=h('select',{class:'field',style:'max-width:220px',onchange:function(){m.n=+n.value;upd();}},[5,10,15,20,30].map(function(v){return h('option',{value:v,selected:v===+m.n?'selected':null},v+' calculs');}));
+  var tb=h('input',{class:'field',style:'max-width:220px',value:m.tables||'',placeholder:'Ex. : 6, 7, 8'});tb.addEventListener('input',function(){m.tables=tb.value;upd();});
+  var prev=h('div',{class:'tip',style:'margin-top:14px'});
+  function upd(){var ex=mathGen(a).slice(0,6).map(function(x){return x.t+' = '+x.r;});prev.textContent=ex.length?'Exemples : '+ex.join('   ·   '):'Choisis au moins une opération.';}
+  add(root,[h('h3',{style:'margin-bottom:8px'},'Opérations'),opBox,
+    h('div',{class:'row',style:'margin-top:16px;align-items:flex-end'},[h('label',null,[h('b',{style:'display:block;font-size:14px;margin-bottom:4px'},'Taille des nombres'),range]),h('label',null,[h('b',{style:'display:block;font-size:14px;margin-bottom:4px'},'Nombre de calculs'),n]),h('label',null,[h('b',{style:'display:block;font-size:14px;margin-bottom:4px'},'Tables à travailler (× et ÷)'),tb])]),prev]);upd();
+}
+var AIPROMPT={
+  pairs:'Crée une liste de {n} paires pour des élèves de {lvl}, sur le thème « {th} ». Réponds uniquement avec la liste, une paire par ligne, au format exact :\nmot ; traduction ou définition\nPas de numérotation, pas de titre, pas de commentaire.',
+  questions:'Crée {n} questions à choix multiples pour des élèves de {lvl}, sur le thème « {th} ». Réponds uniquement avec les questions, une par ligne, au format exact :\nquestion | bonne réponse | mauvaise réponse | mauvaise réponse | mauvaise réponse\nPas de numérotation, pas de titre, pas de commentaire.',
+  groups:'Crée 3 ou 4 catégories avec {n} éléments au total pour des élèves de {lvl}, sur le thème « {th} ». Réponds uniquement avec une catégorie par ligne, au format exact :\nNom de la catégorie : élément, élément, élément\nPas de titre, pas de commentaire.',
+  sentences:'Écris {n} phrases courtes pour des élèves de {lvl}, sur le thème « {th} ». Réponds uniquement avec une phrase par ligne, sans numérotation ni commentaire.',
+  cloze:'Écris un court texte (80 à 120 mots) pour des élèves de {lvl}, sur le thème « {th} ». Entoure {n} mots importants avec des doubles crochets, comme ceci : [[mot]]. Réponds uniquement avec le texte.'
+};
+function aiModal(a,done){
+  var th=h('input',{class:'field',placeholder:'Ex. : the weather, le prétérit, les animaux de la ferme'}),lvl=h('select',{class:'field'},['6e (A1)','5e (A1+)','4e (A2)','3e (A2+)','lycée (B1)'].map(function(x){return h('option',null,x);})),num=h('select',{class:'field'},[6,8,10,12,15,20].map(function(x){return h('option',{selected:x===10?'selected':null},String(x));}));
+  var out=h('textarea',{class:'field',readonly:true,style:'min-height:110px;font-size:14px'}),back=h('textarea',{class:'field',placeholder:'Colle ici la réponse de l’IA',style:'min-height:130px'});
+  function build(){out.value=AIPROMPT[a.type].replace('{n}',num.value).replace('{lvl}',lvl.value).replace('{th}',txt(th.value)||'à préciser');}
+  [th,lvl,num].forEach(function(x){x.addEventListener('input',build);x.addEventListener('change',build);});build();
+  var body=h('div',null,[h('p',{class:'muted',style:'margin-top:0;font-size:14px'},'L’appli fonctionne sans compte ni serveur : elle ne peut donc pas appeler une IA elle-même. Elle prépare la demande ; tu la colles dans Claude, ChatGPT ou l’IA de ton choix, puis tu recolles la réponse ici.'),
+    h('div',{class:'row',style:'flex-wrap:nowrap'},[th]),h('div',{class:'row',style:'margin-top:8px;flex-wrap:nowrap'},[lvl,num]),
+    h('p',{style:'font-weight:700;font-size:14px;margin:12px 0 4px'},'1. Copie cette demande'),out,h('button',{class:'btn small',style:'margin-top:6px',onclick:function(){copy(out.value,out);}},'Copier la demande'),
+    h('p',{style:'font-weight:700;font-size:14px;margin:12px 0 4px'},'2. Colle la réponse de l’IA'),back]);
+  modal('Remplir avec une IA',body,[{label:'Annuler'},{label:'Ajouter à l’activité',cls:'main',fn:function(){var s=back.value;if(!txt(s)){toast('Colle d’abord la réponse de l’IA.');return false;}
+    if(a.type==='pairs')bulkPairs(a,s,null);
+    else if(a.type==='questions'){a.questions=a.questions.filter(function(q){return txt(q.q);});var k=0;s.split(/\r?\n/).forEach(function(l){var p=l.replace(/^\s*\d+[.)]\s*/,'').split(/\t|\|/).map(txt).filter(Boolean);if(p.length>=2){a.questions.push({q:p[0],img:'',a:p.slice(1,7),ok:0});k++;}});toast(k+' questions ajoutées');}
+    else if(a.type==='groups')bulkGroups(a,s);
+    else if(a.type==='sentences'){a.sentences=(a.sentences||[]).filter(txt).concat(s.split(/\r?\n/).map(function(l){return txt(l.replace(/^\s*\d+[.)]\s*/,''));}).filter(Boolean));}
+    else if(a.type==='cloze'){a.text=(txt(a.text)?a.text+'\n\n':'')+s.trim();}
+    done();}}]);
+  setTimeout(function(){th.focus();},50);
+}
+
 /* ---- JEU ---- */
 var OPTS={
   wheel:[['shuffle','Mélanger l’ordre','toggle',false],['remove','Retirer automatiquement l’élément tiré','toggle',false]],
@@ -1678,7 +2300,14 @@ var OPTS={
   truefalse:[['time','Durée de la partie','select',60,[[30,'30 s'],[60,'1 min'],[90,'1 min 30'],[120,'2 min']]]],
   flash:[['shuffle','Mélanger les cartes','toggle',true]],anagram:[['shuffle','Mélanger les mots','toggle',true]],hangman:[['shuffle','Mélanger les mots','toggle',true]],
   unjumble:[['shuffle','Mélanger les phrases','toggle',true]],
-  wordsearch:[['diag','Mots en diagonale','toggle',true],['rev','Mots à l’envers','toggle',false]]
+  wordsearch:[['diag','Mots en diagonale','toggle',true],['rev','Mots à l’envers','toggle',false]],
+  typein:[['shuffle','Mélanger','toggle',true]],spell:[['shuffle','Mélanger les mots','toggle',true],['autosay','Lire le mot automatiquement','toggle',true]],
+  pairnopair:[['time','Durée de la partie','select',60,[[30,'30 s'],[60,'1 min'],[90,'1 min 30'],[120,'2 min']]]],
+  winlose:[['shuffle','Mélanger les questions','toggle',true],['max','Questions maximum','select',20,[5,10,20,30]]],
+  memorize:[['speed','Temps par élément','select',1800,[[1000,'1 s'],[1800,'1,8 s'],[2500,'2,5 s'],[3500,'3,5 s']]]],
+  imagequiz:[['speed','Vitesse de dévoilement','select',700,[[400,'Rapide'],[700,'Normale'],[1100,'Lente']]]],
+  balloon:[['max','Nombre de mots','select',8,[4,6,8,10]]],magnets:[['shuffle','Mélanger les phrases','toggle',true]],
+  maths:[['time','Temps par question','select',0,[[0,'Illimité'],[10,'10 s'],[20,'20 s'],[30,'30 s']]]]
 };
 function viewPlay(a,student){
   VIEW.innerHTML='';setNav(student?'':'home');
