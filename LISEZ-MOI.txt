@@ -1,0 +1,27 @@
+BROT2YOU STUDIO V5
+==================
+
+INSTALLATION (GitHub Pages, dépôt Brot2you-Studio)
+1. Remplace index.html à la racine du dépôt par celui-ci.
+2. Garde le dossier assets/ (les icônes des jeux y sont lues).
+3. Ajoute .nojekyll s'il n'y est pas.
+4. Ctrl+F5 sur la page publiée.
+
+Les anciens fichiers (js/, css/, legacy-v3.html, les .txt de version) ne sont plus utilisés.
+Tu peux les supprimer, ou les garder le temps de vérifier.
+
+TES ANCIENNES ACTIVITÉS
+Au premier lancement sur brot2you.github.io, la V5 reprend automatiquement
+les activités de la V4 (même navigateur, même appareil). Rien n'est effacé côté V4.
+
+CE QUI CHANGE
+- Une seule saisie, 19 jeux : on passe d'un jeu à l'autre dans le panneau « Changer de jeu ».
+- Coller une liste depuis un tableur (2 colonnes) remplit l'activité d'un coup.
+- Lien élève : l'activité voyage dans le lien, sans compte ni serveur.
+- 6 ambiances visuelles, sons synthétisés, lecture vocale, plein écran pour le TNI.
+
+LIMITES CONNUES
+- Les activités restent dans le navigateur de l'appareil : exporter régulièrement.
+- Un lien élève contenant des images importées depuis l'appareil devient très long ;
+  préférer des images par adresse ou par la recherche Wikimedia.
+- Pas de classement partagé entre élèves (il faudrait un serveur).
