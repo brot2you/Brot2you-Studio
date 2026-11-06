@@ -179,7 +179,7 @@ textarea.field{resize:vertical;min-height:90px}
 .confetti{position:absolute;inset:0;pointer-events:none;z-index:30}
 
 /* WHEEL */
-.wheelbox{position:relative;flex:1;width:100%;display:grid;place-items:center;min-height:300px}
+.wheelbox{position:relative;flex:1;width:100%;display:grid;place-items:center;min-height:300px;contain:layout}
 .wheelbox canvas{display:block;cursor:pointer;filter:drop-shadow(0 10px 0 rgba(0,0,0,.25))}
 .wpointer{position:absolute;width:44px;height:56px;left:50%;margin-left:-22px;transform-origin:50% 20%;z-index:2}
 .wpointer svg{display:block;filter:drop-shadow(0 4px 2px rgba(0,0,0,.3))}
@@ -476,6 +476,18 @@ footer.foot{text-align:center;color:#8a90bf;font-size:13px;padding:10px 0 30px}
 .hole{height:auto;min-height:0}
 .rankrow{height:48px}.ranknums div{height:48px}
 @media (max-width:600px){.playfield{height:clamp(300px,calc(100vh - 250px),560px)}.qbar{padding:8px 10px}.legend span{font-size:15px;padding:3px 8px}}
+
+.iconbtn.aud{background:#e3f8ef;box-shadow:0 0 0 2px #22b07d inset}
+.spk.rec{box-shadow:0 0 0 2px #3cc98a inset}
+.recbtn.on{background:#ef4f5f;box-shadow:0 4px 0 #a8283a;animation:pulse 1s infinite}
+@keyframes pulse{50%{box-shadow:0 4px 0 #a8283a,0 0 0 8px rgba(239,79,95,.25)}}
+.stabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.qrbox{display:flex;flex-direction:column;align-items:center}
+.qrbox canvas,.qrbox img{border:10px solid #fff;border-radius:8px;box-shadow:0 0 0 2px var(--line)}
+body.embed{background:transparent}
+body.embed .top,body.embed .foot{display:none}
+body.embed .wrap{max-width:none;padding:0}
+body.embed .stage{min-height:100vh;border-radius:0}
 /* ICÔNES VECTORIELLES ANIMÉES */
 .ico{display:inline-block;line-height:0;flex:none;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
 .ico svg{width:100%;height:100%;display:block;overflow:visible}
@@ -635,9 +647,18 @@ function speak(text,lang){
     for(var i=0;i<vs.length;i++){var vl=(vs[i].lang||'').toLowerCase().replace('_','-');if(vl===pref){best=vs[i];break;}if(!best&&vl.slice(0,2)===pref.slice(0,2))best=vs[i];}
     if(best)u.voice=best;speechSynthesis.speak(u);}catch(e){}
 }
+var CURAUDIO={};
+function audioKey(s){return txt(s).toLowerCase();}
+function audioMap(a){var m={};if(!a)return m;
+  (a.items||[]).forEach(function(it){if(it.ta&&txt(it.t))m[audioKey(it.t)]=it.ta;if(it.da&&txt(it.d))m[audioKey(it.d)]=it.da;});
+  (a.questions||[]).forEach(function(q){if(q.qa&&txt(q.q))m[audioKey(q.q)]=q.qa;});return m;}
+var AUDIO_EL=null;
+function playAudio(src){try{if(AUDIO_EL)AUDIO_EL.pause();AUDIO_EL=new Audio(src);var p=AUDIO_EL.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}
+function say(text,lang){var au=CURAUDIO[audioKey(text)];if(au){if(window.speechSynthesis)try{speechSynthesis.cancel();}catch(e){}playAudio(au);}else speak(text,lang);}
 function spkBtn(text,lang){
-  if(!window.speechSynthesis||!txt(text))return null;
-  return h('button',{class:'spk',type:'button',title:'Écouter','aria-label':'Écouter',onclick:function(e){e.stopPropagation();speak(text,lang);}},'🔊');
+  if(!txt(text))return null;var rec=!!CURAUDIO[audioKey(text)];
+  if(!rec&&!window.speechSynthesis)return null;
+  return h('button',{class:'spk'+(rec?' rec':''),type:'button',title:'Écouter','aria-label':'Écouter',onclick:function(e){e.stopPropagation();say(text,lang);}},'🔊');
 }
 
 /* ===== CONFETTIS ===== */
@@ -864,8 +885,10 @@ function demoActs(){
 }
 
 /* ===== PARTAGE PAR LIEN ===== */
-function packAct(a){
-  var o=clone(a);delete o.createdAt;delete o.updatedAt;
+function stripAudio(o){(o.items||[]).forEach(function(it){delete it.ta;delete it.da;});(o.questions||[]).forEach(function(q){delete q.qa;});return o;}
+function hasAudio(a){return (a.items||[]).some(function(it){return it.ta||it.da;})||(a.questions||[]).some(function(q){return q.qa;});}
+function packAct(a,noAudio){
+  var o=clone(a);delete o.createdAt;delete o.updatedAt;if(noAudio)stripAudio(o);
   var s=JSON.stringify(o);
   return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
 }
@@ -873,7 +896,7 @@ function unpackAct(s){
   s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';
   return JSON.parse(decodeURIComponent(escape(atob(s))));
 }
-function studentLink(a){return location.href.split('#')[0]+'#/p/'+packAct(a);}
+function studentLink(a,noAudio,mode){return location.href.split('#')[0]+'#/'+(mode||'p')+'/'+packAct(a,noAudio);}
 /* ===== SCÈNE DE JEU ===== */
 var CUR=null; /* partie en cours */
 function Stage(act,host,student){
@@ -892,7 +915,7 @@ function Stage(act,host,student){
   document.addEventListener('keydown',this._onKey);
   this._onFs=function(){if(!(document.fullscreenElement||document.webkitFullscreenElement))self.el.classList.remove('full');self.relayout();};
   document.addEventListener('fullscreenchange',this._onFs);document.addEventListener('webkitfullscreenchange',this._onFs);
-  this._onResize=function(){self.relayout();};window.addEventListener('resize',this._onResize);
+  this._w=window.innerWidth;this._onResize=function(){var w=window.innerWidth;if(w===self._w)return;self._w=w;self.relayout();};window.addEventListener('resize',this._onResize);
 }
 Stage.prototype.toggleFull=function(){
   var el=this.el,on=el.classList.contains('full');
@@ -976,6 +999,7 @@ Stage.prototype.start=function(){
   this.el.className='stage t-'+(this.act.theme||'arcade')+(this.el.classList.contains('full')?' full':'');
   var why=compat(this.act.template,this.act);
   if(why){this.arena.appendChild(h('div',{class:'gtitle'},[h('div',{style:'font-size:56px'},'🧩'),why]));return;}
+  CURAUDIO=audioMap(this.act);
   var fn=GAMES[this.act.template],self=this,t=tpl(this.act.template),ins=txt(this.act.instruction);
   function run(){try{fn(self,self.act);}catch(e){console.error(e);self.arena.innerHTML='';self.arena.appendChild(h('div',{class:'gtitle'},'Oups, ce jeu n’a pas pu démarrer : '+e.message));}}
   if(INTRO[this.act.template]){
@@ -1029,7 +1053,7 @@ function DnD(root,onDrop){
   });
   root.addEventListener('pointercancel',function(){if(ghost&&ghost.parentNode)ghost.parentNode.removeChild(ghost);if(drag)drag.classList.remove('dragging');ghost=null;drag=null;});
 }
-function fitGrid(S,el,n,cols,ratio){var rows=Math.ceil(n/cols);var avail=Math.max(260,(S.el.clientHeight||600)-110);var gap=14;var cellH=(avail-gap*(rows-1))/rows;var w=cols*cellH*ratio+gap*(cols-1);el.style.maxWidth=Math.min(980,Math.max(cols*70,w))+'px';}
+function fitGrid(S,el,n,cols,ratio){var rows=Math.ceil(n/cols);var avail=Math.max(260,(S.el.classList.contains('full')?window.innerHeight:Math.min(640,window.innerHeight*0.72))-110);var gap=14;var cellH=(avail-gap*(rows-1))/rows;var w=cols*cellH*ratio+gap*(cols-1);el.style.maxWidth=Math.min(980,Math.max(cols*70,w))+'px';}
 function gridCols(n,max){var c=Math.ceil(Math.sqrt(n*1.5));return clamp(c,2,max||6);}
 /* ===== MOTEURS DE JEU ===== */
 var GAMES={};
@@ -1046,7 +1070,7 @@ GAMES.wheel=function(S,a){
   var size=300,ctx=cv.getContext('2d');
   function seg(){return Math.PI*2/items.length;}
   function layout(){
-    var w=box.clientWidth,hh=box.clientHeight||400;size=Math.max(240,Math.min(w-20,hh-30,720));
+    var w=box.clientWidth,hh=S.el.classList.contains('full')?window.innerHeight-90:Math.min(window.innerHeight*0.72,640)-80;size=Math.max(240,Math.min(w-20,hh-30,720));
     var dpr=window.devicePixelRatio||1;cv.width=size*dpr;cv.height=size*dpr;cv.style.width=size+'px';cv.style.height=size+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
     ptr.style.top=(box.clientHeight/2-size/2-26)+'px';draw();
   }
@@ -1638,10 +1662,10 @@ GAMES.spell=function(S,a){
     chars.forEach(function(ch){var L=lettersOnly(ch);var s={ch:ch,L:L,el:h('div',{class:'lslot'+(L?'':' sp')},L?'':(ch===' '?'':ch))};if(L)s.el.addEventListener('click',function(){clearFrom(slots.indexOf(s));});slots.push(s);sRow.appendChild(s.el);});
     var pool=chars.map(lettersOnly).filter(Boolean);var AL='ABCDEFGHIJKLMNOPRSTUVWY';for(var k=0;k<Math.min(4,Math.max(2,pool.length/2|0));k++)pool.push(AL[Math.floor(Math.random()*AL.length)]);
     var lRow=h('div',{class:'letters'});shuffle(pool).forEach(function(L,k){var t=h('button',{class:'tile c'+(k%6)},L);t._L=L;t.addEventListener('click',function(){put(L,t);});lRow.appendChild(t);});
-    var say=h('button',{class:'btn main',onclick:function(){speak(w.w,langT(a));}},'🔊 Écouter le mot');
+    var bSay=h('button',{class:'btn main',onclick:function(){say(w.w,langT(a));}},'🔊 Écouter le mot');
     add(box,[h('div',{class:'qcard'},[w.img?h('img',{src:w.img,alt:''}):null,h('div',{class:'q'},w.clue||'Écoute et épelle le mot'),w.clue?spkBtn(w.clue,w.cl==='t'?langT(a):langD(a)):null]),
-      sRow,lRow,h('div',{class:'row',style:'justify-content:center'},[h('button',{class:'btn small',onclick:function(){clearFrom(0);}},'Effacer'),say,h('button',{class:'btn small',onclick:function(){review.push({q:w.clue||w.w,a:w.w,ok:false});nextW();}},'Passer')])]);
-    if(S.opt('autosay',true))S.later(function(){speak(w.w,langT(a));},400);
+      sRow,lRow,h('div',{class:'row',style:'justify-content:center'},[h('button',{class:'btn small',onclick:function(){clearFrom(0);}},'Effacer'),bSay,h('button',{class:'btn small',onclick:function(){review.push({q:w.clue||w.w,a:w.w,ok:false});nextW();}},'Passer')])]);
+    if(S.opt('autosay',true))S.later(function(){say(w.w,langT(a));},400);
     function put(L,t){for(var k=0;k<slots.length;k++){var s=slots[k];if(s.L&&!s.got){s.got=L;s.tile=t;s.el.textContent=L;s.el.classList.add('f');if(t)t.style.visibility='hidden';SFX.tick();break;}}check();}
     function clearFrom(ix){for(var k=ix;k<slots.length;k++){var s=slots[k];if(s.got){if(s.tile)s.tile.style.visibility='';s.got=null;s.tile=null;s.el.textContent='';s.el.className='lslot';}}}
     function check(){if(slots.some(function(s){return s.L&&!s.got;}))return;
@@ -2011,6 +2035,46 @@ function imgSlot(get,set,maxSide){
   draw();return wrap;
 }
 
+
+/* ===== SONS ENREGISTRÉS ===== */
+function recorderModal(label,cur,onSave){
+  var data=cur||'',mr=null,chunks=[],stream=null,t0=0,timer=null,pending=false;
+  var status=h('p',{class:'muted',style:'margin:6px 0;min-height:22px'},data?'Un son est enregistré.':'Aucun son pour l’instant.');
+  var bRec=h('button',{class:'btn main recbtn',onclick:toggle},'🎙️ Enregistrer');
+  var bPlay=h('button',{class:'btn',disabled:data?null:true,onclick:function(){if(data)playAudio(data);}},'▶ Écouter');
+  var bDel=h('button',{class:'btn',disabled:data?null:true,onclick:function(){data='';upd('Son supprimé.');}},'🗑 Supprimer');
+  var file=h('input',{type:'file',accept:'audio/*',style:'display:none'});
+  file.addEventListener('change',function(){var fl=file.files[0];if(!fl)return;if(fl.size>400000){toast('Fichier trop lourd (400 Ko max). Coupe-le à quelques secondes.');return;}var fr=new FileReader();fr.onload=function(){data=fr.result;upd('Fichier importé.');playAudio(data);};fr.readAsDataURL(fl);});
+  function upd(msg){status.textContent=msg;bPlay.disabled=!data;bDel.disabled=!data;}
+  function stopAll(){if(timer)clearInterval(timer);if(stream)stream.getTracks().forEach(function(t){t.stop();});stream=null;}
+  function toggle(){
+    if(pending)return;
+    if(mr&&mr.state==='recording'){mr.stop();return;}
+    if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){upd('Ce navigateur ne permet pas d’enregistrer. Importe un fichier son à la place.');return;}
+    pending=true;bRec.disabled=true;status.textContent='Autorise l’accès au micro…';
+    navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){
+      pending=false;bRec.disabled=false;stream=s;chunks=[];var opts={audioBitsPerSecond:32000};
+      try{mr=new MediaRecorder(s,opts);}catch(e){mr=new MediaRecorder(s);}
+      mr.ondataavailable=function(e){if(e.data&&e.data.size)chunks.push(e.data);};
+      mr.onstop=function(){stopAll();bRec.textContent='🎙️ Recommencer';bRec.classList.remove('on');var blob=new Blob(chunks,{type:mr.mimeType||'audio/webm'});
+        var fr=new FileReader();fr.onload=function(){data=fr.result;upd('Enregistré ('+Math.max(1,Math.round((Date.now()-t0)/1000))+' s). Écoute pour vérifier.');playAudio(data);};fr.readAsDataURL(blob);};
+      mr.start();t0=Date.now();bRec.textContent='⏹ Arrêter';bRec.classList.add('on');
+      timer=setInterval(function(){var s2=(Date.now()-t0)/1000;status.textContent='Enregistrement… '+s2.toFixed(1)+' s (6 s max)';if(s2>=6&&mr.state==='recording')mr.stop();},100);
+    },function(){pending=false;bRec.disabled=false;upd('Micro refusé ou indisponible. Autorise le micro dans le navigateur, ou importe un fichier son.');});
+  }
+  var body=h('div',null,[h('p',{style:'margin-top:0'},['Son pour « ',h('b',null,label||'…'),' ». Il remplacera la voix de synthèse partout où ce mot apparaît.']),
+    h('div',{class:'row'},[bRec,bPlay,bDel]),status,
+    h('div',{class:'row',style:'margin-top:6px'},[h('button',{class:'btn small',onclick:function(){file.click();}},'📁 Importer un fichier son'),file]),
+    h('p',{class:'muted',style:'font-size:13px;margin-bottom:0'},'Conseil : 1 à 3 secondes suffisent. Chaque son pèse environ 10 à 25 Ko.')]);
+  modal('Son du mot',body,[{label:'Annuler',fn:function(){if(mr&&mr.state==='recording'){mr.onstop=null;mr.stop();}stopAll();}},{label:'Valider',cls:'main',fn:function(){if(mr&&mr.state==='recording'){toast('Arrête d’abord l’enregistrement.');return false;}stopAll();onSave(data);}}]);
+}
+function audioSlot(getText,get,set){
+  var b=h('button',{class:'iconbtn',type:'button'});
+  function draw(){var on=!!get();b.className='iconbtn'+(on?' aud':'');b.textContent=on?'🔊':'🎙️';b.title=on?'Son enregistré : modifier':'Enregistrer le son';b.setAttribute('aria-label',b.title);}
+  b.addEventListener('click',function(){recorderModal(txt(getText()),get(),function(d){set(d);draw();});});
+  draw();return b;
+}
+
 /* ===== ÉCRANS ===== */
 var VIEW=$('#view');
 function setNav(r){$$('.top nav a').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-r')===r);});}
@@ -2043,11 +2107,6 @@ function viewHome(){
           h('button',{class:'iconbtn',title:'Supprimer','aria-label':'Supprimer',onclick:function(){ask('Supprimer cette activité ?','« '+(a.title||'Sans titre')+' » sera retirée de cet appareil. Pense à l’exporter si tu veux la garder.','Supprimer',function(){delAct(a.id);draw();toast('Activité supprimée');});}},'🗑')])]));});
   }
   search.addEventListener('input',draw);draw();
-  var icons=$$('.shelf .ico',VIEW),turn=0;
-  if(icons.length&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
-    var tick=function(){if(!document.body.contains(icons[0]))return;var el=icons[turn%icons.length];turn++;el.classList.remove('play');void el.offsetWidth;el.classList.add('play');setTimeout(function(){el.classList.remove('play');},1300);setTimeout(tick,1700);};
-    setTimeout(tick,1200);
-  }
 }
 function duplicate(a){var c=clone(a);c.id=uid();c.title=(a.title||'Sans titre')+' (copie)';c.createdAt=Date.now();putAct(c);toast('Copie créée');return c;}
 function exportAll(){downloadJSON('BROT2YOU-Studio-bibliotheque.json',{format:'brot2you-studio',version:5,exportedAt:new Date().toISOString(),acts:LIB});}
@@ -2160,12 +2219,12 @@ function edPairs(a,root){
       di.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();if(i===a.items.length-1){a.items.push({t:'',d:''});draw(true);}else $$('.erow',list)[i+1].querySelector('input').focus();}});
       ti.addEventListener('paste',function(e){var s=(e.clipboardData||window.clipboardData).getData('text');if(s&&s.indexOf('\n')>=0){e.preventDefault();bulkPairs(a,s,i);draw();}});
       list.appendChild(h('div',{class:'erow'},[h('div',{class:'num'},String(i+1)),
-        h('div',{class:'cell'},[ti,imgSlot(function(){return it.ti;},function(v){it.ti=v;})]),
-        h('div',{class:'cell d'},[di,imgSlot(function(){return it.di;},function(v){it.di=v;})]),
+        h('div',{class:'cell'},[ti,audioSlot(function(){return it.t;},function(){return it.ta;},function(v){it.ta=v;}),imgSlot(function(){return it.ti;},function(v){it.ti=v;})]),
+        h('div',{class:'cell d'},[di,audioSlot(function(){return it.d;},function(){return it.da;},function(v){it.da=v;}),imgSlot(function(){return it.di;},function(v){it.di=v;})]),
         rowTools(a.items,i,draw,function(){return {t:'',d:''};})]));});
     if(focusLast){var r=$$('.erow',list);r[r.length-1].querySelector('input').focus();}
   }
-  var head=h('div',{class:'colhead'},[h('span'),h('span',null,'Mot, élément ou question'),h('span',null,['Réponse, traduction ou définition (facultatif) ',h('button',{class:'btn small ghost',style:'padding:2px 8px',type:'button',title:'Inverser les deux colonnes',onclick:function(){a.items.forEach(function(it){var t=it.t;it.t=it.d;it.d=t;var x=it.ti;it.ti=it.di;it.di=x;});var l=a.lang;a.lang=a.lang2||'fr-FR';a.lang2=l;draw();toast('Colonnes inversées');}},'⇄ Inverser')]),h('span')]);
+  var head=h('div',{class:'colhead'},[h('span'),h('span',null,'Mot, élément ou question'),h('span',null,['Réponse, traduction ou définition (facultatif) ',h('button',{class:'btn small ghost',style:'padding:2px 8px',type:'button',title:'Inverser les deux colonnes',onclick:function(){a.items.forEach(function(it){var t=it.t;it.t=it.d;it.d=t;var x=it.ti;it.ti=it.di;it.di=x;var y=it.ta;it.ta=it.da;it.da=y;});var l=a.lang;a.lang=a.lang2||'fr-FR';a.lang2=l;draw();toast('Colonnes inversées');}},'⇄ Inverser')]),h('span')]);
   add(root,[charBar(),head,list,
     h('div',{class:'row',style:'margin-top:12px'},[h('button',{class:'btn',onclick:function(){a.items.push({t:'',d:''});draw(true);}},'+ Ajouter un élément'),
       h('button',{class:'btn',onclick:function(){pasteModal('Coller une liste','Une ligne par élément. Sépare le mot et la réponse par une tabulation (copier-coller depuis un tableur), un point-virgule, un signe = ou un tiret entouré d’espaces.\n\ncat ; chat\ndog = chien\nhorse - cheval',function(s){bulkPairs(a,s,null);draw();});}},'📋 Coller une liste'),
@@ -2192,7 +2251,7 @@ function edQuestions(a,root){
         var inp=h('input',{class:'field',value:v||'',placeholder:k===q.ok?'Bonne réponse':'Autre réponse','aria-label':'Réponse '+(k+1)});inp.addEventListener('input',function(){q.a[k]=inp.value;});
         var ok=h('button',{class:'okbtn'+(k===q.ok?' on':''),type:'button',title:'Bonne réponse','aria-label':'Marquer comme bonne réponse',onclick:function(){q.ok=k;draw();}},'✓');
         ans.appendChild(h('div',{class:'ansline'},[ok,inp,q.a.length>2?h('button',{class:'iconbtn',title:'Retirer','aria-label':'Retirer la réponse',onclick:function(){q.a.splice(k,1);if(q.ok>=q.a.length)q.ok=0;else if(k<q.ok)q.ok--;draw();}},'−'):null]));});
-      list.appendChild(h('div',{class:'qblock'},[h('div',{class:'row',style:'flex-wrap:nowrap'},[h('b',{style:'font-family:var(--disp);font-size:20px;color:#9aa0cf'},String(i+1)),qi,imgSlot(function(){return q.img;},function(v){q.img=v;}),
+      list.appendChild(h('div',{class:'qblock'},[h('div',{class:'row',style:'flex-wrap:nowrap'},[h('b',{style:'font-family:var(--disp);font-size:20px;color:#9aa0cf'},String(i+1)),qi,audioSlot(function(){return q.q;},function(){return q.qa;},function(v){q.qa=v;}),imgSlot(function(){return q.img;},function(v){q.img=v;}),
         rowTools(a.questions,i,draw,function(){return {q:'',img:'',a:['','','',''],ok:0};})]),ans,
         q.a.length<6?h('button',{class:'btn small ghost',style:'margin-top:6px',onclick:function(){q.a.push('');draw();}},'+ réponse'):null]));});
   }
@@ -2315,7 +2374,8 @@ function viewPlay(a,student){
   var head=h('div',{class:'playhead'},[student?null:h('a',{class:'btn ghost small',href:'#/'},'← Mes activités'),h('h1',null,a.title||'Sans titre'),h('div',{class:'spacer'}),
     student?null:h('a',{class:'btn small',href:'#/modifier/'+a.id},'✎ Modifier le contenu'),
     student?null:h('button',{class:'btn small dark',onclick:function(){share(a);}},'🔗 Lien élève')]);
-  if(student){add(VIEW,[head,h('div',{style:'margin-top:12px'},host),h('div',{class:'row',style:'justify-content:center;margin-top:16px'},[
+  if(student==='embed'){add(VIEW,host);}
+  else if(student){add(VIEW,[head,h('div',{style:'margin-top:12px'},host),h('div',{class:'row',style:'justify-content:center;margin-top:16px'},[
     h('button',{class:'btn small',onclick:function(){var c=clone(a);c.id=uid();c.createdAt=Date.now();putAct(c);toast('Ajoutée à ta bibliothèque');location.hash='#/jouer/'+c.id;}},'Enseignant·e ? Ajouter à ma bibliothèque')])]);}
   else{
     var rail=h('div',{class:'rail'});
@@ -2346,14 +2406,40 @@ function viewPlay(a,student){
   }
 }
 function share(a){
-  var link=studentLink(a);var inp=h('input',{class:'field',readonly:true,value:link});
-  var heavy=link.length>15000;
-  var body=h('div',null,[h('p',{style:'margin-top:0'},'Les élèves ouvrent ce lien et jouent directement à « '+tpl(a.template).name+' », sans compte ni installation. Le contenu voyage dans le lien : rien n’est envoyé sur un serveur.'),inp,
-    heavy?h('p',{class:'tip',style:'margin-top:10px'},'Ce lien est très long ('+Math.round(link.length/1000)+' Ko) à cause des images importées depuis l’appareil. Il peut être refusé par certaines messageries ou par l’ENT. Remplace-les par des images en ligne (adresse ou recherche) pour un lien court.'):null,
-    h('p',{class:'muted',style:'font-size:13px;margin-bottom:0'},'Astuce : colle-le dans l’ENT ou transforme-le en QR code. Si tu modifies l’activité, recopie un nouveau lien.')]);
-  modal('Lien élève',body,[{label:'Ouvrir',fn:function(){window.open(link,'_blank');return false;}},{label:'Copier le lien',cls:'main',fn:function(){copy(link,inp);}}]);
-  setTimeout(function(){inp.select();},50);
+  var withAudio=hasAudio(a),noAudio=false;var size=h('select',{class:'field',style:'max-width:200px'},[['100%|640','Largeur de la page'],['800|560','800 × 560'],['640|480','640 × 480']].map(function(o){return h('option',{value:o[0]},o[1]);}));
+  var linkIn=h('input',{class:'field',readonly:true}),embedIn=h('textarea',{class:'field',readonly:true,style:'min-height:76px;font-size:13px;font-family:monospace'});
+  var warn=h('p',{class:'tip',style:'display:none;margin:8px 0 0'}),qr=h('div',{class:'qrbox'});
+  var audioTg=withAudio?h('label',{class:'opt',style:'justify-content:flex-start;gap:10px'},[h('input',{type:'checkbox',checked:true,onchange:function(e){noAudio=!e.target.checked;upd();}}),'Inclure les sons enregistrés dans le lien']):null;
+  function upd(){var link=studentLink(a,noAudio,'p');var emb=studentLink(a,noAudio,'e');var wh=size.value.split('|');
+    linkIn.value=link;embedIn.value='<iframe src="'+emb+'" width="'+wh[0]+'" height="'+wh[1]+'" style="border:0;border-radius:16px;max-width:100%" allow="autoplay; fullscreen; microphone" allowfullscreen title="'+(a.title||'Activité').replace(/"/g,'')+'"></iframe>';
+    var kb=Math.round(link.length/1000);
+    if(link.length>15000){warn.style.display='';warn.textContent='Lien très long ('+kb+' Ko)'+(withAudio&&!noAudio?' à cause des sons enregistrés':' à cause des images importées')+' : certaines messageries ou l’ENT peuvent le couper. '+(withAudio&&!noAudio?'Décoche les sons pour un lien court (la voix de synthèse prendra le relais), ou partage le fichier exporté.':'Préfère des images par adresse ou par la recherche.');}
+    else warn.style.display='none';
+    drawQR(link);}
+  function drawQR(link){qr.innerHTML='';
+    if(link.length>2200){qr.appendChild(h('p',{class:'muted',style:'font-size:13px;margin:0'},'Lien trop long pour un QR code lisible. Raccourcis-le d’abord (par exemple avec le raccourcisseur de l’ENT), ou retire les sons/images importés.'));return;}
+    loadQR(function(ok){if(!ok){qr.appendChild(h('p',{class:'muted',style:'font-size:13px;margin:0'},'QR code indisponible (pas de connexion ?).'));return;}
+      var box=h('div');qr.appendChild(box);try{new QRCode(box,{text:link,width:180,height:180,correctLevel:QRCode.CorrectLevel.L});}catch(e){qr.innerHTML='';qr.appendChild(h('p',{class:'muted'},'QR code impossible pour ce lien.'));return;}
+      qr.appendChild(h('button',{class:'btn small',style:'margin-top:6px',onclick:function(){var c=box.querySelector('canvas');var src=c?c.toDataURL('image/png'):(box.querySelector('img')||{}).src;if(src){var l=h('a',{href:src,download:(a.title||'activite').replace(/[^\w\-]+/g,'_')+'-qr.png'});document.body.appendChild(l);l.click();l.parentNode.removeChild(l);}}},'⤓ Télécharger le QR code'));});}
+  size.addEventListener('change',upd);
+  var tabs=h('div',{class:'stabs'});var panes={};
+  function tab(id,label,pane){panes[id]=pane;var b=h('button',{class:'chip2',onclick:function(){Object.keys(panes).forEach(function(k){panes[k].style.display=k===id?'':'none';});$$('.chip2',tabs).forEach(function(x){x.classList.toggle('on',x===b);});}},label);tabs.appendChild(b);return b;}
+  var p1=h('div',null,[h('p',{style:'margin-top:0'},'Les élèves ouvrent ce lien et jouent directement à « '+tpl(a.template).name+' », sans compte ni installation. Le contenu voyage dans le lien : rien n’est envoyé sur un serveur.'),linkIn,
+    h('div',{class:'row',style:'margin-top:8px'},[h('button',{class:'btn main',onclick:function(){copy(linkIn.value,linkIn);}},'Copier le lien'),h('button',{class:'btn',onclick:function(){window.open(linkIn.value,'_blank');}},'Ouvrir')])]);
+  var p2=h('div',{style:'display:none;text-align:center'},[h('p',{style:'margin-top:0;text-align:left'},'À projeter au tableau ou à imprimer : les élèves scannent avec la tablette ou le téléphone.'),qr]);
+  var p3=h('div',{style:'display:none'},[h('p',{style:'margin-top:0'},'Colle ce code dans une page web, un cours Moodle, un Padlet, un Genially ou ton blog : le jeu s’affiche directement dans la page, sans en-tête.'),
+    h('div',{class:'row',style:'margin-bottom:8px'},[h('span',{style:'font-weight:700;font-size:14px'},'Taille'),size]),embedIn,h('button',{class:'btn main',style:'margin-top:8px',onclick:function(){copy(embedIn.value,embedIn);}},'Copier le code d’intégration')]);
+  var p4=h('div',{style:'display:none'},[h('p',{style:'margin-top:0'},'Un fichier .json contient toute l’activité, sons et images compris. Un collègue l’ouvre avec « Importer un fichier » dans son propre BROT2YOU Studio. C’est aussi ta sauvegarde.'),
+    h('button',{class:'btn main',onclick:function(){downloadJSON((a.title||'activite').replace(/[^\w\-]+/g,'_')+'.json',{format:'brot2you-studio',version:5,acts:[a]});}},'⤓ Télécharger le fichier')]);
+  var first=tab('link','🔗 Lien élève',p1);tab('qr','▦ QR code',p2);tab('embed','</> Intégrer (iframe)',p3);tab('file','⤓ Fichier',p4);first.classList.add('on');
+  var body=h('div',null,[h('p',{class:'muted',style:'margin:-4px 0 12px;font-size:14px'},'L’activité est déjà enregistrée sur cet appareil. Choisis comment la donner aux élèves.'),tabs,audioTg,p1,p2,p3,p4,warn,
+    h('p',{class:'muted',style:'font-size:13px;margin-bottom:0'},'Si tu modifies l’activité ensuite, recopie un nouveau lien ou un nouveau code : l’ancien garde l’ancienne version.')]);
+  modal('Partager « '+(a.title||'Sans titre')+' »',body,[{label:'Fermer'}]);upd();
 }
+var QRLOAD=null;
+function loadQR(cb){if(window.QRCode)return cb(true);if(QRLOAD){QRLOAD.push(cb);return;}QRLOAD=[cb];
+  var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+  s.onload=function(){var l=QRLOAD;QRLOAD=null;l.forEach(function(f){f(!!window.QRCode);});};s.onerror=function(){var l=QRLOAD;QRLOAD=null;l.forEach(function(f){f(false);});};document.head.appendChild(s);}
 function copy(s,inp){
   function fallback(){try{inp.select();document.execCommand('copy');toast('Lien copié');}catch(e){toast('Sélectionne le lien et copie-le.');}}
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(s).then(function(){toast('Lien copié');},fallback);else fallback();
@@ -2362,16 +2448,16 @@ function copy(s,inp){
 /* ===== ROUTEUR ===== */
 function route(){
   var hsh=location.hash.replace(/^#\/?/,'');var parts=hsh.split('/');
-  document.body.classList.toggle('student',parts[0]==='p');
-  if(parts[0]!=='jouer'&&parts[0]!=='p')leaveStage();
+  document.body.classList.toggle('student',parts[0]==='p'||parts[0]==='e');document.body.classList.toggle('embed',parts[0]==='e');
+  if(parts[0]!=='jouer'&&parts[0]!=='p'&&parts[0]!=='e')leaveStage();
   window.scrollTo(0,0);
   if(parts[0]==='creer')return viewChoose();
   if(parts[0]==='nouveau'){if(!DRAFT){location.hash='#/creer';return;}return viewEditor(DRAFT,true);}
   if(parts[0]==='modifier'){var a=getAct(parts[1]);if(!a){location.hash='#/';return;}return viewEditor(a,false);}
   if(parts[0]==='jouer'){var b=getAct(parts[1]);if(!b){location.hash='#/';return;}return viewPlay(b,false);}
-  if(parts[0]==='p'){var c=null;try{c=unpackAct(hsh.slice(2));}catch(e){}
+  if(parts[0]==='p'||parts[0]==='e'){var c=null;try{c=unpackAct(hsh.slice(2));}catch(e){}
     if(!c||!c.template){VIEW.innerHTML='';add(VIEW,h('div',{class:'empty'},[h('h2',null,'Lien incomplet'),h('p',null,'Ce lien a été coupé en route. Demande à ton professeur de te le renvoyer.')]));return;}
-    c.v=5;return viewPlay(c,true);}
+    c.v=5;return viewPlay(c,parts[0]==='e'?'embed':true);}
   viewHome();
 }
 loadLib();
